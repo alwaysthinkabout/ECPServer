@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>金英台招聘系统</title>
+	<script src="assets/js/myjs/getPermission.js"></script>
+	    <!-- BOOTSTRAP STYLES-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+	    <!-- FONTAWESOME STYLES-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+	       <!--CUSTOM BASIC STYLES-->
+	    <link href="assets/css/basic.css" rel="stylesheet" />
+	    <!--CUSTOM MAIN STYLES-->
+	    <link href="assets/css/custom.css" rel="stylesheet" />
+
+	    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+	    <link href="assets/css/ui.jqgrid.css" rel="stylesheet" />
+	    <link href="assets/css/mycss.css" rel="stylesheet" />
+	    <link href="assets/img/title.png" rel="icon" type="image/x-icon" />
+	    <!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	    <style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }
+       /* .nav-link {
+		  position: relative;
+		  padding: 0 14px;
+		  line-height: 34px;
+		  font-size: 10px;
+		  font-weight: bold;
+		  color: #555;
+		  text-decoration: none;
+		}
+		.nav-link:hover {
+		  color: #333;
+		  text-decoration: underline;
+		} */
+		
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+		
+		/* .nav-counter-green {
+		  background: #75a940;
+		  border: 1px solid #42582b;
+		  background-image: -webkit-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -moz-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -o-linear-gradient(top, #8ec15b, #689739);
+		  background-image: linear-gradient(to bottom, #8ec15b, #689739);
+		}
+		 */
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+       </style>
+    <!-- GOOGLE FONTS-->
+    <style type="text/css">
+        .ui-jqgrid tr.jqgrow td {
+		    
+		    padding: 0px 2px 0 2px;
+		    line-height:28px;
+
+       }
+       .ui-jqgrid-htable th.ui-th-column {
+		   padding-bottom:2px;
+		    
+		}
+		.page-subhead-line {
+		   margin-top:0px;
+		   padding-bottom:8px;		    
+		}
+		.ui-icon {
+    		background-image: url(images/ui-icons_3d80b3_256x240.png);
+        }        
+    </style>
+</head>
+<body >
+    <div id="wrapper"> 
+    	 <div class="row">
+	    <div class="row">
+		    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white">
+		        <div style="width:100%;">
+			        <div style="height:130px;width:35%;float:left">
+			        	<a href="homePage.html"><img alt="picture" src="assets/img/titlePic2.png" height="130"></a>
+		        	</div>
+			             <div style="width:60%;height:90px;float:left;"></div> 
+	  					 <div class="welcome_div"><label class="welcome_label">欢迎您：</label><label id="navUser_call" class="welcome_label"></label></div>
+	  					 <div class="Integrity_div"><label for="progress"class="Integrity_label">资料完整度：<progress value="15" max="100" id="progress"></progress></label></div>
+  				</div>
+		     </nav>
+	    </div>
+     <div class="row">
+	     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+	     	<div class="col-md-12" >
+		        <ul id="nav">
+		        	<li><a href="homePage.html">首页</a></li>
+		        	<li style="padding-left: 65%;"><a id="applyJsp" href="unprocessed.html" onclick="toPage(0)">
+		       				<i class="fa fa-newspaper-o  fa-5x" style="margin-top: 6.4px;font-size: 1.4em;" title="求职申请提醒"></i>
+		       				<span class="nav-counter"id="applyCounter" style="background:red;display:none"></span>
+                		</a>
+                	</li>
+		        	
+		       		<li style="padding-left: 1.8%;"><a id="chatJsp" href="chat.html" onclick="setCss()">
+		       				<i class="fa fa-envelope fa-lg" title="消息提醒"></i>
+		       				<span class="nav-counter"id="messageCounter" style="display:none;"></span>
+                		</a>
+                	</li >
+                	<li style="padding-left: 3%;"><a href="login.jsp" onclick="logout()">退出</a></li>
+		        </ul>
+		     </div>
+	     </nav>
+     <!-- /. NAV TOP  -->
+      </div>
+    </div>                      
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1  class="page-head-line">查询现有求职者信息</h1>
+                        <div >
+                            <div style="display:inline-block;width:80%;text-align:left">
+                                <label style="font-size: 14px;margin-left:10px;">查询条件</label>
+		                        <select id="attendacne_type"class="my-ApplySearch-input"style="width:13%;">
+								   <option value ="" disabled selected>求职类型</option>
+								   <option value ="all">全部</option>
+								   <option value="全职">全职</option>
+								   <option value="实习">实习</option>
+								</select>
+								<select id="type_id" class="my-ApplySearch-input"style="width:20%;">
+									<option value ="" disabled selected>岗位类型</option>
+								</select>
+								<select id="degree" class="my-ApplySearch-input"style="width:13%;" >
+								   <option value ="" disabled selected>学历</option>
+								   <option value ="all">全部</option>
+								   <option value="博士">博士</option>
+								   <option value="硕士">硕士</option>
+								   <option value="本科">本科</option>
+								   <option value="大专">大专</option>
+								   <option value="中专">中专</option>
+								   <option value="高中">高中</option>
+								    <option value="初中">初中</option>
+								   <option value="小学">小学</option>
+								</select>
+		                        <button class="btn btn-primary my-oderPageChoosenButton"  style="display:inline-block;margin-top:0px;margin-left:15px;" onclick="getApplys()">查 找</button>
+		                        <button class="btn btn-primary my-oderPageChoosenButton"  style="display:inline-block;margin-top:0px;margin-left:25px;" onclick="invite()">发送面试邀请</button>
+	                        </div>
+                        </div>
+                        <h1 class="page-subhead-line"> 
+                           
+                        </h1>
+                        
+                    </div>
+                     
+                </div>
+                <!-- /. ROW  -->
+                <!-- /. ROW  -->
+                 <div class="row">
+                   <div class="col-md-12">
+                       <div id="table" class="panel panel-primary" style="display:none;">
+					      <!-- Default panel contents -->
+					      <div class="panel-heading" style="text-align:center;font-size:14px;">查找结果
+						      <!-- <div style="display:none;float:right;"id="hasIs_read">
+							       <button class="btn btn-default" id="unRead" style="display:inline-block;font-size:10px;padding:3px;" onclick="showUnread()">只看未读</button>
+				                   <button class="btn btn-default" id="all" style="display:inline-block;font-size:10px;padding:3px;" onclick="showAll()">显示全部</button>
+				               </div>  -->                  
+		                  </div>
+					
+					      <!-- Table -->
+					      <table class="table  table-hover" id="dataGrid" > </table>
+					      <div id= "pager"></div>					
+					      <!-- without data -->					      
+					   </div>
+    
+     					<div id="prompt_info" class="my-text-prompt_info my-div-prompt_info ">暂时没有发现哦</div>
+                   </div>
+                 </div>
+                
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    
+    <!-- /. WRAPPER  -->   
+    <!-- modal start 邀请提示 -->
+    <div class="modal fade" id="inviteConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content"> 					
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="modal-title" >操作提示</p>
+					</div>
+					<div class="modal_form_content">
+						<form class="modal_form" class="form-horizontal" role="form">
+					    	<p class="red" style="font-size: 20px;margin-left:20px;">确认邀请以下求职人员？</p>
+					    	<div>
+					    		<span class="lab_text text-right"></span>
+					    		<select class="modal_form_select_mul"  multiple="multiple" style="margin-left:20px;width:200px;min-height:100px;" id="confirmIds">
+					    		</select>
+					    		<!-- <p id="inviteItem" class="my-delItem"></p> -->
+					    	</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+					    <button type="button" class="btn  btn-default" data-dismiss="modal" >取  消</button>
+						<button type="button" class="btn btn-danger"  onclick="sendInvitation()">确 定</button>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+    <!-- modal end-->
+    
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+   
+    
+    <script src="assets/js/grid.locale-cn.js"></script>
+    <script src="assets/js/jquery.jqGrid.min.js"></script>
+    <script src="assets/js/ve1.js"></script>
+    <script src="assets/js/veHelper.js"></script>
+     <script src="assets/js/simpleUtil.js"></script>
+<script>
+	$(function(){
+		getJobTypeList();//获取岗位类型列表
+	});
+	function getJobTypeList()
+	{
+	    cVe.startReqByMsgHandle(cVeName,'','','reqGetJobTypeList','resGetJobTypeList','ECP.handle.JobInfoHandle.handleMsg');
+	}
+	
+	function reqGetJobTypeList()
+	{
+	    var req = {};
+	    req["op"] = "jobTypeList";
+	    cVe.setConn(cServerUri,"POST", true, JSON.stringify(req)); 
+	}
+	
+	function resGetJobTypeList()
+	{
+	    var retData =cVe.XHR.responseText;
+		var retDataObj=JSON.parse(retData);
+		var result=retDataObj[cVe.cEioVeDataId];
+		var data = result.data;
+		if(result.result==0){
+			var jobTypeList = document.getElementById("type_id");
+			
+			//jobTypeList.options.length=0;
+			//jobTypeList.options.add(new Option("岗位类型",""));
+			jobTypeList.options.add(new Option("全部","all"));
+			for(var i = 0; i<data.length; i++){
+				var retData = data[i];
+					jobTypeList.options.add(new Option(retData.job_type_name,retData.type_id));
+			}
+			var preUrlArray = document.referrer.split("/");
+		    var jsp = preUrlArray[preUrlArray.length-1].split("?")[0];
+		    var Request = new Object();
+	    	Request = GetRequest();
+			var id =Request["id"];
+		    if(jsp=="applyInfo.html"||(id!="undefined"&&id==1))
+		    {
+		    	var Request = new Object();
+		    	Request = GetRequest();
+				var degree =Request["degree"];
+				var attendacne_type = Request["attendacne_type"];
+				var type_id =Request["type_id"];
+				$("#degree").val(degree);
+				$("#attendacne_type").val(attendacne_type);
+				$("#type_id").val(type_id);				
+		    	getApplys();
+		    	
+		    }	
+		}
+	}
+	
+	
+	
+	function applyList(){	
+		grid= $('#dataGrid').jqGrid({ 
+			  datatype:'local',  
+			  altRows: false,
+			  colNames:['序号','求职人姓名','性别','求职岗位','最高学历','求职日期','近期是否已邀请','操作','求职者ID','求职ID'],
+			  colModel:[  
+			   
+			    {id:'number',name:'number', width:'100%',align:'center'},  
+			    {id:'name',name:'name',width:'100%',align:'center'},
+			    {id:'sex',name:'sex', width:'100%',align:'center'},
+			    {id:'job_name',name:'job_name', width:'100%',align:'center'}, 
+			    {id:'degree',name:'degree', width:'100%',align:'center'},
+			    {id:'apply_time',name:'apply_time', width:'100%',align:'center'},
+			    {id:'is_invited',name:'is_invited', width:'100%',align:'center'},
+			    {id:'operate',name:'operate', width:'100%',align:'center',formatter:displayButtons},
+			    {id:'user_id',name:'user_id',  width:'100%',align:'center',hidden:'true'},			    			    
+			    {id:'job_apply_id',name:'job_apply_id',key:true, width:'100%',align:'center',hidden:'true'}
+			   
+			  ],  
+			  pager:"#pager",  
+			  rowNum: 20,  
+			  sortname:'0',  
+			  viewrecords: true,  
+			  height:'100%',  
+			  autowidth: true,
+			  align:'center',
+			  multiselect: true,
+			  shrinkToFit:true
+			  //styleUI:'Bootstrap',		
+			});	
+	}
+	
+	function displayButtons(cellValue,options,rowObject){
+		var id = options.rowId;//这里的rowId是关键字值，不是行号
+		//var id = rowObject.job_apply_id;    
+		var edit = '<button class=" btn btn-primary my-jqgrid-button"  onclick="showDetail('+id+')">查看</button>';
+		return edit;
+    }
+    
+    function showDetail(id)
+    {
+        var flag = "fromSend";
+        var attendacne_type = document.getElementById("attendacne_type").value;
+        var type_id = document.getElementById("type_id").value;
+        var degree = document.getElementById("degree").value;
+        cVeUti.Cookie.setCookie("job_apply_id",id);
+        window.location.href = "applyInfo.html?flag="+flag+"&attendacne_type="+attendacne_type+"&type_id="+type_id+"&degree="+degree;        
+    }
+    
+    function getApplys()
+    {
+    	var degree = $("#degree option:selected").text();
+    	var type_id = $("#type_id option:selected").text();
+    	var attendacne_type = $("#attendacne_type option:selected").text();
+    	if(degree=="学历"&&type_id=="岗位类型"&&attendacne_type=="求职类型")
+    	{
+    	    alert("请至少选择一个筛选条件！");
+    	}else
+    	{
+        	cVe.startReqByMsgHandle(cVeName,'','','reqGetApplys','resGetApplys','ECP.handle.JobApplyHandle.handleMsg'); 
+    	}
+        
+    }
+    
+    function reqGetApplys()
+    {
+        var req = {};
+        req["op"] = "jobAppliers";
+        req["org_id"] = cVeUti.Cookie.getCookie("org_id");
+        var degree = document.getElementById("degree").value;
+        var type_id = document.getElementById("type_id").value;
+        var attendacne_type = document.getElementById("attendacne_type").value;
+        if(degree == "all")
+        {
+        	req["degree"] = "";
+        }else
+        	{
+        		req["degree"] = degree;
+        	}
+        if(type_id == "all")
+        {
+        	req["type_id"] = "";
+        }else
+        	{
+        		req["type_id"] = type_id;
+        	}
+        if(attendacne_type == "all")
+        {
+        	req["attendacne_type"] = "";
+        }else
+        	{
+        		req["attendacne_type"] = attendacne_type;
+        	}
+        cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+    }
+    
+    function resGetApplys(){
+		var retData =cVe.XHR.responseText;
+		var retDataObj=JSON.parse(retData);
+		var result=retDataObj[cVe.cEioVeDataId].data;
+		if(result.length<=0){
+			alert("没有发现符合要求的信息，请重新设置条件。");
+			$("#dataGrid").jqGrid("clearGridData");			
+		}else{
+		    $("#table").css("display","block");
+			$("#dataGrid").jqGrid("clearGridData");
+			//jQuery('#dataGrid').GridUnload(); 
+			applyList();
+			var appliers = cVeUti.Cookie.getCookie("appliers").split(";");
+			for(var i=0;i<result.length;i++){
+				result[i].apply_time = result[i].apply_time.split(".")[0];
+				result[i].number=i+1; 
+				var flag = 0;
+				for(var j=0;j<appliers.length;j++)
+				{
+					if(result[i].user_id==appliers[j])
+					{
+						result[i].is_invited = "是";
+						flag = 1;
+						//$( "#dataGrid" ).setSelection(result[i].job_apply_id,true);
+						//$("#dataGrid").jqGrid("setSelection", result[i].job_apply_id,false);
+						break;
+					}
+				}
+				if(flag==0)
+				{
+					result[i].is_invited = "否";	
+				}
+			}
+			var reader = {
+			  page: 1 ,  
+			  total: (result.length-1)/pageSize +1,  
+			  records: result.length
+			}; 				
+			grid.setGridParam({data: result, localReader: reader}).trigger('reloadGrid');
+		}
+	}
+	
+	function invite()
+	{
+	    if(document.getElementById("table").style.display=="none")
+        {
+            alert("请先完成查找操作！");
+            return;
+        }
+        var ids = $("#dataGrid").jqGrid("getGridParam", "selarrrow");
+        if(ids.length<=0)
+        {
+            alert("请选择要邀请的求职者。");
+            return;
+        }
+        for(var i = 0; i<ids.length; i++){
+			var rowData = $("#dataGrid").jqGrid('getRowData',ids[i]);
+		    if(rowData.is_invited=="是")
+		    {
+		        alert("您所邀请的求职者中包含近期已邀请过的求职者，请勿重复邀请！24小时后可再次邀请。");
+		        getApplys();
+		        return;
+		    }	
+		}
+        var confirmIds = document.getElementById("confirmIds");	
+        confirmIds.options.length = 0;		
+		for(var i = 0; i<ids.length; i++){
+			var rowData = $("#dataGrid").jqGrid('getRowData',ids[i]);
+			confirmIds.options.add(new Option(rowData.name,rowData.user_id));
+		}
+	    $("#inviteConfirm").modal('show');
+	}
+	
+	var user_name = "";
+	var user_id = "";
+	var sex = "";
+    function sendInvitation()
+    {
+        var ids = $("#dataGrid").jqGrid("getGridParam", "selarrrow");        
+        for(var i=0;i<ids.length;i++)
+        {
+            var rowData = $("#dataGrid").jqGrid('getRowData',ids[i]);
+            user_id = rowData.user_id;
+            user_name = rowData.name;
+            sex = rowData.sex
+            var appliers = cVeUti.Cookie.getCookie("appliers");
+            cVeUti.Cookie.setCookie("appliers",appliers+user_id+";",1);
+            cVe.startReqByMsgHandle(cVeName,'','','reqSendInvitation','resSendInvitation','ECP.handle.common.CCommonHandle.handleMsg');				
+            if(i==ids.length-1)
+            {
+            	$("#inviteConfirm").modal('hide');
+                alert("邀请信息发送成功!");              
+                getApplys();
+            }
+        }
+    }
+    //推送面试邀请
+	/* function sendInvitation(){
+		cVe.startReqByMsgHandle(cVeName,'','','reqSendInvitation()','resSendInvitation()','ECP.handle.common.CCommonHandle.handleMsg');				
+	} */
+	
+	function reqSendInvitation(){
+		var req = {};
+		var org_name =  cVeUti.Cookie.getCookie("org_name");
+		var call = "";
+		if(sex=="男"){
+		    call = "先生";
+		}else if (sex == "女")
+		{
+			call = "女士"
+		}
+		req["systemInfo"] = ""+user_name+call+"，您好，这里是"+org_name+"。我司有符合您求职意向的工作岗位，现诚邀您来我公司面试，详情请在招才站的求职广场查看我司的招聘信息，谢谢。";
+		//alert(req["systemInfo"]);
+		req["toAccount"] = user_id;
+		req["fromAccount"] = cVeUti.Cookie.getCookie("org_id");
+		req["chat_content"] = ""+user_name+call+"，您好，这里是"+org_name+"。我司有符合您求职意向的工作岗位，现诚邀您来我公司面试，详情请在招才站的求职广场查看我司的招聘信息，谢谢。";
+		req["user_id"] = user_id;
+		req["org_id"] = cVeUti.Cookie.getCookie("org_id");
+		req["msg_type"] = "to";//表示从招聘端发出
+		req["is_read"] = "已读";
+		req["op"] = "webPush";
+		cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+	}
+	
+	function resSendInvitation(){
+		var retData =cVe.XHR.responseText;
+		var retDataObj=JSON.parse(retData);
+		var retData=retDataObj[cVe.cEioVeDataId];
+		if(retData.result == "success"){
+			//alert("发送成功");
+		}else{
+			//alert("更新通知发送失败");
+		}
+	}
+	
+	</script>
+
+
+</body>
+</html>
+	

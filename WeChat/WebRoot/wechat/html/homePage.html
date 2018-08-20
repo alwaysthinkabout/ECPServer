@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WeChat-HomePage</title>	
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../assets/css/mycss.css" rel="stylesheet" />
+    <link href="../js/common/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/imgs/loginLogo.jpg" rel="icon" type="image/x-icon" />
+  </head>
+  
+  <body>
+    <div class="col-md-6" >
+    	<div id = "header" style="padding:1rem;padding-bottom:0px;" >
+    		<div id = "left" style = "display:inline-block; width:45%;text-align:center">
+    			<img alt="首页logo" src="../assets/imgs/loginLogo.jpg" id = "userlogo" style="border-radius:40rem"width = "150rem" height = "130rem">
+    		</div>
+    		<div id = "right" style = "display:inline-block; width:50%;position:relative;">
+    			<div style="position:absolute;top:-3rem;right:0.5rem;">
+    				<div style = " width:100%;text-align:right">
+    					<span id="user_name" style="font-size:4rem;font-weight:bold;"></span>
+	    			</div>
+	    			<div style = " width:100%;font-size:2rem;">
+    					<span>欢迎来到WeChat</span>
+    				</div>
+    			</div>  			
+    		</div>
+    		<div Style="padding-left:85%;"><span style="color:red" onclick="logout()">退出</span></div>
+    	</div>
+    	<hr style="margin-top:1rem">
+    	<div id = "body" >
+    		<ul id="myRoomList"class="list-group"style="padding:0 0.5rem">
+			  <!-- <li class="list-group-item active">
+			   	 我的聊天室
+			  </li> -->
+			  <!-- <li onclick="window.location.href='room.html'" class="list-group-item">
+			   <span class="badge"></span>
+			  Dapibus ac facilisis in</li>
+			  <li href="#" class="list-group-item">Morbi leo risus</li>
+			  <li href="#" class="list-group-item">Porta ac consectetur ac</li>
+			  <li onclick="showRoomModal()" class="list-group-item">新建聊天室</li> -->
+			</ul>
+			<hr>
+			<ul id="otherRoomList"class="list-group"style="padding:0 0.5rem;height:35rem;overflow:auto;position">
+			  <!-- <li class="list-group-item active" style="background-color:#FF7575;border-color:#FF7575">
+			   	 其他聊天室
+			  </li> -->
+			  <!-- <li href="#" class="list-group-item">
+			   <span class="badge">14</span>
+			  Dapibus ac facilisis in</li>
+			  <li href="#" class="list-group-item">Morbi leo risus</li>
+			  <li href="#" class="list-group-item">Porta ac consectetur ac</li>
+			  <li href="#" class="list-group-item">Vestibulum at eros</li> -->
+			</ul>
+    	</div>
+    	<!-- <button type="button" onclick="changeHtml()"class="btn btn-primary">我 变</button>
+    	<iframe id = "changeHtml"></iframe> -->
+    </div>
+    
+    <!-- modal -->
+    <div class="modal fade" id="roomName"tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">输入聊天室名称</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div >
+			  <input type="text" id="room_name"class="form-control" placeholder="聊天室名称" >
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+	        <button type="button" onclick="createRoom()"class="btn btn-primary">确 定</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+    <script src="../js/common/jquery-3.2.1.js"></script>
+    <script src="../js/common/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/myjs/util.js"></script>
+    <script src="../js/myjs/homePage.js"></script>
+   <!--  <script type="text/javascript">
+    	function changeHtml(){
+    		document.getElementById("changeHtml").src = "room.html?room_id="+1;
+    	}
+    </script> -->
+  </body>
+</html>

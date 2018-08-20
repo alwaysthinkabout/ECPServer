@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test.html</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    <button onclick="test()">发起请求</button>
+    <script src="../js/common/jquery-3.2.1.js"></script>
+    <script src="../js/myjs/wechat.js"></script>
+    <script>
+    	function test(){
+    		var data = {
+    				handle:"wechat.handle.HandleDemo.handleMsg",
+    				reqData : {
+    					name : "liming",
+    					age : "32",
+    					op : "WeChat.wechat.handle" 
+    				}
+    			};
+    		$.ajax({
+    			url:"/WeChat/servlet/WeChatRouter",
+    			type : 'post',
+    			data:JSON.stringify(data),  			
+    			//contentType: "application/json; charset=utf-8",
+    			//dataType : 'json',   			
+    			success : function(result){
+    				alert(result);
+    			}
+    		});
+    	}
+    </script>
+  </body>
+</html>

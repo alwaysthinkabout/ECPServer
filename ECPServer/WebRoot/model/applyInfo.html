@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>金英台招聘系统</title>
+		<script src="assets/js/myjs/getPermission.js"></script>
+	    <!-- BOOTSTRAP STYLES-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+	    <!-- FONTAWESOME STYLES-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+	       <!--CUSTOM BASIC STYLES-->
+	    <link href="assets/css/basic.css" rel="stylesheet" />
+	    <!--CUSTOM MAIN STYLES-->
+	    <link href="assets/css/custom.css" rel="stylesheet" />
+
+	    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+	    <link href="assets/css/ui.jqgrid.css" rel="stylesheet" />
+	    <link href="assets/css/mycss.css" rel="stylesheet" />
+	    <link href="assets/img/title.png" rel="icon" type="image/x-icon" />
+	    <!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	    <style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }
+       /* .nav-link {
+		  position: relative;
+		  padding: 0 14px;
+		  line-height: 34px;
+		  font-size: 10px;
+		  font-weight: bold;
+		  color: #555;
+		  text-decoration: none;
+		}
+		.nav-link:hover {
+		  color: #333;
+		  text-decoration: underline;
+		} */
+		
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+		
+		/* .nav-counter-green {
+		  background: #75a940;
+		  border: 1px solid #42582b;
+		  background-image: -webkit-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -moz-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -o-linear-gradient(top, #8ec15b, #689739);
+		  background-image: linear-gradient(to bottom, #8ec15b, #689739);
+		}
+		 */
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+       </style>
+    <style type="text/css">
+       a:link { 
+			font-size: 20px; 
+			color: #ae0000; 
+			text-decoration: none; 
+			} 
+	  a:visited { 
+			font-size: 18px; 
+			color: #000000; 
+			text-decoration: none; 
+			} 
+	  a:hover { 
+			font-size: 22px; 
+			color: #ff5151; 
+			text-decoration: none; 
+			} 
+	.time{margin:7px 0;text-align:center}
+    .time>span{display:inline-block;padding:0 18px;font-size:9pt;color:#fff;border-radius:2px;background-color:#dcdcdc}
+    .avatar{float:left;margin:0 10px 0 0;border-radius:3px}
+    .avatar{vertical-align:middle}
+    .avatar{border-radius:2px}
+    .text{display:inline-block;position:relative;padding:0 10px;max-width:calc(100% - 40px);min-height:30px;line-height:2.5;font-size:9pt;text-align:left;word-break:break-all;background-color:#fafafa;border-radius:4px}
+    .text:before{content:" ";position:absolute;top:9px;right:100%;border:6px solid transparent;border-right-color:#fafafa}
+    .main{position:relative;background-color:#eee}
+     .leftText{margin-left:10px;display:inline-block;position:relative;padding:3px 7px 3px 10px;max-width:calc(100% - 60px);min-height:38px;line-height:2.5;font-size:14px;text-align:left;word-break:break-all;background-color:#fafafa;border-radius:4px}
+    /* .m-message .leftText:before{content:" ";position:absolute;top:9px;right:100%;border:6px solid transparent;border-right-color:#fafafa} */
+    .rightText{margin-right:20px;display:inline-block;position:relative;padding:0 10px;max-width:calc(100% - 50px);min-height:30px;line-height:2.5;font-size:14px;text-align:left;word-break:break-all;background-color:#fafafa;border-radius:4px}
+    /* .m-message .rightText:after{content:" ";position:absolute;top:9px;right:100%;border:6px solid transparent;border-right-color:#fafafa} */
+.leftArrow{
+   /*  display:inline-block; */
+    width:0px;
+    height:0px;
+    border:solid 10px;
+    border-color:#eee #fafafa #eee #eee;
+    /* right:-20px; */
+    margin-left:-30px;
+    margin-top:6px;
+    position:absolute;
+    font-size:0px;
+}
+.rightArrow{
+    display:inline-block;
+    width:0px;
+    height:0px;
+    border:solid 10px;
+    border-color:#eee  #eee #eee #fafafa;
+    /* right:-20px; */
+    /* margin-right:10px; */
+    margin-top:6px;
+    position:absolute;
+    font-size:0px;
+    margin-left: 10px;
+}
+.dialog{
+    position: fixed;
+	/* _position:absolute;  */
+	z-index:1;
+	top: 30%;
+	left: 30%;
+	margin: 0px 0 0 0px; 
+	width: 50%;
+	height:55%;
+	/* height:280px; */ 
+	/* border:1px solid #CCC; */
+	/* line-height: 280px; */
+	/* text-align:center; */
+	/* font-size: 14px;
+	background-color:#F4F4F4; */
+	/* overflow:hidden; */
+}	
+ h1 {
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+    font-weight: 800 !important;
+}
+h3{
+    font-weight: 600 !important;
+    font-size: 24px !important;
+}
+
+.my-row{
+    margin-top:12px;
+}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+       <div class="row">
+	    <div class="row">
+		    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white">
+		        <div style="width:100%;">
+			        <div style="height:130px;width:35%;float:left">
+			        	<a href="homePage.html"><img alt="picture" src="assets/img/titlePic2.png" height="130"></a>
+		        	</div>
+			             <div style="width:60%;height:90px;float:left;"></div> 
+	  					 <div class="welcome_div"><label class="welcome_label">欢迎您：</label><label id="navUser_call" class="welcome_label"></label></div>
+	  					 <div class="Integrity_div"><label for="progress"class="Integrity_label">资料完整度：<progress value="15" max="100" id="progress"></progress></label></div>
+  				</div>
+		     </nav>
+	    </div>
+     <div class="row">
+	     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+	     	<div class="col-md-12" >
+		        <ul id="nav">
+		        	<li><a href="homePage.html">首页</a></li>
+		        	<li style="padding-left: 65%;"><a id="applyJsp" href="unprocessed.html" onclick="toPage(0)">
+		       				<i class="fa fa-newspaper-o  fa-5x" style="margin-top: 6.4px;font-size: 1.4em;" title="求职申请提醒"></i>
+		       				<span class="nav-counter"id="applyCounter" style="background:red;display:none"></span>
+                		</a>
+                	</li>
+		        	
+		       		<li style="padding-left: 1.8%;"><a id="chatJsp" href="chat.html" onclick="setCss()">
+		       				<i class="fa fa-envelope fa-lg" title="消息提醒"></i>
+		       				<span class="nav-counter"id="messageCounter" style="display:none;"></span>
+                		</a>
+                	</li >
+                	<li style="padding-left: 3%;"><a href="login.jsp" onclick="logout()">退出</a></li>
+		        </ul>
+		     </div>
+	     </nav>
+     <!-- /. NAV TOP  -->
+      </div>
+    </div>
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">求职信息</h1>
+                        <h3 >个人基本信息 </h3>
+                 <div class="row" >
+               		<div class="col-md-12">
+		                <form>
+		                    <div class="form-group row my-row ">
+		                        <div class="col-md-3"style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" >姓名</h5>
+		                        </div>
+		                        <div class="col-md-9" style="display:inline-block;width:73%">
+		                            <h5 id="name" class="my-lable1"  ></h5>
+		                        </div>
+		                     </div>
+		                     <div class="form-group row my-row">
+		                        <div class="col-md-3" style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" >性别</h5>
+		                        </div>
+		                        <div class="col-md-9" style="display:inline-block;width:73%">
+		                            <h5 class="my-lable1"  id="sex"></h5>
+		                        </div>
+		                     </div>
+		                     <div class="form-group row my-row">
+		                        <div class="col-md-3" style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" >身份证号码</h5>
+		                        </div>
+		                        <div class="col-md-9" style="display:inline-block;width:73%">
+		                            <h5 class="my-lable1"id="id_cardno"></h5>
+		                        </div>
+		                     </div>
+		                     <div class="form-group row my-row" >
+		                        <div class="col-md-3"style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" >联系电话</h5>
+		                        </div>
+		                        <div class="col-md-9"style="display:inline-block;width:73%">
+		                            <h5 class="my-lable1" id="telephoneNum"></h5>
+		                        </div>
+		                     </div>
+		                      <div class="form-group row my-row">
+		                        <div class="col-md-3"style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" >邮箱</h5>
+		                        </div>
+		                        <div class="col-md-9"style="display:inline-block;width:73%">
+		                            <h5 class="my-lable1" id="emailAddress"></h5>
+		                        </div>
+		                     </div>
+		                 </form>
+		             </div>
+		          </div>
+		                        
+                        <h3 class="page-subhead-line my-line" style="color:#FF0000;"> </h3>
+
+                    </div>
+                </div>   
+                   <h3 class="my-row" style="margin-top:0px">具体求职信息 </h3>   
+                    <form>
+		                    <div class="form-group row my-row" style="margin-top:5px;">
+		                        <div class="col-md-3" style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" style="margin-top:20px" >求职岗位</h5>
+		                        </div>
+		                        <div style="display:none">
+		                            <input id="job_apply_id"/>
+		                            <input id="user_id"/>
+		                        </div>
+		                        <div class="col-md-9"style="display:inline-block;width:73%">
+		                            <h5 id="job_Name" class="my-lable1"  style="margin-top:20px" ></h5>
+		                        </div>
+		                     </div>
+		                     <div class="form-group row my-row">
+		                        <div class="col-md-3"style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" >求职时间</h5>
+		                        </div>
+		                        <div class="col-md-9"style="display:inline-block;width:73%">
+		                            <h5 id="apply_time" class="my-lable1"></h5>
+		                        </div>
+		                     </div>
+		                     <div class="form-group row my-row">
+		                        <div class="col-md-3"style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" >求职要求</h5>
+		                        </div>
+		                        <div class="col-md-9"style="display:inline-block;width:73%">
+		                            <h5 id="apply_demand" class="my-lable1"  ></h5>
+		                        </div>
+		                     </div>
+		                      <div class="form-group row my-row">
+		                        <div class="col-md-3"style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" >附件下载</h5>
+		                        </div>
+		                        <div class="col-md-9" id="attach_download" style="display:inline-block;width:73%">
+		                            
+		                        </div>
+		                     </div>
+		                     <div class="form-group row my-row">
+		                        <div class="col-md-3" style="display:inline-block;width:26%">
+		                            <h5 class="my-lable-text" >求职状态</h5>
+		                        </div>
+		                        <div class="col-md-9"style="display:inline-block;width:73%">
+		                            <h5 id="apply_status_code" class="my-lable1"  ></h5>
+		                        </div>
+		                     </div>
+		                 </form>  
+		                 <div class="row" style="text-align:center;margin-top:30px"> 
+		                    <!--  <button id="generateContract" class="btn-primary btn my-btn" data-toggle="modal" data-target="#contractGenerate" style="display:none">生成合同</button> -->
+		                     <button id="generateContract" class="btn-primary btn my-btn" onclick="getContract_nameList()" style="display:none">生成合同</button>
+		                     <button id="showContract" class="btn-primary btn my-btn" onclick="showMyContract()" style="display:none">查看合同</button>
+			                 <button id="enterProcess" class="btn-primary btn my-btn" onclick="enterProcss()"style="display:none">受 理</button>
+			                 <button id="accept" class="btn-primary btn my-btn" onclick="acceptConfirm()"style="display:none">批 准</button>
+			                 <button id="return" class="btn-danger btn my-btn" onclick="returnConfirm()">退 回</button>
+			                 <button id="invite" class="btn-primary btn my-btn" onclick="invite()"style="display:none">邀 请</button>
+			                 <button class="btn-info btn my-btn" style="margin-left:20px" onclick="goBack()">返 回</button>
+			                 <button class="btn-default btn my-btn" style="margin-left:20px" id="sessionButton"onclick="showDailog()">会 话</button>
+		                 </div>  
+		                 
+	
+                 <!-- 对话框 -->
+                 <div class="row dialog" id="textRect" style="display:none">
+                        <div class="col-md-12" id="drag" >
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="cursor:all-scroll;">
+                                <p style="display:inline-block;width:60%;text-align:left;">信息发送页面</p>
+                                <p style="display:inline-block;width:35%;text-align:right;color:red;cursor:default;"onclick="closeDialog()">关闭</p>
+                            </div>
+                            <div class="panel-body" style="padding:0px;">
+                                <div class="chat-widget-main main"id="chatContent">
+                                   <!--  <div class="chat-widget-left">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </div>
+                                    <div class="chat-widget-name-left">
+                                        <h4>Amanna Seiar</h4>
+                                    </div>
+                                    <div class="chat-widget-right">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </div>
+                                    <div class="chat-widget-name-right">
+                                        <h4>Donim Cruseia </h4>
+                                    </div>
+                                    <div class="chat-widget-left">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </div>
+                                    <div class="chat-widget-name-left">
+                                        <h4>Amanna Seiar</h4>
+                                    </div> -->
+                                    <div class="chat-widget-name-left" style="text-align:center;margin-left:13px" id="initInfo">
+                                        <h4>在这里你可以给求职者发送信息 </h4>
+                                    </div> 
+                            </div>
+                            <div class="panel-footer">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="perContent"placeholder="Enter Message" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" type="button" onclick="sendMessagePer()">发送</button>
+                                    </span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  各种提醒-->
+    <!-- Modal -->	
+		<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="modal-title" id="myModalLabel">操作提示</p>
+					</div>
+					<div class="modal_form_content">
+						<form class="modal_form" class="form-horizontal" role="form">
+					    	<p class="red" style="font-size: 20px;margin-left:20px;"id="prompt_header"></p>
+					    	<div>
+					    		<span class="lab_text text-right"></span>
+					    		<!-- <select class="modal_form_select_mul" multiple=”multiple” id="confirmIds"></select> -->
+					    		<p id="prompt_content" class="my-delItem"></p>
+					    		<div id="interviewInfo" style="display:none">
+					    		    <div>
+								    	<span class="my-modal-lab-text text-right">面试时间：</span>
+								    	<input id="interviewDate" placeholder="点击选择时间（先选择时分秒，再选则日期）" style="width:400px"class="my-search-input"readonly="readonly"/>
+							    	</div>
+						    	    <div>
+								    	<span class="my-modal-lab-text text-right">面试地点：</span>
+								    	<input id="interviewLocation" type="text"style="width:400px"class="my-search-input"/>
+						    	    </div>
+						       </div>
+					    	</div>
+						</form>
+					</div>					
+					<div class="modal-footer" id="modal-footer">
+						<button type="button" class="btn  btn-default" data-dismiss="modal">取  消</button>
+						<!-- <button type="button" class="btn btn-danger" onclick="confirmDeleteContract()">确  定</button> -->
+					</div>
+
+				</div>
+			</div>
+		</div>		
+		<!-- Modal -->	
+    		<!-- modal start 合同模板选择 -->
+    <div class="modal fade" id="contractGenerate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content"> 					
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="modal-title" id="myModalLabel1">合同模板选择</p>
+					</div>
+					<div class="modal_form_content">
+						<!-- <form class="modal_form" class="form-horizontal" role="form">
+						<div>
+						    	<span class="my-modal-lab-text text-right">模板名称：</span>
+						    	<select id="contactModelName" class="my-select"></select>
+						    </div>					    			  					    	
+						</form> -->
+						<div>
+						    	<span class="my-modal-lab-text text-right">模板名称：</span>
+						    	<select id="contactModelName" class="my-select"></select>
+						 </div>
+						<div class="modal-footer">
+						    <button type="button" class="btn  btn-default" data-dismiss="modal" >取  消</button>
+							<button type="button" class="btn btn-danger"  onclick="previewContractTemplate()">预  览</button>
+						</div>
+					</div>
+					</div>
+			</div>
+		</div>
+    <!-- modal end-->
+    
+    <!-- modal start 邀请提示 -->
+    <div class="modal fade" id="inviteConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content"> 					
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="modal-title" >操作提示</p>
+					</div>
+					<div class="modal_form_content">
+						<form class="modal_form" class="form-horizontal" role="form">
+					    	<p class="red" style="font-size: 20px;margin-left:20px;">确认邀请以下求职人员？</p>
+					    	<div>
+					    		<span class="lab_text text-right"></span>
+					    		<!-- <select class="modal_form_select_mul" multiple=”multiple” id="confirmIds"></select> -->
+					    		<p id="inviteItem" class="my-delItem"></p>
+					    	</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+					    <button type="button" class="btn  btn-default" data-dismiss="modal" >取  消</button>
+						<button type="button" class="btn btn-danger"  onclick="sendInvitation()">确 定</button>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+    <!-- modal end-->
+    
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+     <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>    
+    <script src="assets/js/grid.locale-cn.js"></script>
+    <script src="assets/js/jquery.jqGrid.min.js"></script>
+    <script src="assets/js/ve1.js"></script>
+    <script src="assets/js/veHelper.js"></script>
+    <script src="assets/js/simpleUtil.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>  
+    <script src="assets/js/myjs/order.js"></script>
+    <script src="assets/js/myjs/contract.js"></script>
+    <script src="assets/js/myjs/chat.js"></script>
+    <script src="assets/js/jedate/jedate.js"></script>
+    	<script>
+	var Request = new Object();	 
+	$(function(){
+		getApplyInfo();		
+	});
+	
+	function goBack(){
+	    var preUrlArray = document.referrer.split("/");
+	    var jsp = preUrlArray[preUrlArray.length-1].split("?")[0];
+	    if(jsp=="searchApply.html")
+	    {
+	    	var Request = new Object();
+	    	Request = GetRequest();
+			var degree =Request["degree"];
+			var attendacne_type = Request["attendacne_type"];
+			var type_id =Request["type_id"];
+	        window.location.href="searchApply.html?attendacne_type="+attendacne_type+"&type_id="+type_id+"&degree="+degree;
+	    }else
+	    {
+	        javascrtpt:window.history.go(-1);
+	    }
+	} 
+	function showDailog(){
+	     $("#textRect").css("display","block");
+	    $( "#textRect" ).draggable({containment:"#contain",scroll:false}); 
+	    var user_id = document.getElementById("user_id").value;
+	    getPerRecord(user_id);
+	     //$("#draggable3").draggable({containment:"#contain",scroll:false});
+	   // window.location.href = "chat.jsp"; 
+	   $("#sessionButton").css("background","#fff");
+	}
+	
+	function closeDialog()
+	{
+	    $("#textRect").css("display","none");
+	    $("#sessionButton").css("background-color","#fff");	    
+	}
+	
+	function invite()
+	{
+		var appliers = cVeUti.Cookie.getCookie("appliers").split(";"); 
+		for(var i=0;i<appliers.length;i++)
+		{
+			if(document.getElementById("user_id").value==appliers[i])
+			{
+			    alert("您在近期已经邀请过该求职者，24小时后方可继续邀请");
+			    return;
+			}
+		}
+	    $("#inviteConfirm").modal('show');
+	    document.getElementById("inviteItem").innerHTML = document.getElementById("name").innerHTML;
+	}
+	
+	function sendInvitation()
+    {
+          cVe.startReqByMsgHandle(cVeName,'','','reqSendInvitation','resSendInvitation','ECP.handle.common.CCommonHandle.handleMsg');				
+    }
+ 
+	function reqSendInvitation()
+	{
+		var req = {};
+		var org_name =  cVeUti.Cookie.getCookie("org_name");
+		var applyierName = document.getElementById("name").innerHTML;
+		var sex = document.getElementById("sex").innerHTML;
+		var call = "";
+		if(sex=="男")
+		{
+		    call="先生";
+		}else if(sex=="女")
+			{
+				call = "女士";
+			}
+		req["systemInfo"] = ""+applyierName+call+"，您好，这里是"+org_name+"。我司有符合您求职意向的工作岗位，现诚邀您来我公司面试，详情请在招才站的求职广场查看我司的招聘信息，谢谢。";
+		//alert(req["systemInfo"]);
+		req["toAccount"] = document.getElementById("user_id").value;
+		req["fromAccount"] = cVeUti.Cookie.getCookie("org_id");
+		req["chat_content"] = ""+applyierName+call+"，您好，这里是"+org_name+"。我司有符合您求职意向的工作岗位，现诚邀您来我公司面试，详情请在招才站的求职广场查看我司的招聘信息，谢谢。";
+		req["user_id"] = document.getElementById("user_id").value;
+		req["org_id"] = cVeUti.Cookie.getCookie("org_id");
+		req["msg_type"] = "to";//表示从招聘端发出
+		req["is_read"] = "已读";
+		req["op"] = "webPush";
+		cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+	}
+	
+	function resSendInvitation()
+	{
+		var retData =cVe.XHR.responseText;
+		var retDataObj=JSON.parse(retData);
+		var retData=retDataObj[cVe.cEioVeDataId];
+		if(retData.result == "success"){
+		    $("#inviteConfirm").modal('hide');
+		    var appliers = cVeUti.Cookie.getCookie("appliers");
+            cVeUti.Cookie.setCookie("appliers",appliers+document.getElementById("user_id").value+";",1);
+			alert("邀请信息发送成功。");
+			
+		}else{
+			//alert("更新通知发送失败");
+		}
+	}
+	
+	window.onload = function() {
+        jeDate({
+            dateCell: "#interviewDate", //isinitVal:true,
+            format: "YYYY年MM月DD日 hh:mm:ss",
+            isTime: true, //isClear:false,
+            zIndex: 9999999,
+            //jedateok:false,
+           // isinitVal:false,
+            //choose:function(val) {alert('选择后的回调函数')},
+           	isok:false,
+           //	isClear:false,
+            minDate: getNowFormat_time()
+        });
+          
+    };
+	</script>
+</body>
+</html>
+
+

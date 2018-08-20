@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>金英台招聘系统</title>
+	<script src="assets/js/myjs/getPermission.js"></script>
+	    <!-- BOOTSTRAP STYLES-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+	    <!-- FONTAWESOME STYLES-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+	       <!--CUSTOM BASIC STYLES-->
+	    <link href="assets/css/basic.css" rel="stylesheet" />
+	    <!--CUSTOM MAIN STYLES-->
+	    <link href="assets/css/custom.css" rel="stylesheet" />
+
+	    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+	    <link href="assets/css/ui.jqgrid.css" rel="stylesheet" />
+	    <link href="assets/css/mycss.css" rel="stylesheet" />
+	    <link href="assets/img/title.png" rel="icon" type="image/x-icon" />
+	    <!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	    <style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }
+       /* .nav-link {
+		  position: relative;
+		  padding: 0 14px;
+		  line-height: 34px;
+		  font-size: 10px;
+		  font-weight: bold;
+		  color: #555;
+		  text-decoration: none;
+		}
+		.nav-link:hover {
+		  color: #333;
+		  text-decoration: underline;
+		} */
+		
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+		
+		/* .nav-counter-green {
+		  background: #75a940;
+		  border: 1px solid #42582b;
+		  background-image: -webkit-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -moz-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -o-linear-gradient(top, #8ec15b, #689739);
+		  background-image: linear-gradient(to bottom, #8ec15b, #689739);
+		}
+		 */
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+       </style>
+    <style>
+        p {
+		    margin-bottom:  10px !important;
+		}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+       <div class="row">
+	    <div class="row">
+		    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white">
+		        <div style="width:100%;">
+			        <div style="height:130px;width:35%;float:left">
+			        	<a href="homePage.html"><img alt="picture" src="assets/img/titlePic2.png" height="130"></a>
+		        	</div>
+			             <div style="width:60%;height:90px;float:left;"></div> 
+	  					 <div class="welcome_div"><label class="welcome_label">欢迎您：</label><label id="navUser_call" class="welcome_label"></label></div>
+	  					 <div class="Integrity_div"><label for="progress"class="Integrity_label">资料完整度：<progress value="15" max="100" id="progress"></progress></label></div>
+  				</div>
+		     </nav>
+	    </div>
+     <div class="row">
+	     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+	     	<div class="col-md-12" >
+		        <ul id="nav">
+		        	<li><a href="homePage.html">首页</a></li>
+		        	<li style="padding-left: 65%;"><a id="applyJsp" href="unprocessed.html" onclick="toPage(0)">
+		       				<i class="fa fa-newspaper-o  fa-5x" style="margin-top: 6.4px;font-size: 1.4em;" title="求职申请提醒"></i>
+		       				<span class="nav-counter"id="applyCounter" style="background:red;display:none"></span>
+                		</a>
+                	</li>
+		        	
+		       		<li style="padding-left: 1.8%;"><a id="chatJsp" href="chat.html" onclick="setCss()">
+		       				<i class="fa fa-envelope fa-lg" title="消息提醒"></i>
+		       				<span class="nav-counter"id="messageCounter" style="display:none;"></span>
+                		</a>
+                	</li >
+                	<li style="padding-left: 3%;"><a href="login.jsp" onclick="logout()">退出</a></li>
+		        </ul>
+		     </div>
+	     </nav>
+     <!-- /. NAV TOP  -->
+      </div>
+    </div>
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 id="title" class="page-head-line">在签合同</h1>
+                        <h1 class="page-subhead-line"></h1>
+                    </div>
+                </div>
+           
+				<div class="row">
+					<div id="contractItems">
+					    
+						<div class="col-md-12" style="text-align:center;margin-bottom:10px">
+							<input id="contract_name"class="my-contractName-input" readonly="readonly" type="text"/>
+						</div>
+						<input id = "template_no" style="display:none"/>
+						<input id = "job_apply_id" style="display:none"/>
+						<input id = "user_id" style="display:none"/>
+						<p style="margin-left:25px">甲方：<input class="my-contract-input2" readonly="readonly" id="partA"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乙方：<input class="my-contract-input2" readonly="readonly" id="partB"/></p>
+						<p style="margin-left:25px">本合同一式两份，甲乙双方各执一份。合同自签订之日起生效，具有同等法律效力。</p>
+						<p style="margin-left:25px">甲方联系人：<input class="my-contract-input2" readonly="readonly" id="inPartA"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;营业执照号：<input class="my-contract-input2" readonly="readonly" id="inLicense_no"/></p>
+						<p style="margin-left:25px">甲方联系电话：<input class="my-contract-input2" readonly="readonly" id="inATele_num"/></p>
+						<p style="margin-left:25px">乙方联系人：<input class="my-contract-input2" readonly="readonly" id="inPartB"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乙方性别：<input class="my-contract-input2" readonly="readonly" id="inSex"/></p>
+						<p style="margin-left:25px">乙方身份证号：<input class="my-contract-input2" readonly="readonly" id="inBID_no"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乙方联系电话：<input class="my-contract-input2" readonly="readonly" id="inBTele_num"/></p>
+						<div class="my-contractItem-div1" id="cContract_background">
+							<p class="my-contractItem-p1">合同背景：</p>	
+							<div>	
+								<textarea  id="contract_background"readonly="readonly" placeholder="合同背景（不超过150字）"  class="my-contractArea"style="float:left;margin-left:0px"></textarea>
+							</div>	
+						</div>
+						<div class="my-contractItem-div1" id="cContract_summary">	
+						    <p class="my-contractItem-p1">合同简介：</p>
+						    <div>
+						    	<textarea id= "contract_summary" readonly="readonly" placeholder="合同简介（不超过150字）" class="my-contractArea"style="float:left;margin-left:0px"></textarea>
+						    </div>		
+						</div>
+						<div class="my-contractItem-div" id="cExpire_date">
+							<p class="my-contractItem-p">合同生效时间：<input class="my-contract-inputDate"readonly="readonly"  style="cursor:default;BACKGROUND-COLOR: transparent;" id="contract_start_time"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合同到期时间：<input class="my-contract-inputDate" readonly="readonly" style="cursor:default;BACKGROUND-COLOR: transparent;" id="contract_end_time"/></p>
+						</div>
+						<div class="my-contractItem-div" id="cProbation">
+							<p class="my-contractItem-p">试用期开始时间：<input class="my-contract-inputDate"readonly="readonly"   style="cursor:default;BACKGROUND-COLOR: transparent;"id="inProbation_start"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;试用期结束时间：<input class="my-contract-inputDate" readonly="readonly" style="cursor:default;BACKGROUND-COLOR: transparent;" id="inProbation_end"/></p>
+						</div>
+						<div class="my-contractItem-div" id="cfildwork">
+							<p class="my-contractItem-p">实习开始时间：<input class="my-contract-inputDate" readonly="readonly"  style="cursor:default;BACKGROUND-COLOR: transparent;"id="inPractice_begin"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实习结束时间：<input  class="my-contract-inputDate" readonly="readonly" style="cursor:default;BACKGROUND-COLOR: transparent;"  id="inPractice_end"/></p>
+						</div>
+						<div class="my-contractItem-div"  id="cCinsure_ratio">
+							<p class="my-contractItem-p">五险一金约定比例：<input  class="my-contract-input1" readonly="readonly" id="inCinsure_ratio"/></p>
+						</div>
+						<div class="my-contractItem-div"  id="cPayment">
+						    <p class="my-contractItem-p">薪资水平：<input  class="my-contract-input1"readonly="readonly" id="inPayment"/></p>
+						</div>
+						<div class="my-contractItem-div"  id="cWork_time">
+						    <p class="my-contractItem-p">工作时间：<input  class="my-contract-input1"readonly="readonly" id="work_time"/></p>
+						</div>
+						<div class="my-contractItem-div"  id="cJob_name">
+						    <p class="my-contractItem-p">工作岗位：<input  class="my-contract-input1"readonly="readonly" id="job_name"/></p>
+						</div>
+						<div class="my-contractItem-div"  id="cFine">
+						    <p class="my-contractItem-p">违约金：<input  class="my-contract-input1"readonly="readonly" id="fine"/></p>
+						</div>
+					</div>
+					<div style="margin-left:25px;">
+						<p id="contract_content" class="my-contractContent-p" style="width:95%;"></p>
+					</div>
+					<div class="my-contractItem-div">
+		   <div style="display:inline-block;width:55%;text-align:left;">
+                <p >甲方(盖章)__________________</p>
+           </div>
+           <div style="display:inline-block;width:43%;">
+               <p>乙方(盖章)__________________</p>
+            </div>
+        </div>
+		<div class="my-contractItem-div">
+		   <div style="display:inline-block;width:55%;text-align:left;">
+                <p >_________年______月______日</p>
+           </div>
+           <div style="display:inline-block;width:43%;">
+               <p>_________年______月______日</p>
+            </div>
+        </div>					   
+	</div>
+
+				  <div class="row" style="text-align:center;margin-top:0px;margin-bottom:30px; "> 
+				  
+					    <button id="edit" class="btn-primary btn my-btn"  style="margin-right:20px" onclick="enableEditContract()">编 辑</button>
+					    <button id="contractSend" class="btn-danger btn my-btn" onclick="sendContract1()">发送合同</button>
+					    <button id="sigConfirm" class="btn-danger btn my-btn" onclick="sigContract()"style="display:none">签 订</button>
+   					    <button id="print" class="btn-info btn my-btn" onclick="showPrintPage()">打印</button>					                 
+					    <button id="goBack" class="btn-default btn my-btn" onclick="goBack()">返 回</button>				    
+					    <button id="updateContract" class="btn-danger btn my-btn" style="margin-right:20px;display:none" onclick="updateContract()" >保 存</button>		
+					    <button id="cancel" class="btn-default btn my-btn" onclick="window.location.reload()" style="display:none">取 消</button>			                 	                 		                 
+				 </div>
+			</div>
+            <!-- /. PAGE INNER  -->
+    </div>
+        <!-- /. PAGE WRAPPER  -->
+</div>
+    <!-- /. WRAPPER  -->
+  <!-- /. WRAPPER  各种提醒-->
+    <!-- Modal -->	
+		<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="modal-title" id="myModalLabel">操作提示</p>
+					</div>
+					<div class="modal_form_content">
+						<form class="modal_form" class="form-horizontal" role="form">
+					    	<p class="red" style="font-size: 20px;margin-left:20px;"id="prompt_header"></p>
+					    	<div>
+					    		<span class="lab_text text-right"></span>
+					    		<!-- <select class="modal_form_select_mul" multiple=”multiple” id="confirmIds"></select> -->
+					    		<p id="prompt_content" class="my-delItem"></p>
+					    	</div>
+						</form>
+					</div>					
+					<div class="modal-footer" id="modal-footer">
+						<button type="button" class="btn  btn-default" data-dismiss="modal">取  消</button>
+						<!-- <button type="button" class="btn btn-danger" onclick="confirmDeleteContract()">确  定</button> -->
+					</div>
+				</div>
+			</div>
+		</div>		
+		<!-- Modal -->
+		 <!--  打印合同预览 --> 
+    <div class="modal fade" id="printPreview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog"style="width:80%" >
+			<div class="modal-content"style="width:97%"> 					
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<p class="modal-title" id="stateInfoDetailModelLabel"><h3><b>合同打印确认</b></h3></p>
+				</div>
+				<div class="modal_form_content">
+					<form id="">
+  <div id="myPrintArea"><!-- 打印起始 -->
+                     <div class="row">
+					<div id="PcontractItems">					    
+						<div class="col-md-12" style="text-align:center;margin-bottom:10px;margin-top:5px">
+							<p id="Pcontract_name"class="my-contractName-input"  ></p>
+						</div>
+						<p style="margin-left:25px;">甲方：<span class="my-contract-inputP" id="PpartA"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乙方：<span class="my-contract-inputP" id="PpartB"></span></p>
+						<p style="margin-left:25px">本合同一式两份，甲乙双方各执一份。合同自签订之日起生效，具有同等法律效力。</p>
+						<p style="margin-left:25px">甲方联系人：<span class="my-contract-inputP" id="PinPartA"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;营业执照号：<span class="my-contract-inputP"  id="PinLicense_no"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲方联系电话：<span class="my-contract-inputP"  id="PinATele_num"></span></p>
+						<!-- <p style="margin-left:25px">联系电话：<span class="my-contract-inputP"  id="PinATele_num"></span></p> -->
+						<p style="margin-left:25px">乙方联系人：<span class="my-contract-inputP"  id="PinPartB"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乙方性别：<span class="my-contract-inputP"  id="PinSex"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乙方身份证号：<span class="my-contract-inputP"  id="PinBID_no"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乙方联系电话：<span class="my-contract-inputP"  id="PinBTele_num"></span></p>
+						<!-- <p style="margin-left:25px">乙方身份证号：<span class="my-contract-inputP"  id="PinBID_no"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乙方联系电话：<span class="my-contract-inputP"  id="PinBTele_num"></span></p> -->
+						<div class="my-contractItem-divP" id="PcContract_background"style="display:none">
+							<p class="my-contractItem-p1">合同背景：</p>	
+							<div>	
+								<p id="Pcontract_background" class="my-contractContent-p" style="margin-left:0px;width:95%;"></p>
+							</div>	
+						</div>
+						<div class="my-contractItem-divP" id="PcContract_summary" style="display:none">	
+						    <p class="my-contractItem-p1">合同简介：</p>
+						    <div>
+						    	<p id= "Pcontract_summary" class="my-contractContent-p" style="margin-left:0px;width:95%;"></p>
+						    </div>		
+						</div>
+						<div class="my-contractItem-div" id="PcExpire_date" style="display:none">
+							<p class="my-contractItem-p">合同生效时间：<span class="my-contract-inputP" id="Pcontract_start_time"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合同到期时间：<span class="my-contract-inputP" id="Pcontract_end_time"></span></p>
+						</div>
+						<div class="my-contractItem-div" id="PcProbation" style="display:none">
+							<p class="my-contractItem-p">试用期开始时间：<span class="my-contract-inputP"  id="PinProbation_start"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;试用期结束时间：<span class="my-contract-inputP"  id="PinProbation_end"></span></p>
+						</div>
+						<div class="my-contractItem-div" id="Pcfildwork" style="display:none">
+							<p class="my-contractItem-p">实习开始时间：<span class="my-contract-inputP"  id="PinPractice_begin"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实习结束时间：<span class="my-contract-inputP"   id="PinPractice_end"></span></p>
+						</div>
+						<div class="my-contractItem-div"  id="PcCinsure_ratio" style="display:none">
+							<p class="my-contractItem-p">五险一金约定比例：<span class="my-contract-inputP"  id="PinCinsure_ratio"></span></p>
+						</div>
+						<div class="my-contractItem-div"  id="PcPayment" style="display:none">
+						    <p class="my-contractItem-p">薪资水平：<span class="my-contract-inputP" id="PinPayment"></span></p>
+						</div>
+						<div class="my-contractItem-div"  id="PcWork_time" style="display:none">
+						    <p class="my-contractItem-p">工作时间：<span class="my-contract-inputP" id="Pwork_time"></span></p>
+						</div>
+						<div class="my-contractItem-div"  id="PcJob_name" style="display:none">
+						    <p class="my-contractItem-p">工作岗位：<span class="my-contract-inputP" id="Pjob_name"></span></p>
+						</div>
+						<div class="my-contractItem-div"  id="PcFine" style="display:none">
+						    <p class="my-contractItem-p">违约金：<span class="my-contract-inputP"id="Pfine"></span></p>
+						</div>
+					</div>
+					<div style="margin-left:25px;width:95%;">
+						<p id="Pcontract_content" class="my-contractContent-p" ></p>
+					</div>
+					<div class="my-contractItem-div">
+		   <div style="display:inline-block;width:55%;text-align:left;">
+                <p >甲方(盖章)__________________</p>
+           </div>
+           <div style="display:inline-block;width:43%;">
+               <p>乙方(盖章)__________________</p>
+            </div>
+        </div>
+		<div class="my-contractItem-div">
+		   <div style="display:inline-block;width:55%;text-align:left;">
+                <p >_________年______月______日</p>
+           </div>
+           <div style="display:inline-block;width:43%;">
+               <p>_________年______月______日</p>
+            </div>
+        </div>					   
+	</div>   
+ </div><!-- 打印结束 -->
+	                </form>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-primary"  onclick="printContract()">确 定</button>
+					<button type="button" class="btn  btn-default" data-dismiss="modal" >取  消</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+     <!-- 查看企业状态信息详情 end --> 
+ <script src="assets/js/jquery-1.10.2.js"></script>
+ <!-- BOOTSTRAP SCRIPTS -->
+ <script src="assets/js/bootstrap.js"></script>
+ <!-- METISMENU SCRIPTS -->
+ <script src="assets/js/jquery.metisMenu.js"></script>
+
+ 
+ <script src="assets/js/grid.locale-cn.js"></script>
+ <script src="assets/js/jquery.jqGrid.min.js"></script>
+ <script src="assets/js/jquery.PrintArea.js"></script>
+ <script src="assets/js/ve1.js"></script>
+ <script src="assets/js/veHelper.js"></script>
+ <script src="assets/js/simpleUtil.js"></script>
+  
+ <script src="assets/js/myjs/contract.js"></script>
+ <script src="assets/js/jedate/jedate.js"></script>
+ 	<script>
+	function goBack(){
+	   // window.location.href = "contractList.jsp";
+	   var preUrl = document.referrer.split("/");
+	   var jsp = preUrl[preUrl.length-1].split("?");
+	   if(jsp[0]!="contractModel.html")
+	   {
+	         window.history.go(-1);
+	   }else{
+	       //window.location.href="applyInfo.jsp";
+	       window.location.href="contractList.html";
+	   }
+	  
+	}
+    $(document).ready(
+      getContract()				
+	); 
+	
+	function showPrintPage()
+	{
+	    var contract_name = document.getElementById("contract_name").value;
+	    var contract_content = document.getElementById("contract_content").innerHTML;
+	    var partA = document.getElementById("partA").value;
+	    var partB = document.getElementById("partB").value;
+		var license_no = document.getElementById("inLicense_no").value;
+		var contactb = document.getElementById("inPartB").value;
+		var sex = document.getElementById("inSex").value;
+		var ID = document.getElementById("inBID_no").value;
+		var teleNum = document.getElementById("inBTele_num").value;
+	    var contacta = document.getElementById("inPartA").value ;
+		var parta_telenum = document.getElementById("inATele_num").value ;
+		var probation_start = document.getElementById("inProbation_start").value ;
+		var probation_end = document.getElementById("inProbation_end").value ;
+		var practice_begin = document.getElementById("inPractice_begin").value ;
+		var practice_end = document.getElementById("inPractice_end").value ;
+		var cinsure_ratio = document.getElementById("inCinsure_ratio").value ;
+		var payment = document.getElementById("inPayment").value;
+		var contract_end_time = document.getElementById("contract_end_time").value ;
+		var contract_start_time = document.getElementById("contract_start_time").value ;
+		var fine = document.getElementById("fine").value;
+		var job_name = document.getElementById("job_name").value;
+		var work_time = document.getElementById("work_time").value;
+		var contract_background = document.getElementById("contract_background").value;
+		var contract_summary = document.getElementById("contract_summary").value;
+		
+		
+	    document.getElementById("Pcontract_name").innerHTML = contract_name;
+	    document.getElementById("Pcontract_content").innerHTML = contract_content;
+	    document.getElementById("PpartA").innerHTML = partA;
+	    document.getElementById("PpartB").innerHTML = partB;
+		document.getElementById("PinLicense_no").innerHTML = license_no;
+		document.getElementById("PinPartB").innerHTML = contactb;
+		document.getElementById("PinSex").innerHTML = sex;
+		document.getElementById("PinBID_no").innerHTML = ID;
+		document.getElementById("PinBTele_num").innerHTML = teleNum;
+	    document.getElementById("PinPartA").innerHTML = contacta;
+		document.getElementById("PinATele_num").innerHTML = parta_telenum;
+		if(document.getElementById("cContract_background").style.display!="none"){
+		    $("#PcContract_background").css("display","block");
+			document.getElementById("Pcontract_background").innerHTML = contract_background;
+		}
+		if(document.getElementById("cContract_summary").style.display!="none"){
+		    $("#PcContract_summary").css("display","block");
+			document.getElementById("Pcontract_summary").innerHTML = contract_summary;
+		}
+		if(document.getElementById("cExpire_date").style.display!="none"){
+		     $("#PcExpire_date").css("display","block");
+		     document.getElementById("Pcontract_end_time").innerHTML = contract_end_time;
+		     document.getElementById("Pcontract_start_time").innerHTML = contract_start_time;
+		}
+		if(document.getElementById("cProbation").style.display!="none"){
+		     $("#PcProbation").css("display","block");
+			 document.getElementById("PinProbation_start").innerHTML = probation_start;
+			 document.getElementById("PinProbation_end").innerHTML = probation_end ;
+		}
+		if(document.getElementById("cfildwork").style.display!="none"){
+		    $("#Pcfildwork").css("display","block");
+			document.getElementById("PinPractice_begin").innerHTML = practice_begin;
+			document.getElementById("PinPractice_end").innerHTML = practice_end;
+		}
+		if(document.getElementById("cCinsure_ratio").style.display!="none"){
+		    $("#PcCinsure_ratio").css("display","block");
+			document.getElementById("PinCinsure_ratio").innerHTML = cinsure_ratio;
+		}
+		if(document.getElementById("cPayment").style.display!="none"){
+		    $("#PcPayment").css("display","block");
+			document.getElementById("PinPayment").innerHTML = payment;		
+		}
+		
+		if(document.getElementById("cWork_time").style.display!="none"){
+		    $("#PcWork_time").css("display","block");
+			document.getElementById("Pwork_time").innerHTML = work_time;
+		}
+		if(document.getElementById("cJob_name").style.display!="none"){
+		    $("#PcJob_name").css("display","block");
+			document.getElementById("Pjob_name").innerHTML = job_name;
+		}
+		if(document.getElementById("cFine").style.display!="none"){
+		    $("#PcFine").css("display","block");
+			document.getElementById("Pfine").innerHTML = fine;
+		}
+	    $("#printPreview").modal('show');
+	}
+	function printContract()
+	{
+	    $("div#myPrintArea").printArea(); 
+	    $("#printPreview").modal('hide');
+	}
+	window.onload = function() {
+	  $('#inPractice_begin').attr("disabled",true);//控制不能选择日期 disabled和readonly的区别
+	  $('#inPractice_end').attr("disabled",true);
+	  $('#inProbation_start').attr("disabled",true);
+	  $('#inProbation_end').attr("disabled",true);
+	  $('#contract_end_time').attr("disabled",true);
+	  $('#contract_start_time').attr("disabled",true);
+		jeDate({
+	        dateCell: "#inPractice_begin", //isinitVal:true,
+	        format: "YYYY-MM-DD",
+	        isTime: false, //isClear:false,
+	        zIndex: 9999999,
+	       // isinitVal:false,
+	        //choose:function(val) {alert('选择后的回调函数')},
+	        minDate: getNowFormat_Date()
+	        
+	    });
+		jeDate({
+	        dateCell: "#inPractice_end", //isinitVal:true,
+	        format: "YYYY-MM-DD",
+	        isTime: false, //isClear:false,
+	       // zIndex: 9999999,
+	       // isinitVal:false,
+	        //choose:function(val) {alert('选择后的回调函数')},
+	        minDate: getNowFormat_Date()
+	    });
+		jeDate({
+	        dateCell: "#inProbation_start", //isinitVal:true,
+	        format: "YYYY-MM-DD",
+	        isTime: false, //isClear:false,
+	       // zIndex: 9999999,
+	       // isinitVal:false,
+	        //choose:function(val) {alert('选择后的回调函数')},
+	       // maxDate: getNowFormat_Date()
+	       minDate: getNowFormat_Date()
+	    });
+		jeDate({
+	        dateCell: "#inProbation_end", //isinitVal:true,
+	        format: "YYYY-MM-DD",
+	        isTime: false, //isClear:false,
+	       // zIndex: 9999999,
+	       // isinitVal:false,
+	        //choose:function(val) {alert('选择后的回调函数')},
+	        minDate: getNowFormat_Date()
+	    });
+		jeDate({
+	        dateCell: "#contract_end_time", //isinitVal:true,
+	        format: "YYYY-MM-DD",
+	        isTime: false, //isClear:false,
+	        //zIndex: 9999999,
+	       // isinitVal:false,
+	        //choose:function(val) {alert('选择后的回调函数')},
+	        minDate: getNowFormat_Date()
+	    });
+		jeDate({
+	        dateCell: "#contract_start_time", //isinitVal:true,
+	        format: "YYYY-MM-DD",
+	        isTime: false, //isClear:false,
+	        //zIndex: 9999999,
+	       // isinitVal:false,
+	        //choose:function(val) {alert('选择后的回调函数')},
+	        //maxDate: getNowFormat_Date()
+	        minDate: getNowFormat_Date()
+	    });
+	   };
+	</script>
+</body>
+</html>

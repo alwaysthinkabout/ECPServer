@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>EIO1.2</display-name>
+  <!--  
+  <servlet>  
+    <description>自启动servlet，用于开启socket服务</description>  
+    <servlet-name>myServerSocket</servlet-name>  
+    <servlet-class>ECP.handle.common.MyServerSocket</servlet-class>  
+    <load-on-startup>1</load-on-startup>  
+  </servlet>  
+  -->
+   <servlet>  
+    <description>初始化数据库连接池</description>  
+    <servlet-name>mysqlPool</servlet-name>  
+    <servlet-class>ECP.util.db.InitServer</servlet-class>  
+    <load-on-startup>1</load-on-startup>  
+  </servlet> 
+  
+  <servlet>
+    <servlet-name>EIOServletMsgEngine</servlet-name>
+    <servlet-class>csAsc.EIO.MsgEngine.CEIOMsgRouter</servlet-class>
+    
+   <!-- 定义工程的的绝对路径  -->
+    <init-param>
+	  <param-name>ProjectPath</param-name>
+	  <param-value>F:\wang_workspace\\workspace\\EcossWeb</param-value>
+    </init-param>
+     
+    <!-- 定义该应用程序对应的配置文件名称 -->
+    <init-param>
+	 <param-name>AppConfigFile</param-name>
+	 <param-value>EIO.xml</param-value>
+    </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>EIOServletMsgEngine</servlet-name>
+    <url-pattern>/EIOServletMsgEngine</url-pattern> <!--该名为服务端HTTP请求的使用的服务端名称URI -->
+  </servlet-mapping>
+  
+  <!-- 用户上传文件url映射 -->
+  <servlet>
+    <display-name>UploadServlet</display-name>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>ECP.servlet.UploadServlet</servlet-class>
+  </servlet>
+   
+ <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/ECPServer/UploadServlet</url-pattern>
+  </servlet-mapping> 
+  
+  <!-- 上传企业证书文件url映射 -->
+  <servlet>
+    <display-name>OrgFileUpload</display-name>
+    <servlet-name>OrgFileUpload</servlet-name>
+    <servlet-class>ECP.servlet.job.OrgFileUpload</servlet-class>
+  </servlet>
+   
+ <servlet-mapping>
+    <servlet-name>OrgFileUpload</servlet-name>
+    <url-pattern>/ECPServer/job/OrgFileUpload</url-pattern>
+  </servlet-mapping> 
+  
+  <!-- 下载文件url映射 -->
+	  <servlet>
+		<servlet-name>DownloadServlet</servlet-name>
+		<servlet-class>ECP.servlet.DownloadServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>DownloadServlet</servlet-name>
+		<url-pattern>/download</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+        <servlet-name>ImageServlet</servlet-name>
+        <servlet-class>ECP.servlet.job.ImageServlet</servlet-class>
+	</servlet>
+  
+
+
+	<servlet-mapping>
+        <servlet-name>ImageServlet</servlet-name>
+        <url-pattern>/servlet/ImageServlet</url-pattern>
+	</servlet-mapping>
+
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+    
+  <!-- 配置登录过滤器 -->
+  <filter>
+  		<filter-name>login</filter-name>
+  		<filter-class>ECP.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  		<filter-name>login</filter-name>
+  		<url-pattern>/platformOperation/content/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+  </filter>
+	
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/platformOperation/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	       <dispatcher>FORWARD</dispatcher>
+	       <dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+</web-app>

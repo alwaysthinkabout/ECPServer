@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WeChat-Room</title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../assets/css/mycss.css" rel="stylesheet" />
+    <link href="../js/common/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/imgs/loginLogo.jpg" rel="icon" type="image/x-icon" />
+    <style>
+	    ul {
+	            list-style: none;
+	        }
+    	
+    </style>
+  </head>
+  
+  <body>
+    <div id="room" class="col-md-6" style ="padding-left:0;padding-right:0">
+    	<div id="header"style="padding:0.5rem 1rem;background-color:#84c1ff;vertical-align:middle;">
+    		<div style="display:inline-block;margin-left:3%;">
+    			<span onclick="goBack()"class="glyphicon glyphicon-menu-left" aria-hidden="true" style="color:white;font-size:2.6rem"></span>
+    		</div>
+    		<div style="display:inline-block;margin-left:30%;text-align:center">
+    			<span style="color:white;font-size:1.7rem;display:block" id = "room_name">群名称</span>
+    			<div onclick="getRoom_Users()">
+    				<span style="color:white;font-size:1.2rem;" id = "online_count">在线人数</span><span style="color:white;font-size:1.2rem;display:inline-block" id="arrow"> ▼</span>
+    			</div>
+    			<input style="display:none" id="room_id" />
+   			</div>
+   			<div style="display:inline-block;margin-left:28%;padding-bottom:0.5rem;">
+    			<span style="color:white;font-size:1.7rem;">群组</span>
+    			<span style="color:white;font-size:0rem;display:block">&nbsp;</span>
+    		</div>
+    	</div>
+    	<div id="users" class = "room_users">
+    		<!-- 这里罗列在线用户 -->
+    		<!-- <div class = "room_peruser_div">
+    			<img alt="头像" src="../assets/imgs/loginLogo.jpg" width="80rem" height="50rem" class = "room_peruser_img">
+    			<span style="display:block">lgp</span>
+    			<input style="display:none" />
+    		</div> -->
+    		
+    	</div>
+    	<div id="content" style="background-color: #F0F0F0;height:40rem;overflow:auto;">
+    		<ul id="messageList">
+    			<!-- <li class="myMessageLi">
+    				<p class="time"><span id="time">17:02:36</span></p>
+                    <div style="position:relative;margin-left:-1.5rem">
+                    	 <div style="float:left;width:12%;">
+                    	 	<img  width="40rem" height="40rem" src="../assets/imgs/loginLogo.jpg">
+                    	 </div>
+                    	 <div style="float:left;width:75%;margin-left:1.5rem;margin-top:0;">	      
+                    	 	<div>
+                    	 		<span style="color:#7B7B7B">lady</span>
+                    	 	</div>	                                       
+	                        <div class="leftText">
+	                            <div class="leftArrow"></div>
+	                            <p style="line-height:20px;margin-top:5px;margin-bottom:0px;"id="chatItem">nihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyaonihaoyao</p>
+	                        </div>
+                         </div>
+                         <div style="clear:both"></div>
+                     </div>
+    			</li> -->
+    			<!-- <li  class="myMessageLi" id="myLi">
+    				<p class="time"><span id="time">18:23:23</span></p>
+                	<div  style="width:100%;position:relative;padding-right:3rem;">
+                		<div style="float:right;width:12%;">
+		                    <img  width="40" height="40" src="../assets/imgs/loginLogo.jpg">
+		                </div>
+                		<div style="float:right;padding-right:1rem;text-align:right;width:75%">
+	               			<div style="padding:0.2rem">
+	                   	 		<span style="color:#7B7B7B">lady</span>
+	                   	 	</div>
+	                		<div class="rightText">
+	                			<p style="text-align:left;display:inline-block;margin-bottom:0px;margin-top:5px;line-height:20px"id="chatItem">nihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahahanihaoyahaha</p>
+	                			<div class="rightArrow"></div>
+	                		</div>
+                		</div>
+                		<div style="clear:both"></div>		                
+	             	</div>
+      			 </li>  -->
+    		</ul>
+    	</div>
+    	<div id="footer">
+    		 <div class="input-group">   		 	
+		       <input type="text" class="form-control" placeholder="输入信息" id="msg" />
+		       <span class="input-group-btn">
+		         <button class="btn btn-default" type="button" onclick="sendMessage()">发 送</button>
+		       </span>
+		     </div><!-- /input-group -->
+    	</div>
+    </div>
+    <script src="../js/common/jquery-3.2.1.js"></script>
+    <script src="../js/common/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/myjs/util.js"></script>
+    <script src="../js/myjs/room.js"></script>
+  </body>
+</html>

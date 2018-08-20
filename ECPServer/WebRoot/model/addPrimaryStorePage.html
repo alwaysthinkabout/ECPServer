@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   	<title>金英台招聘系统</title>
+	<script src="assets/js/myjs/getPermission.js"></script>
+	    <!-- BOOTSTRAP STYLES-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+	    <!-- FONTAWESOME STYLES-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+	       <!--CUSTOM BASIC STYLES-->
+	    <link href="assets/css/basic.css" rel="stylesheet" />
+	    <!--CUSTOM MAIN STYLES-->
+	    <link href="assets/css/custom.css" rel="stylesheet" />
+
+	    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+	    <link href="assets/css/ui.jqgrid.css" rel="stylesheet" />
+	    <link href="assets/css/mycss.css" rel="stylesheet" />
+	    <link href="assets/img/title.png" rel="icon" type="image/x-icon" />
+	    <!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	    <style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }
+       /* .nav-link {
+		  position: relative;
+		  padding: 0 14px;
+		  line-height: 34px;
+		  font-size: 10px;
+		  font-weight: bold;
+		  color: #555;
+		  text-decoration: none;
+		}
+		.nav-link:hover {
+		  color: #333;
+		  text-decoration: underline;
+		} */
+		
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+		
+		/* .nav-counter-green {
+		  background: #75a940;
+		  border: 1px solid #42582b;
+		  background-image: -webkit-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -moz-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -o-linear-gradient(top, #8ec15b, #689739);
+		  background-image: linear-gradient(to bottom, #8ec15b, #689739);
+		}
+		 */
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+       </style>
+</head>
+<body>
+    <div id="wrapper">
+       <div class="row">
+	    <div class="row">
+		    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white">
+		        <div style="width:100%;">
+			        <div style="height:130px;width:35%;float:left">
+			        	<a href="homePage.html"><img alt="picture" src="assets/img/titlePic2.png" height="130"></a>
+		        	</div>
+			             <div style="width:60%;height:90px;float:left;"></div> 
+	  					 <div class="welcome_div"><label class="welcome_label">欢迎您：</label><label id="navUser_call" class="welcome_label"></label></div>
+	  					 <div class="Integrity_div"><label for="progress"class="Integrity_label">资料完整度：<progress value="15" max="100" id="progress"></progress></label></div>
+  				</div>
+		     </nav>
+	    </div>
+     <div class="row">
+	     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+	     	<div class="col-md-12" >
+		        <ul id="nav">
+		        	<li><a href="homePage.html">首页</a></li>
+		        	<li style="padding-left: 65%;"><a id="applyJsp" href="unprocessed.html" onclick="toPage(0)">
+		       				<i class="fa fa-newspaper-o  fa-5x" style="margin-top: 6.4px;font-size: 1.4em;" title="求职申请提醒"></i>
+		       				<span class="nav-counter"id="applyCounter" style="background:red;display:none"></span>
+                		</a>
+                	</li>
+		        	
+		       		<li style="padding-left: 1.8%;"><a id="chatJsp" href="chat.html" onclick="setCss()">
+		       				<i class="fa fa-envelope fa-lg" title="消息提醒"></i>
+		       				<span class="nav-counter"id="messageCounter" style="display:none;"></span>
+                		</a>
+                	</li >
+                	<li style="padding-left: 3%;"><a href="login.jsp" onclick="logout()">退出</a></li>
+		        </ul>
+		     </div>
+	     </nav>
+     <!-- /. NAV TOP  -->
+      </div>
+    </div>
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">添加初级信息</h1>
+                        <h1 class="page-subhead-line" style="color:#FF0000;">在这里添加企业的初级信息 </h1>
+
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row" >
+               		<div class="col-md-12">
+		                <form id="primaryStoreAddForm">
+		                    <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>营业执照号<span class="text-danger">*</span></label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" id="org_id" name="org_id" type="hidden" />
+		                            <input class="form-control" placeholder="营业执照号" id="license_no" name="license_no" type="text" />
+		                        </div>
+		                    </div>
+		                    <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>年度<span class="text-danger">*</span></label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="年度" id="year" name="year" type="number" />
+		                        </div>
+		                    </div>
+		                    <div class="form-group row">
+		                         <div class="col-md-2">
+		                            <label>员工数<span class="text-danger">*</span></label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="员工数" id="employee_num" name="employee_num" type="number" />
+		                        </div>
+		                    </div>
+		                    <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>技术人员数量<span class="text-danger">*</span></label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="技术人员数量" id="techStaff_num" name="techStaff_num" type="number" />
+		                        </div>
+		                    </div>
+		                    <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>营业额</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="营业额" id="revenue" name="revenue" type="text" />
+		                        </div>
+		                    </div>
+		                    <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>资产总额</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="资产总额" id="total_assets" name="total_assets" type="text" />
+		                        </div>
+		                    </div>
+		                    <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>负债总额</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="负债总额" id="total_indebt" name="total_indebt" type="text" />
+		                        </div>
+		                     </div>
+		                    <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>净销售额</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="净销售额" id="net_sales" name="net_sales" type="text" />
+		                        </div>
+		                     </div>
+		                     
+		                      <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>流动资产</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="流动资产" id="current_assets" name="current_assets" type="text" />
+		                        </div>
+		                     </div>
+		                   
+		                      <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>流动负债</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="流动负债" id="current_indebt" name="current_indebt" type="text" />
+		                        </div>
+		                     </div>
+		                     <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>营业费用</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="营业费用" id="operate_expense" name="operate_expense" type="text" />
+		                        </div>
+		                    </div>
+		                      <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>利润</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="利润" id="profit" name="profit" type="text" />
+		                        </div>
+		                     </div>
+		                     
+		                      <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>贷款余额</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="贷款余额" id="loan_balance" name="loan_balance" type="text" />
+		                        </div>
+		                     </div>
+		                     
+		                      <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>纳税</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="纳税" id="taxation" name="taxation" type="text" />
+		                        </div>
+		                     </div>
+		                     <div class="form-group row">
+		                        <div class="col-md-2">
+		                            <label>研发经费金额</label>
+		                        </div>
+		                        <div class="col-md-7">
+		                            <input class="form-control" placeholder="研发经费金额" id="RD_budget" name="RD_budget" type="text" />
+		                        </div>
+		                     </div>
+		                      <div class="form-group row">
+		                         <div style="padding-left:500px;padding-top:50px;">
+		                            <button type="button" class="btn btn-danger my-btn" onclick="primaryStoreAdd()">发布</button> 
+		                            <button type="button" class="btn btn-info " onclick="goBack()" >取消</button> 
+		                        </div>
+		                     </div>
+		                </form>
+                    </div>
+           	    </div>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/simpleUtil.js"></script>
+    	<script src="assets/js/ve1.js"></script>
+	<script src="assets/js/veHelper.js"></script>
+	<script src="assets/js/myjs/addPrimaryStorePage.js"></script>
+	<script>
+	function goBack(){
+		var storeId=$("#org_id").val();
+		window.location.href="informationSettingPage.html?storeId="+storeId;
+	}
+	</script>
+</body>
+</html>
+
+
+

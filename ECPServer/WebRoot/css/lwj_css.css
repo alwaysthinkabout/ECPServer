@@ -1,0 +1,73 @@
+body{
+	line-height:normal;
+}
+.radius_rect{
+	position:relative;
+	width:428px;
+	height:270px;
+	border-radius:15.9px;
+	border:1px solid rgb(0,0,0);
+}
+
+.myDisplay{
+	display: none;
+	font-size: 25px;
+}
+
+.drag{ display:block;position:absolute;}
+.div_img{
+	positon:relative;
+}
+
+.div_show{
+	display:block;
+}
+.div_hide{
+	display:none;
+}
+
+.text{
+	font-family:"宋体";
+	font-style:normal;
+	font-size:16px;
+	font-weight:normal;
+	color:#000000;
+/*	transform:rotate(0deg);  */
+	letter-spacing:1px;
+}
+
+.barcode{
+	width:113px;
+	height:39px;
+}
+.qrcode{
+	width:56px;
+	height:56px;
+}
+.picture{
+	width:80px;
+	height:80px;
+}
+.emboss{
+	font-size:25px;
+	letter-spacing:10px;
+}
+.div_emboss{
+	width:428px;
+	height:50px;
+	background-color:black;
+	border:1px;
+}
+.embed_img{
+	width:50px;
+	height:50px;
+}
+
+.col_one{ float:left;width:8%; }
+.col_two{ float:left;width:48%; } 
+.col_three{ float:left;width:44%; }
+
+.flag{
+	display:none;
+	color:red;
+}

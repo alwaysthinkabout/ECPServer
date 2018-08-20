@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>金英台招聘系统</title>
+	<script src="assets/js/myjs/getPermission.js"></script>
+	    <!-- BOOTSTRAP STYLES-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+	    <!-- FONTAWESOME STYLES-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+	       <!--CUSTOM BASIC STYLES-->
+	    <link href="assets/css/basic.css" rel="stylesheet" />
+	    <!--CUSTOM MAIN STYLES-->
+	    <link href="assets/css/custom.css" rel="stylesheet" />
+
+	    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+	    <link href="assets/css/ui.jqgrid.css" rel="stylesheet" />
+	    <link href="assets/css/mycss.css" rel="stylesheet" />
+	    <link href="assets/img/title.png" rel="icon" type="image/x-icon" />
+	    <!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	    <style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }
+       /* .nav-link {
+		  position: relative;
+		  padding: 0 14px;
+		  line-height: 34px;
+		  font-size: 10px;
+		  font-weight: bold;
+		  color: #555;
+		  text-decoration: none;
+		}
+		.nav-link:hover {
+		  color: #333;
+		  text-decoration: underline;
+		} */
+		
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+		
+		/* .nav-counter-green {
+		  background: #75a940;
+		  border: 1px solid #42582b;
+		  background-image: -webkit-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -moz-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -o-linear-gradient(top, #8ec15b, #689739);
+		  background-image: linear-gradient(to bottom, #8ec15b, #689739);
+		}
+		 */
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+       </style>
+    <style>
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+           /*  overflow: hidden; */
+        }
+        body, ul {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            color: #4d4d4d;
+            font: 14px/1.4em 'Helvetica Neue', Helvetica, 'Microsoft Yahei', Arial, sans-serif;
+            /* background: #f5f5f5 url('dist/images/bg.jpg') no-repeat center; */
+            background-size: cover;
+            font-smoothing: antialiased;
+        }
+        ul {
+            list-style: none;
+        }
+        #chat {
+            margin: auto;
+            width: 100%;
+        	height: 600px;
+        }
+    </style>
+<style type="text/css">
+#chat{overflow:hidden;border-radius:3px}
+#chat .main,#chat .sidebar{height:100%}
+#chat .sidebar{float:left;width:28%;color:#f4f4f4;background-color:#2e3238}
+#chat .main{position:relative;overflow:hidden;background-color:#e0e0e0}
+#chat .m-text{position:absolute;width:100%;bottom:0;left:0}
+#chat .m-message{height:calc(100% - 15pc)}
+</style>
+<style type="text/css">
+.m-card{padding:9pt;border-bottom:1px solid #24272c}
+.m-card footer{margin-top:10px}
+.m-card .avatar,.m-card .name{vertical-align:middle}
+.m-card .avatar{border-radius:2px}
+.m-card .name{display:inline-block;margin:0 0 0 15px;font-size:1pc}
+.m-card .search{padding:0 10px;width:100%;font-size:9pt;color:#fff;height:30px;line-height:30px;border:1px solid #3a3a3a;border-radius:4px;outline:0;background-color:#26292e}
+</style>
+<style type="text/css">
+.m-list li{padding:9pt 15px;border-bottom:1px solid #292c33;cursor:pointer;-webkit-transition:background-color .1s;transition:background-color .1s}
+.m-list li:hover{background-color:hsla(0,0%,100%,.03)}
+.m-list li.active{background-color:hsla(0,0%,100%,.1)}
+.m-list .avatar,.m-list .name{vertical-align:middle}
+.m-list .avatar{border-radius:2px}
+.m-list .name{display:inline-block;margin:0 0 0 15px}
+</style>
+<style type="text/css">
+.m-text{height:10pc;border:1px solid #ddd}
+.m-text textarea{padding:10px;height:78%;width:100%;border:none;outline:0;font-family:Micrsofot Yahei;resize:none}
+</style>
+<style type="text/css">
+.m-message{padding:10px 15px;overflow-y:auto;}
+/* body{scrollbar-face-color: #fcfcfc;
+scrollbar-highlight-color: #6c6c90;
+scrollbar-shadow-color: #fcfcfc;
+scrollbar-3dlight-color: #fcfcfc;
+scrollbar-arrow-color: #240024;
+scrollbar-track-color: #fcfcfc;
+scrollbar-darkshadow-color: #48486c;
+scrollbar-base-color: #fcfcfc} */
+.m-message li{margin-bottom:15px}
+.m-message .time{margin:7px 0;text-align:center}
+.m-message .time>span{display:inline-block;padding:0 18px;font-size:9pt;color:#fff;border-radius:2px;background-color:#d0d0d0}
+.m-message .avatar{float:left;margin:0 10px 0 0;border-radius:3px}
+.m-message .leftText{margin-left:10px;display:inline-block;position:relative;padding:3px 7px 3px 10px;max-width:calc(100% - 60px);min-height:38px;line-height:2.5;font-size:14px;text-align:left;word-break:break-all;background-color:#fafafa;border-radius:6px}
+/* .m-message .leftText:before{content:" ";position:absolute;top:9px;right:100%;border:6px solid transparent;border-right-color:#fafafa} */
+.m-message .rightText{margin-right:20px;display:inline-block;position:relative;padding:0 10px;max-width:calc(100% - 50px);min-height:30px;line-height:2.5;font-size:14px;text-align:left;word-break:break-all;background-color:#64C1FF;border-radius:6px}
+/* .m-message .rightText:after{content:" ";position:absolute;top:9px;right:100%;border:6px solid transparent;border-right-color:#fafafa} */
+.m-message .self{text-align:right}
+.m-message .self .avatar{float:right;margin:0 0 0 10px}
+.m-message .self .text{background-color:#b2e281}
+.m-message .self .text:before{right:inherit;left:100%;border-right-color:transparent;border-left-color:#b2e281}
+.leftArrow{
+   /*  display:inline-block; */
+    width:0px;
+    height:0px;
+    border:solid 10px;
+    border-color:#e0e0e0 #fafafa #e0e0e0 #e0e0e0;
+    /* right:-20px; */
+    margin-left:-30px;
+    margin-top:6px;
+    position:absolute;
+    font-size:0px;
+}
+.rightArrow{
+    display:inline-block;
+    width:0px;
+    height:0px;
+    border:solid 10px;
+    border-color:#e0e0e0  #e0e0e0 #e0e0e0 #64C1FF;
+    /* right:-20px; */
+    /* margin-right:10px; */
+    margin-top:6px;
+    position:absolute;
+    font-size:0px;
+    margin-left: 10px;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+	 <div class="row">
+	    <div class="row">
+		    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white">
+		        <div style="width:100%;">
+			        <div style="height:130px;width:35%;float:left">
+			        	<a href="homePage.html"><img alt="picture" src="assets/img/titlePic2.png" height="130"></a>
+		        	</div>
+			             <div style="width:60%;height:90px;float:left;"></div> 
+	  					 <div class="welcome_div"><label class="welcome_label">欢迎您：</label><label id="navUser_call" class="welcome_label"></label></div>
+	  					 <div class="Integrity_div"><label for="progress"class="Integrity_label">资料完整度：<progress value="15" max="100" id="progress"></progress></label></div>
+  				</div>
+		     </nav>
+	    </div>
+     <div class="row">
+	     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+	     	<div class="col-md-12" >
+		        <ul id="nav">
+		        	<li><a href="homePage.html">首页</a></li>
+		        	<li style="padding-left: 65%;"><a id="applyJsp" href="unprocessed.html" onclick="toPage(0)">
+		       				<i class="fa fa-newspaper-o  fa-5x" style="margin-top: 6.4px;font-size: 1.4em;" title="求职申请提醒"></i>
+		       				<span class="nav-counter"id="applyCounter" style="background:red;display:none"></span>
+                		</a>
+                	</li>
+		        	
+		       		<li style="padding-left: 1.8%;"><a id="chatJsp" href="chat.html" onclick="setCss()">
+		       				<i class="fa fa-envelope fa-lg" title="消息提醒"></i>
+		       				<span class="nav-counter"id="messageCounter" style="display:none;"></span>
+                		</a>
+                	</li >
+                	<li style="padding-left: 3%;"><a href="login.jsp" onclick="logout()">退出</a></li>
+		        </ul>
+		     </div>
+	     </nav>
+     <!-- /. NAV TOP  -->
+      </div>
+    </div>
+        <div id="page-wrapper">
+            <div id="page-inner">
+               <div id="chat">
+                   <div class="sidebar">
+                       <div class="m-card">
+                           <header><img class="m-card avatar" width="60" height="60"  src="assets/img/chatImage/myPic1.jpg"><p class="name" id="myUser_name"></p></header>
+                           <footer><input class="search" id="search_user" placeholder="search user...">
+                           </footer>
+                       </div><!--v-component-->
+                       <div class="m-list" style = "overflow-y:auto;height:calc(100% - 8pc)">
+                            <ul id="friendsList" ><!--v-for-start-->
+                                    
+                                    <!--v-for-end-->
+                             </ul>
+                       </div><!--v-component-->
+                   </div><!-- siz -->
+                   <div class="main">
+                        <div class="my-msgList-header" >
+                        <span id="headerName"></span>
+                        <span id="leaveMessage"  style="margin-left:83%;position:relative;" onclick="getLeaveMessage()">
+                                <i class="fa fa-pencil-square-o  fa-5x"style="font-size: 1.4em;cursor:pointer;"title="留言板"></i>
+                                <span class="nav-counter"id="leaveMessageCounter" style="top: 0px;right: -6px;display:none;">0</span>
+                        </span>
+                        </div>
+                        <input id="user_id" style="display:none"/>
+	                       <div class="m-message" id="messageBox">
+	                             <ul id="messageList" ><!--v-for-start-->
+	                                 
+	                                <!--  <li><p class="time"><span id="time'+messageNum+'"></span></p>
+	                                        <div class="main"><img class="avatar" width="30" height="30" src="assets/img/chatImage/candidate.jpg">
+	                                             
+	                                             <div class="leftText"><div class="leftArrow"></div><p style="line-height:20px;margin-top:5px;margin-bottom:0px;margin-right:0px;"id="chatItem'+messageNum+'"></p>
+	                                              </div>
+	                                         </div>
+	                                   </li>
+	                                     
+	                                          <!--v-for-end-->
+	                              </ul>
+	                       </div><!--v-component-->
+                           <div class="m-text" id="messageInputArea">
+                               <textarea id="content" placeholder="ctrl+enter发送消息"></textarea>
+                               <div style="float:right;padding-right:20px;height:20%;">
+                                   <button class="btn btn-success" type="button" id="sendMessage" style="height:90%;padding:4px 10px;"onclick="sendMessage()">发送(S)</button>
+                               </div>
+                            </div><!--v-component-->                                              
+                        <div class="m-message" style="height:calc(100% - 8pc);display:none;"id="leaveMessageBox">
+                             <ul id="leaveMessageList" ><!--v-for-start-->
+                             	<!-- <li style="background-color: rgb(167, 187, 201);border-radius:6px;padding:8px;margin-top:5px;">
+	                            	<p ><span >姓名：</span><span id="leave_Name"></span></p>
+	                            	<p ><span >岗位：</span></span><span id="leave_jobName"></span></p>                             	                             	
+	                            	<p ><span >时间：</span><span id="leave_time"></span></p>
+	                            	<p ><span >内容：</span><span id="leave_content"></span></p>
+                                </li>  
+                                   -->                            
+                             </ul>
+	                     </div><!--v-component-->
+                    </div><!--main -->
+                </div><!--chat -->
+            </div><!--page-inner -->
+        </div><!-- page-wrapper -->
+</div><!-- wrapper -->
+
+<script src="assets/js/jquery-1.10.2.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/grid.locale-cn.js"></script>
+<script src="assets/js/jquery.jqGrid.min.js"></script>
+<script src="assets/js/ve1.js"></script>
+<script src="assets/js/myjs/chat.js"></script>
+<script src="assets/js/veHelper.js"></script>
+<script src="assets/js/simpleUtil.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+	<script>
+	$(function(){
+		getFriendsList();		
+	});
+	
+	document.onkeydown=function(event) { 
+		var hasFocus = $("#search_user").is(':focus');
+		var isAble = document.getElementById("content").disabled;
+		if ((event.ctrlKey)&&(event.keyCode==13)&&(!isAble)) {//ctrl键与enter键同时按下，则发送消息
+			var input = document.getElementById("content");
+			var btn = document.getElementById("sendMessage"); 
+			input.focus(); 
+			btn.click(); 
+	    }else if((event.keyCode==13)&&hasFocus) 
+	        {
+	            var tag_li = document.getElementById("friendsList").getElementsByTagName("li");
+	            var user_name = document.getElementById("search_user").value;
+	            var flag = 0;
+			    for(var i=0;i<tag_li.length;i++)
+		    	{
+		    	    var result = tag_li[i];
+		    	    var curUserName = result.childNodes[1].innerHTML;
+		    		if(curUserName==user_name)
+		    		{
+		    		    $("#"+result.id+"").remove();
+	    				$("#friendsList").prepend(
+							'<li class="active" id = "'+result.id+'" onclick="getRecord(this.id)">'+
+							    '<img class="avatar" width="30" height="30"  src="assets/img/chatImage/candidate.jpg">'+ 
+							        '<p class="name" id="'+result.childNodes[1].id+'">'+curUserName+'</p>'+
+							        '<span class="per-counter"id="'+result.childNodes[2].id+'" style="display:none;"></span>'+
+							'</li>');
+						var btn = document.getElementById(result.id);
+						btn.click();
+						flag = 1;
+						document.getElementById("search_user").value = "";
+		    		}
+		    	}
+		    	if(flag==0)
+		    	{
+		    	    alert("好友列表中没有此人，请确定好友姓名是否输入正确。");
+		    	}
+	        }
+    
+    //alert(hasFocus);
+};
+	
+	</script> 
+
+</body>
+</html>
+
+
+
+

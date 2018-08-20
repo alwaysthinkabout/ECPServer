@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/decorators">
+	<!--excludes结点则指定了哪些路径的请求不使用任何模板 -->
+	<excludes>
+		<pattern>/**/login.jsp</pattern>
+		<pattern>/**/userRegisterPage.jsp</pattern>
+		<pattern>/**/findPasswordPage.jsp</pattern>
+	</excludes>
+	
+	<!-- 创建一个名为main的装饰器，该装饰器页面为main.jsp,
+		 用于装饰pattern指定的URL的所有页面-->
+	<!-- <decorator name="main" page="main.jsp">
+		<pattern>/model/*</pattern>
+	</decorator> -->
+	<decorator name="platformOperationMain" page="platformOperationMain.jsp">
+		<pattern>/platformOperation/*</pattern>
+	</decorator>
+</decorators>

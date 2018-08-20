@@ -1,0 +1,223 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> <VEMessageDesc><!—VE的消息描述，关联于ME的消息描述 -->
+<EIO>
+	<Application>
+		<!-- 定义消息中的标识消息类型的键标识符与值标识符 -->
+		<init-param>
+	  <param-name>VEReqMsgTypeId</param-name>
+	  <param-value>VEReqMsgType</param-value>
+    </init-param>
+    <init-param>
+	  <param-name>VEReqMsgNameId</param-name>
+	  <param-value>VEReqMsgName</param-value>
+    </init-param>
+    <init-param>
+	  <param-name>VEReqMsgHandleId</param-name>
+	  <param-value>VEReqMsgHandle</param-value>
+    </init-param>
+     <!-- 定义Ve的传输协议中标识VE的名称值的键标识符-->
+   <init-param>
+	  <param-name>VeNameId</param-name>
+	  <param-value>VeName</param-value>
+    </init-param>
+   <init-param>
+	  <param-name>IndividualizedInit</param-name>
+	  <param-value>csAsc.ECOSS.msgHandle.CEcossInit.ecossInit</param-value>
+    </init-param>
+    <init-param>
+	  <param-name>DatabaseConnection</param-name>
+	  <param-value>{
+	               <!--  "ECOSSmain":{"Driver":"com.mysql.jdbc.Driver","Server":"jdbc:mysql://localhost:3306","Databse":"ECOSSmain", "User":"root", "Password":"014569"},
+	                "MySQLTest":{"Driver":"com.mysql.jdbc.Driver","Server":"jdbc:mysql://localhost:3306","Databse":"ecossmain", "User":"root", "Password":"014569"} 
+	                  -->
+	               }</param-value>
+    </init-param>
+	</Application>
+	<!-- VE的消息描述，关联于ME的消息描述 -->
+	<VEMessageDesc>
+		<!-- 描述一个消息包，包名对消息的一个组织，一般是一个页面对应一个包 -->
+		<MessagePack name="消息包2">
+			<!-- 每个元素描述一个消息种类 -->
+			<MsgType name="MsgSendFormData">
+			<!-- 每个描述一条具体消息,name为消息名称，ResqFunc为请求消息的处理器名称， Request为请求消息的处理器名称，这些名称，对于JS客户端是JS函数名称 -->
+			<VeMessage name="MsgCheckFormData" type="消息包2--消息种类1--消息名称1--消息类型1">
+				<!-- Request请求消息，name为对用的请求函数名称，这些名称需要与JS客户端对应 -->
+				<Request name="reqCheckFormData"/>
+				<!-- Response响应消息，name为对用的响应函数名称，这些名称需要与JS客户端对应 -->
+				<Response name="resCheckFormData"/>
+				<!-- Processor为消息处理器，name为对用的Processor函数名称 -->
+				<Processor name="csAsc.ECOSS.reso.demo1.CMsgCheckFormData.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称1--METype1"/>
+			</VeMessage>
+			
+			<VeMessage name="MsgProcessFormData" type="消息包2--消息种类1--消息名称3--消息类型3">
+				<Request name="sendFormdata"/>
+				<Response name="refreshForm"/>
+				<Processor name=""/>
+				<METype name="消息包2--消息种类1--消息名称3--METype3"/>
+			</VeMessage>
+		</MsgType>
+		<MsgType name="MsgVcInject">
+			<VeMessage name="MsgVcInjectSelect" type="消息包2--消息种类2--消息名称1--消息类型1">
+				<Request name="reqInjectSelect"/>
+				<Response name="resInjectSelect"/>
+				<Processor name="csAsc.ECOSS.reso.demo1.CMsgVcInject.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称1--METype1"/>
+			</VeMessage>
+			<VeMessage name="MsgVcInjectInput" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="sendVcIds"/>
+				<Response name="resInjectVcSelect"/>
+				<Processor name=""/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+			<VeMessage name="MsgInjectTree" type="消息包2--消息种类1--消息名称3--消息类型3">
+				<Request name="reqInjectTree"/>
+				<Response name="resInjectTree"/>
+				<Processor name="csAsc.ECOSS.reso.demo1.CMsgGetTree.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称3--METype3"/>
+			</VeMessage>
+		</MsgType>
+		<MsgType name="MsgGetNewPage">
+			<VeMessage name="MsgOpenNewWindow" type="消息包2--消息种类1--消息名称1--消息类型1">
+				<Request name="reqOpenNewWindow"/>
+				<Response name="resOpenNewWindow"/>
+				<Processor name="csAsc.ECOSS.reso.demo1.CMsgSendNewPage.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称1--METype1"/>
+			</VeMessage>
+			<VeMessage name="MsgSwitchPage" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqGetNewPageData"/>
+				<Response name="resGetNewPageData"/>
+				<Processor name="csAsc.ECOSS.reso.demo1.CMsgQueryTableByKeys.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+			<VeMessage name="MsgOpenNewPageFile" type="消息包2--消息种类1--消息名称3--消息类型3">
+				<Request name="reqOpenNewPageFile"/>
+				<Response name="resOpenNewPageFile"/>
+				<Processor name="csAsc.ECOSS.reso.demo1.COpenHtmlFile.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称3--METype3"/>
+			</VeMessage>
+		</MsgType>
+		<MsgType name="MsgQueryDb"><!-- 每个元素描述一个消息种类 -->
+			<VeMessage name="MsgGetDbRecs" type="消息包2--消息种类1--消息名称1--消息类型1">
+				<Request name="reqGetDbRecs"/>
+				<Response name="resGetDbRecs"/>
+				<Processor name="csAsc.ECOSS.reso.demo1.CMsgGetDbRecs.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称1--METype1"/>
+			</VeMessage>
+			<VeMessage name="MsgGetDbRecsToVeGrid" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqGetDbRecsToVegrid"/>
+				<Response name="resGetDbRecsToVegrid"/>
+				<Processor name="csAsc.ECOSS.reso.demo1.CMsgGetDbRecs.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+		</MsgType>
+		<MsgType name="MsgInjectBuffer">
+			<VeMessage name="MsgInjectBuff1" type="消息包2--消息种类1--消息名称1--消息类型1">
+				<Request name="reqInjectBuffer"/>
+				<Response name="resInjectBuffer"/>
+				<Processor name="csAsc.ECOSS.reso.demo1.CMsgGetBufferData.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称1--METype1"/>
+			</VeMessage>
+			<VeMessage name="MsgInjectBuff2" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqInjectBuffer"/>
+				<Response name="resInjectBuffer"/>
+				<Processor name=""/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+		</MsgType>
+        <MsgType name="MsgInjectTree1">
+			<VeMessage name="MsgInjectDTree1" type="消息包2--消息种类1--消息名称1--消息类型1">
+				<Request name="reqInjectTree"/>
+				<Response name="resInjectTree"/>
+				<Processor name="csAsc.ECOSS.reso.demo1.CMsgGetTree.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称1--METype1"/>
+			</VeMessage>
+			
+		</MsgType>
+		<MsgType name="MsgInjectIPage">
+			<VeMessage name="MsgInjectIndex" type="消息包2--消息种类1--消息名称1--消息类型1">
+				<Request name="reqGetDBRecs"/>
+				<Response name="resGetDBRecs"/>
+				<Processor name="csAsc.ECOSS.Web.CWebGetDbRecs.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称1--METype1"/>
+			</VeMessage>
+			
+		</MsgType>
+		
+ 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- 用户相关 -->
+		<MsgType name="MsgUserInfor">
+			<VeMessage name="MsgLogin" type="消息包2--消息种类1--消息名称1--消息类型1">
+				<Request name="reqLogin"/>
+				<Response name="resLogin"/>
+				<Processor name="csAsc.ECOSS.user.CLogin.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称1--METype1"/>
+			</VeMessage>
+	
+			
+			<VeMessage name="MsgGetCommonUserRecsToVeGrid" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqGetCommonUserRecsToVegrid"/>
+				<Response name="resGetCommonUserRecsToVegrid"/>
+				<Processor name="csAsc.ECOSS.user.CommonUserInfor.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+			
+			<VeMessage name="MsgGetSystemUserRecsToVeGrid" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqGetSystemUserDbRecsToVegrid"/>
+				<Response name="resGetSystemUserDbRecsToVegrid"/>
+				<Processor name="csAsc.ECOSS.user.SystemUserInfor.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+			
+			<VeMessage name="MsgGetPersonalUserRecsToVeGrid" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqGetPersonalUserDbRecsToVegrid"/>
+				<Response name="resGetPersonalUserDbRecsToVegrid"/>
+				<Processor name="csAsc.ECOSS.user.PersonalInfor.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+			
+			<VeMessage name="MsgGetDynamicRecsToVeGrid" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqGetDynamicRecsToVegrid"/>
+				<Response name="resGetDynamicRecsToVegrid"/>
+				<Processor name="csAsc.ECOSS.user.PersonalInfor.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+			
+			
+			<!-- 角色管理 -->
+			<VeMessage name="MsgGetRoleRecsToVeGrid1" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqGetRoleRecsToVegrid1"/>
+				<Response name="resGetRoleRecsToVegrid1"/>
+				<Processor name="csAsc.ECOSS.user.cRole.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+			<VeMessage name="MsgGetRoleRecsToVeGrid2" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqGetRoleRecsToVegrid2"/>
+				<Response name="resGetRoleRecsToVegrid2"/>
+				<Processor name="csAsc.ECOSS.user.cRole.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+			<VeMessage name="MsgGetRoleRecsToVeGrid3" type="消息包2--消息种类1--消息名称2--消息类型2">
+				<Request name="reqGetRoleRecsToVegrid3"/>
+				<Response name="resGetRoleRecsToVegrid3"/>
+				<Processor name="csAsc.ECOSS.user.cRole.handleMsg"/>
+				<METype name="消息包2--消息种类1--消息名称2--METype2"/>
+			</VeMessage>
+	
+	
+		</MsgType>
+		
+		</MessagePack>
+
+	</VEMessageDesc>
+</EIO>
+

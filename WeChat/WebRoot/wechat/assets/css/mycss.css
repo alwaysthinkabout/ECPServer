@@ -1,0 +1,110 @@
+.leftText {
+    margin-left: 1.2rem;
+    display: inline-block;
+    position: relative;
+    padding: 3px 7px 3px 10px;
+    max-width: calc(100% - 3.5rem);
+    min-height: 38px;
+    line-height: 2.5;
+    font-size: 14px;
+    text-align: left;
+    word-break: break-all;
+    background-color: #fafafa;
+    border-radius: 6px;
+}
+
+.rightText{
+	margin-right:1rem;
+	display:inline-block;
+	position:relative;
+	padding:0 10px;
+	max-width:calc(100% - 0rem);
+	min-height:30px;
+	line-height:2.5;
+	font-size:14px;
+	text-align:right;
+	word-break:break-all;
+	background-color:#64C1FF;
+	border-radius:6px
+}
+
+.leftArrow{
+   /*  display:inline-block; */
+    width:0px;
+    height:0px;
+    border:solid 10px;
+    border-color:#F0F0F0 #fafafa #F0F0F0 #F0F0F0;
+    /* right:-20px; */
+    margin-left:-29px;
+    margin-top:0.2rem;
+    position:absolute;
+    font-size:0px;
+}
+
+.rightArrow{
+	display:inline-block;
+    width:0px;
+    height:0px;
+    border:solid 10px;
+    border-color:#F0F0F0  #F0F0F0 #F0F0F0 #64C1FF;
+    /* right:-20px; */
+    /* margin-right:10px; */
+    top:0.5rem;
+    position:absolute;
+    float:right;
+    font-size:0px;
+    margin-left: 10px;
+}
+
+.time{
+	text-align:center;
+	margin-top:1rem;
+	margin-bottom:-0.3rem;
+}
+
+.myMessageLi{
+	padding-top:1rem;
+}
+
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+
+.room_users{
+	overflow-x: auto;
+	white-space: nowrap;
+	text-align:center;
+}
+
+.room_peruser_div{
+	text-align:center;
+	display:inline-block;
+	margin-top:0.5rem;
+}
+
+.room_peruser_img{
+	border-radius:20rem;
+}

@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>金英台招聘系统</title>
+	<script src="assets/js/myjs/getPermission.js"></script>
+	    <!-- BOOTSTRAP STYLES-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+	    <!-- FONTAWESOME STYLES-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+	       <!--CUSTOM BASIC STYLES-->
+	    <link href="assets/css/basic.css" rel="stylesheet" />
+	    <!--CUSTOM MAIN STYLES-->
+	    <link href="assets/css/custom.css" rel="stylesheet" />
+
+	    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+	    <link href="assets/css/ui.jqgrid.css" rel="stylesheet" />
+	    <link href="assets/css/mycss.css" rel="stylesheet" />
+	    <link href="assets/img/title.png" rel="icon" type="image/x-icon" />
+	    <!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	    <style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }
+       /* .nav-link {
+		  position: relative;
+		  padding: 0 14px;
+		  line-height: 34px;
+		  font-size: 10px;
+		  font-weight: bold;
+		  color: #555;
+		  text-decoration: none;
+		}
+		.nav-link:hover {
+		  color: #333;
+		  text-decoration: underline;
+		} */
+		
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+		
+		/* .nav-counter-green {
+		  background: #75a940;
+		  border: 1px solid #42582b;
+		  background-image: -webkit-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -moz-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -o-linear-gradient(top, #8ec15b, #689739);
+		  background-image: linear-gradient(to bottom, #8ec15b, #689739);
+		}
+		 */
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+       </style>
+    <style>
+        p {
+		    margin-bottom:  10px !important;
+		}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+    	 <div class="row">
+	    <div class="row">
+		    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white">
+		        <div style="width:100%;">
+			        <div style="height:130px;width:35%;float:left">
+			        	<a href="homePage.html"><img alt="picture" src="assets/img/titlePic2.png" height="130"></a>
+		        	</div>
+			             <div style="width:60%;height:90px;float:left;"></div> 
+	  					 <div class="welcome_div"><label class="welcome_label">欢迎您：</label><label id="navUser_call" class="welcome_label"></label></div>
+	  					 <div class="Integrity_div"><label for="progress"class="Integrity_label">资料完整度：<progress value="15" max="100" id="progress"></progress></label></div>
+  				</div>
+		     </nav>
+	    </div>
+     <div class="row">
+	     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+	     	<div class="col-md-12" >
+		        <ul id="nav">
+		        	<li><a href="homePage.html">首页</a></li>
+		        	<li style="padding-left: 65%;"><a id="applyJsp" href="unprocessed.html" onclick="toPage(0)">
+		       				<i class="fa fa-newspaper-o  fa-5x" style="margin-top: 6.4px;font-size: 1.4em;" title="求职申请提醒"></i>
+		       				<span class="nav-counter"id="applyCounter" style="background:red;display:none"></span>
+                		</a>
+                	</li>
+		        	
+		       		<li style="padding-left: 1.8%;"><a id="chatJsp" href="chat.html" onclick="setCss()">
+		       				<i class="fa fa-envelope fa-lg" title="消息提醒"></i>
+		       				<span class="nav-counter"id="messageCounter" style="display:none;"></span>
+                		</a>
+                	</li >
+                	<li style="padding-left: 3%;"><a href="login.jsp" onclick="logout()">退出</a></li>
+		        </ul>
+		     </div>
+	     </nav>
+     <!-- /. NAV TOP  -->
+      </div>
+    </div>
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 id="title" class="page-head-line">合同模板</h1>
+                        <h1 class="page-subhead-line"></h1>
+                    </div>
+                </div>
+<div id="myPrintArea"><!-- 打印起始 -->
+<div class="row">
+<div id="contractItems">
+<div class="col-md-12" style="text-align:center;margin-bottom:10px">
+<!-- <input id="contract_name"class="my-contractName-input" readonly="readonly" type="text""/> -->
+<p id="contract_name"class="my-contractName-input"style="position:static"></p>
+</div>
+<input id = "template_no" style="display:none"/>
+<p style="margin-left:25px">甲方：__________________&nbsp;&nbsp;&nbsp;乙方：__________________</p>
+<p style="margin-left:25px">本合同一式两份，甲乙双方各执一份。合同自签订之日起生效，具有同等法律效力。</p>
+<p style="margin-left:25px">甲方联系人：__________________&nbsp;&nbsp;&nbsp;营业执照号__________________&nbsp;&nbsp;&nbsp;甲方联系电话：__________________</p>
+<p  style="margin-left:25px">乙方联系人：__________________&nbsp;&nbsp;&nbsp;乙方性别：__________________&nbsp;&nbsp;&nbsp;乙方身份证号：__________________</p>
+<p  style="margin-left:25px">乙方联系电话：__________________</p>
+</div>
+	<div class="col-md-12">
+		<!-- <textarea id="contract_content" class="my-textarea" readonly >呵呵哒哎呀请输入合同正文
+		</textarea> --> 
+		<!-- <p id="contract_content" class="my-contractContent-p">请输入合同正文</p> -->
+		<p id="contract_content" class="my-contractContent-p"style = "margin-left:6px;padding-left:5px;"></p>
+	</div>
+       <div style="margin-left:25px;margin-bottom:0px;width:100%;">
+		   <div style="display:inline-block;width:55%;text-align:left;">
+                <p >甲方(盖章)__________________</p>
+           </div>
+           <div style="display:inline-block;width:43%;">
+               <p>乙方(盖章)__________________</p>
+            </div>
+        </div>
+		<div style="margin-left:25px;margin-bottom:0px;width:100%;">
+		   <div style="display:inline-block;width:55%;text-align:left;">
+                <p >_________年______月______日</p>
+           </div>
+           <div style="display:inline-block;width:43%;">
+               <p>_________年______月______日</p>
+            </div>
+        </div>
+    		</div>
+</div><!-- 打印结束 -->
+	  <div class="row"style="text-align:center;margin-top:30px"> 
+	     <button id="addContract" class="btn-primary btn my-btn"  style="margin-right:20px;display:none" onclick="addContract()">确定</button>
+         <button id="edit" class="btn-primary btn my-btn"  style="margin-right:20px" onclick="enableModify()">修改</button>
+          <button id="print" class="btn-info btn my-btn" onclick="printContract()">打印</button>
+	     <button id="goBack" class="btn-Info btn my-btn" onclick="goBack()">返回</button>			                 
+	     <button id="updateContractModel" class="btn-primary btn my-btn" style="margin-right:20px;display:none" onclick="updateContractModel()" >保存</button>		
+	     <button id="cancel" class="btn-danger btn my-btn" onclick="window.location.reload()" style="display:none">取消</button>			                 	                 		                 
+      </div>  
+
+		</div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- /. FOOTER  -->
+     <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+   
+    
+    <script src="assets/js/grid.locale-cn.js"></script>
+    <script src="assets/js/jquery.jqGrid.min.js"></script>
+     <script src="assets/js/jquery.PrintArea.js"></script>
+    <script src="assets/js/ve1.js"></script>
+    <script src="assets/js/veHelper.js"></script>
+     <script src="assets/js/simpleUtil.js"></script>
+     
+     <script src="assets/js/myjs/contract.js"></script>
+
+	<script>
+	function goBack(){
+	    window.history.go(-1);
+	}
+	$(document).ready(
+		showContractModelDetail()				
+	);
+	
+	function printContract()
+	{
+	    $("div#myPrintArea").printArea(); 
+	}
+	</script>
+</body>
+</html>
+

@@ -1,0 +1,466 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+     <title>金英台招聘系统</title>
+     <script src="assets/js/myjs/getPermission.js"></script>
+	
+	    <!-- BOOTSTRAP STYLES-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+	    <!-- FONTAWESOME STYLES-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+	       <!--CUSTOM BASIC STYLES-->
+	    <link href="assets/css/basic.css" rel="stylesheet" />
+	    <!--CUSTOM MAIN STYLES-->
+	    <link href="assets/css/custom.css" rel="stylesheet" />
+
+	    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+	    <link href="assets/css/ui.jqgrid.css" rel="stylesheet" />
+	    <link href="assets/css/mycss.css" rel="stylesheet" />
+	    <link href="assets/img/title.png" rel="icon" type="image/x-icon" />
+	    <!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	    <style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }
+       /* .nav-link {
+		  position: relative;
+		  padding: 0 14px;
+		  line-height: 34px;
+		  font-size: 10px;
+		  font-weight: bold;
+		  color: #555;
+		  text-decoration: none;
+		}
+		.nav-link:hover {
+		  color: #333;
+		  text-decoration: underline;
+		} */
+		
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+		
+		/* .nav-counter-green {
+		  background: #75a940;
+		  border: 1px solid #42582b;
+		  background-image: -webkit-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -moz-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -o-linear-gradient(top, #8ec15b, #689739);
+		  background-image: linear-gradient(to bottom, #8ec15b, #689739);
+		}
+		 */
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+       </style>
+</head>
+<body>
+    <div id="wrapper">
+    	 <div class="row">
+	    <div class="row">
+		    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white">
+		        <div style="width:100%;">
+			        <div style="height:130px;width:35%;float:left">
+			        	<a href="homePage.html"><img alt="picture" src="assets/img/titlePic2.png" height="130"></a>
+		        	</div>
+			             <div style="width:60%;height:90px;float:left;"></div> 
+	  					 <div class="welcome_div"><label class="welcome_label">欢迎您：</label><label id="navUser_call" class="welcome_label"></label></div>
+	  					 <div class="Integrity_div"><label for="progress"class="Integrity_label">资料完整度：<progress value="15" max="100" id="progress"></progress></label></div>
+  				</div>
+		     </nav>
+	    </div>
+     <div class="row">
+	     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+	     	<div class="col-md-12" >
+		        <ul id="nav">
+		        	<li><a href="homePage.html">首页</a></li>
+		        	<li style="padding-left: 65%;"><a id="applyJsp" href="unprocessed.html" onclick="toPage(0)">
+		       				<i class="fa fa-newspaper-o  fa-5x" style="margin-top: 6.4px;font-size: 1.4em;" title="求职申请提醒"></i>
+		       				<span class="nav-counter"id="applyCounter" style="background:red;display:none"></span>
+                		</a>
+                	</li>
+		        	
+		       		<li style="padding-left: 1.8%;"><a id="chatJsp" href="chat.html" onclick="setCss()">
+		       				<i class="fa fa-envelope fa-lg" title="消息提醒"></i>
+		       				<span class="nav-counter"id="messageCounter" style="display:none;"></span>
+                		</a>
+                	</li >
+                	<li style="padding-left: 3%;"><a href="login.jsp" onclick="logout()">退出</a></li>
+		        </ul>
+		     </div>
+	     </nav>
+     <!-- /. NAV TOP  -->
+      </div>
+    </div>
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">岗位信息修改</h1>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+               <div class="row" id="storeListRow">
+                <div class="col-md-12">
+                    <form id="updateJobForm">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3><b> 基本信息</b></h3>
+                            <input class="form-control" id="jobId" name="jobId" type="hidden" />
+                            <input class="form-control" id="storeId" name="storeId" type="hidden" />
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group row">
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>岗位名称</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <input class="form-control" id="jobName" name="jobName" placeholder="岗位名称" type="text" />
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>发布时间<span class="text-danger">*</span></label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <input class="form-control" id="publishTime" name="publishTime" placeholder="发布时间" readonly="readonly" style="cursor:default;BACKGROUND-COLOR: transparent;" />
+		                        </div>
+		                    </div>
+		                    
+		                    <div class="form-group row">
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>结束时间<span class="text-danger">*</span></label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <input class="form-control" id="endTime" name="endTime" placeholder="结束时间" readonly="readonly" style="cursor:default;BACKGROUND-COLOR: transparent;" />
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>关键字</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <input class="form-control" id="keywords" name="keywords" placeholder="关键字（分号接入多个关键字，体现岗位的特色，供搜索）" type="text" />
+		                        </div>
+		                    </div>
+		                    
+		                    <div class="form-group row">
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>岗位时间类型</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <select class="form-control" id="timeType" name="timeType">
+		                            	<option>学生实习</option>
+		                            	<option>兼职</option>
+		                            	<option>全职</option>
+		                            </select>
+		                           <!--  <input class="form-control" placeholder="岗位时间类型（学生实习/兼职/全职）" type="text" /> -->
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>行业类别</label>
+		                        </div>
+		                        <div class="col-md-2">
+		                            <select class="form-control" onchange="getSecondType()"id="job_type_pcode" name="job_type_pcode"></select>
+		                        </div>
+		                        <div class="col-md-2">
+		                            <select class="form-control" id="job_type_scode" name="job_type_scode"></select>
+		                        </div>
+		                    </div>		                   
+		                    <div class="form-group row">
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>招聘人数</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                        	<input class="form-control" id="number" name="number" placeholder="人数" type="text" />
+		                           
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>城市</label>
+		                        </div>
+		                        <!-- <div class="col-md-4">
+		                            <input class="form-control" id="jobCity" name="jobCity" placeholder="城市" type="text" />
+		                        </div> -->
+		                        <div class="col-md-2">
+		                            <select class="form-control" id="province" name="province"></select>
+		                        </div>
+		                        <div class="col-md-2">
+		                            <select class="form-control" id="city" name="jobCity"></select>
+		                        </div>
+		                    </div>
+		                    
+		                    <div class="form-group row">
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>地点</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <input class="form-control" id="jobLocation" name="jobLocation" placeholder="地点" type="text" />
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>岗位描述</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <input class="form-control" id="description" name="description" placeholder="岗位描述" type="text" />
+		                        </div>		                        
+		                    </div>		                    
+                        </div>
+                        <div class="panel-heading">
+                             <h3><b> 基本待遇</b></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group row">
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>工资类型</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                        	<select class="form-control" id="payment_type" name="payment_type">
+		                            	<option>基本+绩效</option>
+		                            	<option>基本+补贴</option>
+		                            	<option>绩效</option>
+		                            	<option>基本</option>
+		                            </select>
+		                           <!--  <input class="form-control" placeholder="基本+绩效 /基本+补贴 /绩效/基本" type="text" /> -->
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>工资</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                        	<input class="form-control" id="payment" name="payment" placeholder="工资" type="text" />
+		                        <!--     <input class="form-control" placeholder="最少工资" type="text" />
+		                        </div>
+		                        <div class="col-md-1">
+		                            <label>——</label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <input class="form-control" placeholder="最大工资" type="text" /> -->
+		                        </div>
+		                    </div>
+		                    <div class="form-group row">
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>住宿提供</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                        	<select class="form-control" id="accommodation" name="accommodation">
+		                            	<option>有偿提供</option>
+		                            	<option>无偿提供</option>
+		                            	<option>不提供</option>
+		                            </select>
+		                            <!-- <input class="form-control" placeholder="有偿提供/无偿提供/不提供" type="text" /> -->
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>其他待遇</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <input class="form-control" id="other_payment" name="other_payment" placeholder="其他待遇" type="text" />
+		                        </div>
+		                    </div>
+                        </div>
+                        
+                        <div class="panel-heading">
+                             <h3><b> 基本要求</b></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group row">
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>学历</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                        	<select class="form-control" id="degree" name="degree">
+		                            	<option>无要求</option>
+		                            	<option>高中</option>
+		                            	<option>大专</option>
+		                            	<option>本科</option>
+		                            	<option>研究生</option>
+		                            	<option>博士研究生</option>
+		                            </select>
+		                            <!-- <input class="form-control" placeholder="无要求/高中/大专/本科/研究生/博士研究生" type="text" /> -->
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>职称</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                        	<select class="form-control" id="title" name="title">
+		                            	<option>无要求</option>
+		                            	<option>初级</option>
+		                            	<option>中级</option>
+		                            	<option>高级</option>
+		                            	<option>教授级</option>
+		                            </select>
+		                            <!-- <input class="form-control" placeholder="无要求/初级/中级/高级/教授级" type="text" /> -->
+		                        </div>
+		                    </div>
+		                    
+		                    <div class="form-group row">
+		                      <!--   <div class="col-md-2" style="width:11%">
+		                            <label>专业范围</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <input class="form-control" placeholder="专业范围" type="text" />
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div> -->
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>其他要求</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <textArea class="form-control" id="requirements" name="requirements" rows="5"></textArea>
+		                        </div>
+		                        <!-- <div class="col-md-2" style="width:11%">
+		                            <label>身高</label>
+		                        </div>
+		                        <div class="col-md-2" style="width:14%">
+		                            <input class="form-control" placeholder="最低身高" type="text" />
+		                        </div>
+		                        <div class="col-md-1" style="width:5%">
+		                            <label>——</label>
+		                        </div>
+		                        <div class="col-md-2" style="width:14%">
+		                            <input class="form-control" placeholder="最高身高" type="text" />
+		                        </div> -->
+		                    </div>
+		                    
+		                    <!-- <div class="form-group row">
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>体重</label>
+		                        </div>
+		                        <div class="col-md-2" style="width:14%">
+		                            <input class="form-control" placeholder="最小体重" type="text" />
+		                        </div>
+		                        <div class="col-md-1" style="width:5%">
+		                            <label>——</label>
+		                        </div>
+		                        <div class="col-md-2" style="width:14%">
+		                            <input class="form-control" placeholder="最大体重" type="text" />
+		                        </div>
+		                        <div class="col-md-1" style="width:10%">
+		                            <label></label>
+		                        </div>
+		                        <div class="col-md-2" style="width:11%">
+		                            <label>其他要求</label>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <input class="form-control" id="requirements" name="requirements" placeholder="其他要求" type="text" />
+		                        </div>
+		                    </div> -->
+		                    
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div style="text-align:center;">
+		        <button type="button" class="btn btn-info" onclick="jobUpdate()">信息修改并发布</button>
+		        <button type="button" class="btn btn-danger" onclick="goBack()">取消</button>
+            </div>
+            
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="assets/js/simpleUtil.js"></script>
+    <script src="assets/js/city.js"></script>
+    <script src="assets/js/ve1.js"></script>
+	<script src="assets/js/veHelper.js"></script>
+	<script src="assets/js/myjs/updateJobPage.js"></script>
+	<script src="assets/js/jedate/jedate.js"></script>
+	<script>	  
+		function goBack(){
+			window.location.href="jobListPage.html?storeId="+$("#storeId").val();
+		}
+		
+		function informationSettingPage(){
+			window.location.href="informationSettingPage.html";
+		}
+		
+		window.onload = function() {
+                jeDate({
+                    dateCell: "#endTime", //isinitVal:true,
+                    format: "YYYY-MM-DD",
+                    isTime: false, //isClear:false,
+                    //zIndex: 9999999,
+                   // isinitVal:false,
+                    //choose:function(val) {alert('选择后的回调函数')},
+                    minDate: getNowFormat_Date()
+                });
+                jeDate({
+                    dateCell: "#publishTime", //isinitVal:true,
+                    format: "YYYY-MM-DD",
+                    isTime: false, //isClear:false,
+                    //isClear:true
+                   // zIndex: 9999999,
+                   // isinitVal:false,
+                    //choose:function(val) {alert('选择后的回调函数')},
+                    minDate: getNowFormat_Date()
+                });
+          };
+	</script>
+</body>
+</html>
+
+
+	

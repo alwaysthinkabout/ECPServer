@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>test</title>
+		<link href='../../css/stylesheets/bootstrap/bootstrap.css' media='all' rel='stylesheet' type='text/css' />
+	    <link href='../../css/ui.jqgrid.css' media='all' rel='stylesheet' type='text/css' />
+	    <link href='../../css/jquery-ui.min.css' media='all' rel='stylesheet' type='text/css' />
+	    <link href='../../css/stylesheets/plugins/slider_nav/slidernav.css' media='all' rel='stylesheet' type='text/css' />
+	    <link href='../../css/stylesheets/light-theme.css' media='all' rel='stylesheet' type='text/css' />
+	    <link href='../../css/project_index.css' media='all' rel='stylesheet' type='text/css' />
+	    <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	    <link href="../../css/font-awesome.min.css" rel="Stylesheet">
+		<link  href="../../css/ui.jqgrid.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body onload= "init()">
+		<!--我也不想这么用，但时间比较急，并被要求存前端，暂时先这样，到时把iframe改为别的-->
+		<div class="toppage">
+		</div>
+		<div class="page_container">
+			<div class="page_left">
+				<div id="wrapper">
+				</div>
+			</div>
+			
+			<div class="page_content">
+				<div class="menu_flag_wrapper">
+				  <a class="menu_flag toLeft"></a>
+				</div>
+				<div class="content_container">
+					<div class="content_container">
+						<p class="content_title"></p>
+						<div>
+							<button type="button" class="button" data-toggle="modal" data-target="#add" data-backdrop="static">增加</button>
+							<button type="button" class="button" data-toggle="modal" data-target="#del" data-backdrop="static" onclick = "studentDelete()">删除</button>
+							<button type="button" class="button" data-toggle="modal" data-backdrop="static" onclick = "studentLoad()">修改</button>
+							<button type="button" class="button" data-toggle="modal" data-target="#query">查询</button>
+						</div>
+						
+						<!--jqgrid start-->
+						 <table id="gridData">
+						 </table>
+						 <div id= "pager"></div>
+						<!--jqgrid end-->
+						
+						
+						
+						
+					</div>
+				</div>
+			</div>
+			<div class="footer"></div>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="query" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="modal-title" id="myModalLabel">查询学生</p>
+					</div>
+					
+					<div class="modal_form_content">
+						<form class="modal_form" class="form-horizontal" role="form">
+					    	<div>
+					    		<label><span class="lab_text text-right">学生名：</span>
+					    		<input  class="modal_form_input"  id="name_query" type="text" /></label>
+					    	</div>
+					    	<div>
+					    		
+						    	<span class="lab_text text-right">性别：</span>
+							    <label class="radio_label"><input type="radio" id="gender_query" name="gender_query" value="m">男</label>
+							    <label class="radio_label"><input type="radio" id="gender_query" name="gender_query" value="f">女</label>
+					    		
+					    	</div>
+					    	<div>
+						    	<span class="lab_text text-right">学生年级：</span>
+						    	<select id="year_query"  class="modal_form_select" >
+						    		<option value="0">请选择</option>
+			                        <option value="1">一年级</option>
+			                        <option value="2">二年级</option>
+			                        <option value="3">三年级</option>
+						    	</select>
+					    	</div>
+					    	<div>
+					    		
+						    	<span class="lab_text text-right">语言：</span>
+							    <label class="checkbox_label"><input type="checkbox" name="language_query" value="中文"> 中文</label>
+							    <label class="checkbox_label"><input type="checkbox" name="language_query" value="英文"> 英文</label>
+							    <label class="checkbox_label"><input type="checkbox" name="language_query" value="日语"> 日语</label>
+					    		
+					    	</div>
+					    	<div class="input_time">
+					    	    <label>
+						    		<span class="lab_text text-right">生日：</span>
+						    		<span class="input-group date form_date"  data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+					                    <input id="start_date_query" class="form-control" size="16" type="text" value="" style="width:130px">
+										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar icon icon-calendar"></span></span>
+					                </span>
+					                <span>~</span>
+					                <span class="input-group date form_date"  data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+					                    <input id="end_date_query" class="form-control" size="16" type="text" value="" style="width:130px">
+										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar icon icon-calendar"></span></span>
+					                </span>
+					            </label>
+					    	</div>
+						</form>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn  btn-default" data-dismiss="modal">取  消</button>
+						<button type="button" class="btn btn-danger" onclick="studentQuery()">确  定</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		
+		<!-- Modal -->
+		<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="modal-title" id="myModalLabel">增加学生</p>
+					</div>
+					
+					<div class="modal_form_content">
+						<form class="modal_form" class="form-horizontal" role="form">
+					    	<div>
+					    		<label><span class="lab_text text-right">学生名：</span>
+					    		<input  class="modal_form_input"  id="name_insert" type="text" /></label>
+					    	</div>
+					    	<div>
+					    		
+						    	<span class="lab_text text-right">性别：</span>
+							    <label class="radio_label"><input type="radio" id="gender_insert" name="gender_insert" value="m">男</label>
+							    <label class="radio_label"><input type="radio" id="gender_insert" name="gender_insert" value="f">女</label>
+					    		
+					    	</div>
+					    	<div>
+						    	<span class="lab_text text-right">学生年级：</span>
+						    	<select id="year_insert"  class="modal_form_select" >
+						    		<option value="0">请选择</option>
+			                        <option value="1">一年级</option>
+			                        <option value="2">二年级</option>
+			                        <option value="3">三年级</option>
+						    	</select>
+					    	</div>
+					    	<div>
+					    		
+						    	<span class="lab_text text-right">语言：</span>
+							    <label class="checkbox_label"><input type="checkbox" name="language_insert" value="中文"> 中文</label>
+							    <label class="checkbox_label"><input type="checkbox" name="language_insert" value="英文"> 英文</label>
+							    <label class="checkbox_label"><input type="checkbox" name="language_insert" value="日语"> 日语</label>
+					    		
+					    	</div>
+					    	<div class="input_time">
+					    	    <label>
+						    		<span class="lab_text text-right">生日：</span>
+						    		<span class="input-group date form_date"  data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+					                    <input id="birthday_insert" class="form-control" size="16" type="text" value="" >
+										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar icon icon-calendar"></span></span>
+					                </span>
+					            </label>
+					    	</div>
+						</form>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn  btn-default" data-dismiss="modal">取  消</button>
+						<button type="button" class="btn btn-danger" onclick="studentAdd()">确  定</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		
+		
+	
+		
+		<!-- Modal -->
+		<div class="modal fade" id="modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="modal-title" id="myModalLabel">修改学生</p>
+					</div>
+					<div class="modal_form_content">
+						<form class="modal_form" class="form-horizontal" role="form">
+							<input id="id_update" type="hidden" />
+					    	<div>
+					    		<label><span class="lab_text text-right">学生名：</span>
+					    		<input  class="modal_form_input"  id="name_update" type="text" /></label>
+					    	</div>
+					    	<div>
+					    		
+						    	<span class="lab_text text-right">性别：</span>
+							    <label class="radio_label"><input type="radio" id="gender_update" name="gender_update" value="m">男</label>
+							    <label class="radio_label"><input type="radio" id="gender_update" name="gender_update" value="f">女</label>
+					    		
+					    	</div>
+					    	<div>
+						    	<span class="lab_text text-right">学生年级：</span>
+						    	<select id="year_update"  class="modal_form_select" >
+						    		<option value="0">请选择</option>
+			                        <option value="1">一年级</option>
+			                        <option value="2">二年级</option>
+			                        <option value="3">三年级</option>
+						    	</select>
+					    	</div>
+					    	<div>
+					    		
+						    	<span class="lab_text text-right">语言：</span>
+							    <label class="checkbox_label"><input type="checkbox" name="language_update" value="中文"> 中文</label>
+							    <label class="checkbox_label"><input type="checkbox" name="language_update" value="英文"> 英文</label>
+							    <label class="checkbox_label"><input type="checkbox" name="language_update" value="日语"> 日语</label>
+					    		
+					    	</div>
+					    	<div class="input_time">
+					    	    <label>
+						    		<span class="lab_text text-right">生日：</span>
+						    		<!--  注意改picker这里-->
+						    		<span id="birthday_update_picker" class="input-group date form_date"  data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+					                    <input id="birthday_update" class="form-control" size="16" type="text" value="" >
+										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar icon icon-calendar"></span></span>
+					                </span>
+					            </label>
+					    	</div>
+						</form>
+					</div>
+
+					
+					<div class="modal-footer">
+						<button type="button" class="btn  btn-default" data-dismiss="modal">取  消</button>
+						<button type="button" class="btn btn-danger" onclick="studentUpdate()">确  定</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<script src='../../js/common/jquery/jquery.min.js' type='text/javascript'></script>
+		<script type="text/javascript" src="../../js/common/jQuery1.7.js"></script>
+		<script type="text/javascript" src="../../js/common/jquery.cookie.js"></script>   
+		<script type="text/javascript" src="../../js/common/forIe.js"></script> 
+		<script src="../../js/common/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../js/jqGrid/grid.locale-cn.js"></script> 
+		<script src='../../js/common/jquery.jqGrid.min.js' type='text/javascript'></script>
+		<script type="text/javascript" src="../../js/common/bootstrap/bootstrap-datetimepicker.js"></script>
+    	<script type="text/javascript" src="../../js/common/bootstrap/bootstrap-datetimepicker.fr.js"></script>
+    	<script type="text/javascript" src="../../js/common/bootstrap/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="../../js/common/hj_dateTime.js"></script>
+		<script type="text/javascript" src="../../js/common/ve.js"></script> 
+		<script type="text/javascript" src="../../js/common/veHelper.js"></script> 
+
+<script> 
+var pageSize = 10;
+var grid;
+
+function init(){
+	//loadMenu();
+	studentGridInit();
+	studentList();
+}
+
+
+function studentGridInit(){
+	grid= $('#gridData').jqGrid({ 
+		  caption: "学生信息",
+		  datatype: 'local',  
+		  altRows: true,
+		  colNames: ['id','姓名','性别','年级','语言','生日'],
+		  colModel: [  
+		    {id:'id',name: 'id',key:true, width:'100%', align:'center'},  
+		    {id:'name',name: 'name', width:'100%', align:'center'},  
+		    {id:'gender',name: 'gender', width:'100%', align:'center'},  
+		    {id:'year',name: 'year', width:'100%', align:'center'},  
+		    {id:'language',name: 'language', width:'100%', align:'center'},
+		    {id:'birthday',name: 'birthday',  formatter:"date",formatoptions: {srcformat:'Y-m-d H:i:s',newformat:'Y-m-d'} ,width:'100%', align:'center'}
+		  ] ,  
+		  pager: "#pager",  
+		  rowNum: pageSize,  
+		  sortname: '0',  
+		  viewrecords: true,   
+		  height: '100%',  
+		  autowidth: true,
+		  multiselect: true,
+		  shrinkToFit:true 
+		});	
+}
+
+function studentList(){	
+	cVe.startReqByMsgHandle(cVeName,'','','reqStudentList','resStudentList','ECP.handle.StudentHandle.handleMsg');
+}
+
+function reqStudentList(){
+	var req={};
+	req["op"]="studentList";
+    cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+}
+function resStudentList(){
+	$('#gridData').jqGrid("clearGridData");
+	var retData =cVe.XHR.responseText;
+	var retDataObj=JSON.parse(retData);
+	var result=retDataObj[cVe.cEioVeDataId].rows;
+	var reader = {
+	  page: 1 ,  
+	  total: (result.length-1)/pageSize +1,  
+	  records: result.length
+	}; 				
+	grid.setGridParam({data: result, localReader: reader}).trigger('reloadGrid');
+}	
+
+function studentQuery(){
+	cVe.startReqByMsgHandle(cVeName,'','','reqStudentQuery','resStudentQuery','com.fastcard.handle.user.StudentHandle.handleMsg');
+}
+
+function reqStudentQuery(){
+	var req={};
+	req["name"]=exText("name_query");
+	req["gender"]=exRadio("gender_query");
+	req["year"]=exSelect("year_query");
+	req["language"]=exCheckbox("language_query");
+	req["start_date"]=exDate("start_date_query");
+	req["end_date"]=exDate("end_date_query");
+	req["op"]="studentQuery";
+    cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+}
+
+function resStudentQuery(){
+	$("#query").modal('hide');
+	$('#gridData').jqGrid("clearGridData");
+	var retData =cVe.XHR.responseText;
+	var retDataObj=JSON.parse(retData);
+	var result=retDataObj[cVe.cEioVeDataId].rows;
+	var reader = {
+	  page: 1 ,  
+	  total: (result.length-1)/pageSize +1,  
+	  records: result.length
+	}; 				
+	grid.setGridParam({data: result, localReader: reader}).trigger('reloadGrid'); 	
+}	
+
+
+function reqStudentDelete(){
+	var req={};
+	var ids = $("#gridData").jqGrid("getGridParam", "selarrrow");
+	req["userid"]=getUserId() ;
+	req["ids"]=ids
+	req["op"]="studentDelete";
+    cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+}
+function resStudentDelete(){
+	var retData =cVe.XHR.responseText;
+	var retDataObj=JSON.parse(retData);
+	var retData=retDataObj[cVe.cEioVeDataId];
+	if(retData.msg == "success"){ 
+		alert("操作成功");
+		studentList();
+	}
+	else{
+		alert("操作失败");
+	}
+}
+
+function studentDelete(){
+	var ids = $("#gridData").jqGrid("getGridParam", "selarrrow");
+	if(ids.length<=0){
+		alert("请选择要删除的记录");
+		return;
+	}
+	else cVe.startReqByMsgHandle(cVeName,'','','reqStudentDelete','resStudentDelete','com.fastcard.handle.user.StudentHandle.handleMsg');
+}	
+
+function reqStudentAdd(){
+	var req={};
+	req["userid"]=getUserId() ;
+	req["name"]=exText("name_insert");
+	req["gender"]=exRadio("gender_insert");
+	req["year"]=exSelect("year_insert");
+	req["language"]=exCheckbox("language_insert");
+	req["birthday"]=exDate("birthday_insert");
+	req["op"]="studentAdd";
+    cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+}
+function resStudentAdd(){
+	$("#add").modal('hide');
+	var retData =cVe.XHR.responseText;
+	var retDataObj=JSON.parse(retData);
+	var retData=retDataObj[cVe.cEioVeDataId];
+	if(retData.msg == "success"){ 
+		alert("操作成功");
+		studentList();
+	}
+	else{
+		alert("操作失败");
+	}
+}
+
+function studentAdd(){
+	cVe.startReqByMsgHandle(cVeName,'','','reqStudentAdd','resStudentAdd','com.fastcard.handle.user.StudentHandle.handleMsg');
+}	
+
+function reqStudentLoad(){
+	var req={};
+	var ids = $("#gridData").jqGrid("getGridParam", "selarrrow");
+	req["id"]=ids[0];
+	req["op"]="studentGet";
+	cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+	
+}
+function resStudentLoad(){
+	var retData =cVe.XHR.responseText;
+	var retDataObj=JSON.parse(retData);
+	var temp=retDataObj[cVe.cEioVeDataId].rows;
+	if(temp.length<=0){
+		alert("此数据不存在");
+		return;
+	}
+	var retData = temp[0];
+	inText("id_update",retData.id);
+	inText("name_update",retData.name);
+	inRadio("gender_update",retData.gender);
+	inSelect("year_update",retData.year);
+	inCheckbox("language_update",retData.language);
+	inDate("birthday_update",retData.birthday);
+	$("#modify").modal('show');
+}
+function studentLoad(){
+	var ids = $("#gridData").jqGrid("getGridParam", "selarrrow");
+	if(ids.length<=0){
+		alert("请选择要编辑的记录");
+		return;
+	}
+	else if(ids.length==1){
+		cVe.startReqByMsgHandle(cVeName,'','','reqStudentLoad','resStudentLoad','com.fastcard.handle.user.StudentHandle.handleMsg');		
+	}
+	else{
+		alert("一次只能编辑一条记录"); 
+		return;
+	}
+	
+}
+function reqStudentUpdate(){
+	var req={};
+	req["userid"]=getUserId() ;
+	req["id"]=exText("id_update");
+	req["name"]=exText("name_update");
+	req["gender"]=exRadio("gender_update");
+	req["year"]=exSelect("year_update");
+	req["language"]=exCheckbox("language_update");
+	req["birthday"]=exDate("birthday_update");
+	req["op"]="studentUpdate";
+    cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+}
+function resStudentUpdate(){
+	var retData =cVe.XHR.responseText;
+	var retDataObj=JSON.parse(retData);
+	var retData=retDataObj[cVe.cEioVeDataId];
+	if(retData.msg == "success"){ 
+		alert("操作成功");
+		studentList();
+		$("#modify").modal('hide');
+	}
+	else{
+		alert("操作失败");
+	}
+}
+
+function studentUpdate(){
+	cVe.startReqByMsgHandle(cVeName,'','','reqStudentUpdate','resStudentUpdate','com.fastcard.handle.user.StudentHandle.handleMsg');
+}	
+
+</script>
+	</body>
+</html>

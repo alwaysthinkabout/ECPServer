@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+		<!-- 设定iphone端页面全屏 -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<!-- 取消数字被识别为电话号码 -->
+		<meta name="format-detection" content="telephone=no" />
+		<title>学生资料补登</title>
+		<script src="../model/assets/js/myjs/getPermission.js"></script>
+			<!-- BOOTSTRAP STYLES-->
+			<link href="../model/assets/css/bootstrap.css" rel="stylesheet" />
+			<!-- FONTAWESOME STYLES-->
+			<link href="../model/assets/css/font-awesome.css" rel="stylesheet" />
+			<!--CUSTOM BASIC STYLES-->
+			<link href="../model/assets/css/basic.css" rel="stylesheet" />
+			<!--CUSTOM MAIN STYLES-->
+			<link href="../model/assets/css/custom.css" rel="stylesheet" />
+
+			<link href="../model/assets/css/menu.css" rel="stylesheet" type="text/css" />
+			<link href="../model/assets/css/bootstrap.min.css" rel="stylesheet" />
+			<link href="../model/assets/css/jquery-ui.min.css" rel="stylesheet" />
+			<link href="../model/assets/css/ui.jqgrid.css" rel="stylesheet" />
+			<link href="../model/assets/css/mycss.css" rel="stylesheet" />
+			<link href="../model/assets/img/title.png" rel="icon" type="image/x-icon" />
+			<link href="../model/assets/css/jobPost.css" rel="stylesheet" />
+			<!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	<style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }     
+		
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+			
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+    </style>
+	<style>
+	    .ui-jqgrid.ui-widget.ui-widget-content.ui-corner-all {
+	    		width:100% !important;
+			    position: relative !important;
+			}
+		.row .ui-state-default.ui-jqgrid-hdiv.ui-corner-top{width:100% !important;}
+		.row .ui-state-default.ui-jqgrid-hdiv.ui-corner-top table.ui-jqgrid-htable{width:100% !important;}
+		.row .ui-jqgrid-bdiv{width:100% !important;}
+		.row .ui-jqgrid-bdiv .table.table-hover.ui-jqgrid-btable{width:100% !important;}
+		.row .ui-jqgrid-view{width:100% !important;}
+		.ui-jqgrid tr.jqgrow td {
+		    padding: 0px 2px 0 2px;
+		    line-height:28px;
+       }
+       .ui-jqgrid-htable th.ui-th-column {
+		   padding-bottom:2px;		    
+		}
+		.page-subhead-line {
+		   margin-top:0px;
+		   padding-bottom:8px;		    
+		}
+		.ui-jqgrid-labels{width:100% !important;}
+		.ui-jqgrid-hbox{width:100% !important;}
+		.modal-dialog{width:60% !important;}
+		.modal_form_content{padding-left:15px !important; padding-top:15px !important;padding-right:15px !important;}
+		 .table>tbody>tr>td {
+		    vertical-align: middle;
+		}
+		
+		.navbar {
+		    position: relative;
+		    min-height: 2rem;
+		}
+		#nav{
+			font-size:2rem;
+		}
+		.form-control {
+		    width: 100%;
+		    height: 2.5rem;
+		    padding: 0.5rem 1rem;
+		    font-size: 14px;
+		}
+		.col-label{
+		    width:35%;
+		    float:left;
+		    padding-left:1rem;
+		    padding-right:1rem;
+		}
+		.col-input{
+			width:63%;
+		    float:left;
+		    padding-left:1rem;
+		    padding-right:1rem;
+		}
+		.my-select{
+			width: 60%;
+		    height: 2.5rem;
+		    padding-bottom: 0.5rem;
+		    padding-left: 1rem;
+		    padding-top: 4px;
+		    padding-right: 1rem;
+		    font-size: 1rem;
+		    line-height: 8px;
+		    color: #555;
+		    background-color: #fff;
+		    background-image: none;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+		    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+		    position:relative;
+		    display:inline; 
+		    margin-left:1rem;
+		}
+		.my-enterprise-lable1{
+			/* font-size:20px;
+			display:inline;
+			text-align:right !important; */
+			width:35%;
+		/* 	margin-left:300px; */
+		}
+		
+		.my-enterprise-input{
+		    width: 60%;
+		    height: 2.5rem;
+		    padding: 0.5rem 1rem;
+		    font-size: 1rem;
+		    line-height: 1.42857143;
+		    color: #555;
+		    background-color: #fff;
+		    background-image: none;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+		    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+		    position:relative;
+		    display:inline; 
+		    margin-left:1rem;
+		}
+		
+	</style>
+</head>
+	<body>
+		<div id="wrapper">
+		<div class="row">
+			<div class="row">
+				<nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white;position:relative;min-height:3rem">
+					<div style="width:100%;">
+						<div style="height:100%;width:40%;float:left">
+							<a href="homePage.html"><img alt="picture" src="../model/assets/img/titlePic2.png" height="60px" width="100%"></a>
+						</div>
+						<!-- <div style="width:60%;height:80px;float:left;"></div> -->
+						<div style="padding-left:55%;position:absolute;top:50%;"><label style="font-size:1.5rem;">欢迎您：</label><label id="navUser_call" style="font-size:1.5rem;"></label></div>
+					</div>
+				</nav>
+			</div>
+			<div class="row">
+				<nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+					<div class="col-md-12" >
+						<ul id="nav">
+							<li style="padding-left: 70%;"><a href="login.jsp" onclick="logout()"style="font-size:2rem;line-height:3rem">退出</a></li>
+						</ul>
+					</div>
+				</nav>
+				<!-- /. NAV TOP  -->
+			</div>
+		</div>
+		<div id="page-wrapper">
+			<div id="page-inner">
+				<div class="row">
+					<div class="col-md-12">
+						<h2 ><b style="font-size:2rem">信息设置</b></h2>
+						<div class="row">
+							<h1></h1>
+						</div>
+						<!-- <h1 class="page-subhead-line">所属基本信息显示</h1> -->
+						<input class="form-control" id="studentId" name="studentId" type="hidden" />
+					</div>
+				</div>
+
+				<div class="main">
+					<!-- 添加 学生资料补登  start-->
+					<div class="panel-body" id="registerAddPanelBody">
+						<div class="infor-pos">
+							<div class="row" class="col-md-12" >
+
+								<div class="row col-md-12" >									
+									<label>&nbsp;</label>						
+								</div>
+								
+								<div class="col-md-12" id="studentAddPanel" >
+									<form id="addStudentForm">
+										<div class="form-group row">
+											<div class="col-label" >
+												<label>真实姓名</span><span class="text-danger">*</span></label>
+											</div>
+											<div class="col-input">
+												<input class="form-control" placeholder="真实姓名" id="realName" name="realName" type="text" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-label" >
+												<label>性别<span class="text-danger">*</span></label>
+											</div>
+											<div class="col-input">
+												<div class="col-input"><label><input id="male" name="type" type="radio" value="male" checked = true />  &nbsp;男</label>
+												<label><input id="female" name="type" type="radio" value="female" />  &nbsp;女 </label></div>
+
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<div class="col-label">
+												<label>出生日期</label>
+											</div>
+											<div class="col-input">
+												<input class="form-control" placeholder="点击出生日期" id="bornTime" style="cursor:default;BACKGROUND-COLOR: transparent;"name="bornTime" readonly="readonly"/>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<div class="col-label">
+												<label>身份证号码<span class="text-danger">*</span></label>
+											</div>
+											<div class="col-input">
+												<input class="form-control" placeholder="身份证号码" id="ID" name="ID" type="text" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-label">
+												<label>电话号码<span class="text-danger">*</span></label>
+											</div>
+											<div class="col-input">
+												<input class="form-control" placeholder="电话号码" id="contactPhone" name="contactPhone" type="text" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-label">
+												<label>常用邮箱<span class="text-danger">*</span></label>
+											</div>
+											<div class="col-input">
+												<input class="form-control" placeholder="Email" id="contactEmail" name="contactEmail" type="text" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-label">
+												<label>学历<span class="text-danger">*</span></label>
+											</div>
+											<div class="col-input">
+												<input class="form-control" placeholder="学历" id="education" name="education" type="text" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-label">
+												<label>最高职称</label>
+											</div>
+											<div class="col-input">
+												<input class="form-control" placeholder="最高职称" id="highestTitle" name="highestTitle" type="text" />
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+								<!-- 按钮 -->
+								<div class="btn-jobPost">
+									<!--点击保存按钮，使用EIO提交给后台-->                                
+									<input type="button" id="nextStep1to2Add" onclick="studentAddClick()" value="保 存" class="btn" />
+									<input type="button" id="cancelOperation" onclick="javascript:history.back(-1);" value="取 消" style="background-color:red; border-color:red;font-color:white;"class="btn" />
+								</div>
+
+							<!-- 添加学生信息补登 end -->
+					</div>
+					
+
+				</div>
+
+				</div>
+			<!-- /. PAGE INNER  -->
+			</div>
+			<!-- /. PAGE WRAPPER  -->
+		</div>
+		<!-- /. WRAPPER  -->
+		<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+		<!-- JQUERY SCRIPTS -->
+		<script src="../model/assets/js/jquery-1.10.2.js"></script>
+
+		<!-- BOOTSTRAP STYLES-->
+		<!-- BOOTSTRAP SCRIPTS -->
+		<script src="../model/assets/js/bootstrap.js"></script>
+		<!-- METISMENU SCRIPTS -->
+		<script src="../model/assets/js/jquery.metisMenu.js"></script>
+		<!-- CUSTOM SCRIPTS -->
+		<script src="../model/assets/js/ve1.js"></script>
+		<script src="js/veHelper.js"></script>
+		<script src="../model/assets/js/simpleUtil.js"></script>
+		<script src="js/student.js"></script>
+		<script src="../model/assets/js/jedate/jedate.js"></script>
+		<script>
+			window.onload = function() {
+				jeDate({
+					dateCell: "#bornTime", //isinitVal:true,
+					format: "YYYY-MM-DD",
+					isTime: false, //isClear:false,
+					zIndex: 9999999,
+					// isinitVal:false,
+					//choose:function(val) {alert('选择后的回调函数')},
+					maxDate: getNowFormat_Date()
+				});
+			};
+			function getNowFormat_Date() {
+				var date = new Date();
+				var seperator1 = "-";
+				//var seperator2 = ":";
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if (month >= 1 && month <= 9) {
+					month = "0" + month;
+				}
+				if (strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+				/*+ " " + date.getHours() + seperator2 + date.getMinutes()
+				 + seperator2 + date.getSeconds();*/
+				return currentdate;
+			}
+		</script>
+
+</body>
+</html>
+

@@ -1,0 +1,1784 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>金英台招聘系统</title>
+	<script src="assets/js/myjs/getPermission.js"></script>
+	    <!-- BOOTSTRAP STYLES-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+	    <!-- FONTAWESOME STYLES-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+	       <!--CUSTOM BASIC STYLES-->
+	    <link href="assets/css/basic.css" rel="stylesheet" />
+	    <!--CUSTOM MAIN STYLES-->
+	    <link href="assets/css/custom.css" rel="stylesheet" />
+
+	    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+	    <link href="assets/css/ui.jqgrid.css" rel="stylesheet" />
+	    <link href="assets/css/mycss.css" rel="stylesheet" />
+	    <link href="assets/img/title.png" rel="icon" type="image/x-icon" />
+	    <!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	    <style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }
+       /* .nav-link {
+		  position: relative;
+		  padding: 0 14px;
+		  line-height: 34px;
+		  font-size: 10px;
+		  font-weight: bold;
+		  color: #555;
+		  text-decoration: none;
+		}
+		.nav-link:hover {
+		  color: #333;
+		  text-decoration: underline;
+		} */
+		
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+		
+		/* .nav-counter-green {
+		  background: #75a940;
+		  border: 1px solid #42582b;
+		  background-image: -webkit-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -moz-linear-gradient(top, #8ec15b, #689739);
+		  background-image: -o-linear-gradient(top, #8ec15b, #689739);
+		  background-image: linear-gradient(to bottom, #8ec15b, #689739);
+		}
+		 */
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+       </style>
+	<link href="assets/css/jobPost.css" rel="stylesheet" />
+	<style>
+	    .ui-jqgrid.ui-widget.ui-widget-content.ui-corner-all {
+	    		width:100% !important;
+			    position: relative !important;
+			}
+		.row .ui-state-default.ui-jqgrid-hdiv.ui-corner-top{width:100% !important;}
+		.row .ui-state-default.ui-jqgrid-hdiv.ui-corner-top table.ui-jqgrid-htable{width:100% !important;}
+		.row .ui-jqgrid-bdiv{width:100% !important;}
+		.row .ui-jqgrid-bdiv .table.table-hover.ui-jqgrid-btable{width:100% !important;}
+		.row .ui-jqgrid-view{width:100% !important;}
+		.ui-jqgrid tr.jqgrow td {
+		    padding: 0px 2px 0 2px;
+		    line-height:28px;
+       }
+       .ui-jqgrid-htable th.ui-th-column {
+		   padding-bottom:2px;
+		    
+		}
+		.page-subhead-line {
+		   margin-top:0px;
+		   padding-bottom:8px;
+		    
+		}
+		.ui-jqgrid-labels{width:100% !important;}
+		.ui-jqgrid-hbox{width:100% !important;}
+		.modal-dialog{width:60% !important;}
+		.modal_form_content{padding-left:15px !important; padding-top:15px !important;padding-right:15px !important;}
+		 .table>tbody>tr>td {
+		    vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+    <div id="wrapper">
+    	 <div class="row">
+	    <div class="row">
+		    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white">
+		        <div style="width:100%;">
+			        <div style="height:130px;width:35%;float:left">
+			        	<a href="homePage.html"><img alt="picture" src="assets/img/titlePic2.png" height="130"></a>
+		        	</div>
+			             <div style="width:60%;height:80px;float:left;"></div> 
+	  					 <div class="welcome_div"><label class="welcome_label">欢迎您：</label><label id="navUser_call" class="welcome_label"></label></div>
+	  					 <div class="Integrity_div"><label for="progress"class="Integrity_label">资料完整度：<progress value="15" max="100" id="progress"></progress></label></div>
+	  					 
+  				</div>
+		     </nav>
+	    </div>
+     <div class="row">
+	     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+	     	<div class="col-md-12" >
+		        <ul id="nav">
+		        	<li><a href="homePage.html">首页</a></li>
+		        	<li style="padding-left: 65%;"><a id="applyJsp"  onclick="toPage(0)">
+		       				<i class="fa fa-newspaper-o  fa-5x" style="margin-top: 6.4px;font-size: 1.4em;" title="求职申请提醒"></i>
+		       				<span class="nav-counter"id="applyCounter" style="background:red;display:none"></span>
+                		</a>
+                	</li>
+		        	
+		       		<li style="padding-left: 1.8%;"><a id="chatJsp"  onclick="setThisCss()">
+		       				<i class="fa fa-envelope fa-lg" title="消息提醒"></i>
+		       				<span class="nav-counter"id="messageCounter" style="display:none;"></span>
+                		</a>
+                	</li >
+                	<li style="padding-left: 3%;"><a href="login.jsp" onclick="logout()">退出</a></li>
+		        </ul>
+		     </div>
+	     </nav>
+     <!-- /. NAV TOP  -->
+      </div>
+    </div>
+        <div id="page-wrapper">
+            <div id="page-inner">
+				
+				<div class="row">
+                    <div class="col-md-12">
+                        <h2 ><b style="font-size:30px">信息设置</b></h2>
+                         <div class="row">
+                        	<h1></h1>
+                        </div> 
+                        <!-- <h1 class="page-subhead-line">所属店站基本信息显示</h1> -->
+                        <input class="form-control" id="storeId" name="storeId" type="hidden" />
+                    </div>
+                </div>
+				
+				<div class="main">
+				<div class="w1024 jobPost comCreate">
+		    		<!-- 步骤 -->
+					<div class="step-jobPost">
+						<div class="wz-step">
+							<div id="wzStep1" class="one-wz cur">注册级信息</div>
+							<div id="wzStep2" class="two-wz">初级信息</div>
+							<div id="wzStep3" class="three-wz">高级信息</div>
+						</div>
+						<div class="num-step">
+							<div id="numStep1" class="one-num cur">
+							    <span>1</span>
+							    <div class="bor-num"></div>
+							</div>
+							<div id="numStep2" class="two-num">
+								<span>2</span>
+							    <div class="bor-num"></div>
+							</div>
+							<div id="numStep3" class="three-num">
+							    <span>3</span>
+							    <div class="bor-num"></div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- 添加注册级信息 start -->
+					<div class="panel-body" id="registerAddPanelBody" style="display:none;">
+						<div class="infor-pos">
+				                <div class="row" class="col-md-12" >
+				                	<div class="row form-group col-md-12" id="typeRadios">
+				                		<div></div><label class="col-md-1"></label>
+					                	<div class="col-md-4"><label><input id="enterpriseRadio" name="type" type="radio" value="enterprise" onclick="selectType('enterprise')" checked />  &nbsp;企业</label></div>
+		                        		<div class="col-md-4"><label><input id="departmentRadio" name="type" type="radio" value="department" onclick="selectType('department')"/>  &nbsp;事业单位 </label></div>
+				                	</div>
+				                	<div class="row col-md-12" >
+				                		<label>&nbsp;</label>
+				                	</div>
+				               		<div class="col-md-12" id="enterpriseAddPanel" >
+						                <form id="addStoreForm">
+						                    <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>营业执照号<span class="text-danger">*</span></label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="营业执照号 / 统一社会信用代码" id="license_no" name="license_no" type="text" />
+						                        </div>
+						                        <div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10%">
+						                            <label>单位名称<span class="text-danger">*</span></label>
+						                        </div>
+						                        <div class="col-md-4">
+						                       		<input class="form-control" id="user_id" name="user_id" type="hidden" />
+						                       		<input class="form-control" id="storeIdForRegisterUpdate" name="storeId" type="hidden" />
+						                            <input class="form-control" placeholder="单位名称" id="storeName" name="storeName" type="text" />
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>类型</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="公司性质" id="properties" name="properties" type="text" />
+						                        </div>
+						                        <div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10%">
+						                            <label>住所</label>
+						                        </div>
+						                        
+						                        <div class="col-md-4">
+						                           <input id="registerRegion" name="registerRegion" type="text" class="form-control" placeholder="住所"/>
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                         <div class="col-md-2" style="width:11%">
+						                            <label>法定代表人<span class="text-danger">*</span></label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="法定代表人" id="registerPerson" name="registerPerson" type="text" />
+						                        </div>
+						                        <div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10%">
+						                            <label>注册资本</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="注册资本" id="registerFund" name="registerFund" type="text" />
+						                        </div>
+						                    </div>
+						                    
+						                    <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>注册时间</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="点击选择时间" id="registerTime" style="cursor:default;BACKGROUND-COLOR: transparent;"name="registerTime" readonly="readonly"/>
+						                        </div>
+						                    	<div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10%">
+						                            <label>经营范围</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="经营范围" id="coreBusiness" name="coreBusiness" type="text" />
+						                        </div>
+						                    </div>
+						                       
+						                    <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>公司在职人数</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="公司在职人数" id="staffAmount" name="staffAmount" type="text" />
+						                        </div>
+						                    	<div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10%">
+						                            <label>登记机关</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="登记机关" id="reg_auth" name="regAuth" type="text" />
+						                        </div>
+						                     </div>
+						                   
+						                      <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>招聘联系人</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="招聘联系人" id="contact" name="contact" type="text" />
+						                        </div>
+						                     	<div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10%">
+						                            <label>电话</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="电话" id="contactPhone" name="contactPhone" type="text" />
+						                        </div>
+						                     </div>
+						                     
+						                      <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>Email</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="Email" id="contactEmail" name="contactEmail" type="text" />
+						                        </div>
+						                        <div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10%">
+						                            <label>公司官网</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="公司官网" id="officialWebsite" name="officialWebsite" type="text" />
+						                        </div>
+						                     </div>
+						                     <!-- <div class="form-group row">
+						                        <div class="col-md-6" >
+							                         <label>营业执照:</label>
+							                         <input class="my-enterprise-input" id="org_info_path" name="cert_path" style="margin-left:55px !important;display:inline-block;border:none;" type="file"/>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="公司官网" id="officialWebsite" name="officialWebsite" type="text" />
+						                        </div>
+						                     </div> -->
+						                </form>
+				                    </div>
+				                    
+				                    <!-- 事业单位面板 -->
+				                    <div class="col-md-12" id="departmentAddPanel" >
+						                <form id="addStoreDepartmentForm">
+						                    <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>营业执照号<span class="text-danger">*</span></label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="营业执照号 / 统一社会信用代码" id="license_noAD" name="license_no" type="text" />
+						                        </div>
+						                        <div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10.5%">
+						                            <label>单位名称<span class="text-danger">*</span></label>
+						                        </div>
+						                        <div class="col-md-4">
+						                       		<input class="form-control" id="user_idAD" name="user_id" type="hidden" />
+						                       		<input class="form-control" id="storeIdAD" name="storeId" type="hidden" />
+						                            <input class="form-control" placeholder="单位名称" id="storeNameAD" name="storeName" type="text" />
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>宗旨<span class="text-danger">*</span></label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <textArea class="form-control" placeholder="宗旨" id="aimAD" name="aim" rows=3></textArea>
+						                        </div>
+						                        <div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10.5%">
+						                            <label>业务范围</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <textArea class="form-control" placeholder="业务范围" id="coreBusinessAD" name="coreBusiness" rows=3></textArea>
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                    	<div class="col-md-2" style="width:11%">
+						                            <label>住所</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                           <input id="registerRegionAD" name="registerRegion" type="text" class="form-control" placeholder="住所"/>
+						                        </div>
+						                        <div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10.5%">
+						                            <label>法定代表人<span class="text-danger">*</span></label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="法定代表人" id="registerPersonAD" name="registerPerson" type="text" />
+						                        </div>
+						                    </div>
+						                    
+						                    <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>经费来源</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="经费来源" id="fund_srcAD" name="fundSrc"  />
+						                        </div>
+						                    	<div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10.5%">
+						                            <label>开办资金</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="开办资金" id="registerFundAD" name="registerFund" type="text" />
+						                        </div>
+						                    </div>
+						                     
+						                     <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>举办单位</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="举办单位" id="holderAD" name="holder" type="text" />
+						                        </div>
+						                    	<div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10.5%">
+						                            <label>登记机关</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="登记机关" id="reg_authAD" name="regAuth" type="text" />
+						                        </div>
+						                     </div>
+						                   
+						                      <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>招聘联系人</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="招聘联系人" id="contactAD" name="contact" type="text" />
+						                        </div>
+						                     	<div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10.5%">
+						                            <label>电话</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="电话" id="contactPhoneAD" name="contactPhone" type="text" />
+						                        </div>
+						                     </div>
+						                     
+						                      <div class="form-group row">
+						                        <div class="col-md-2" style="width:11%">
+						                            <label>Email</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="Email" id="contactEmailAD" name="contactEmail" type="text" />
+						                        </div>
+						                        <div class="col-md-1" style="width:10%">
+						                            <label></label>
+						                        </div>
+						                        <div class="col-md-2" style="width:10.5%">
+						                            <label>公司官网</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <input class="form-control" placeholder="公司官网" id="officialWebsiteAD" name="officialWebsite" type="text" />
+						                        </div>
+						                     </div>
+						                </form>
+				                    </div>
+				                    
+				                    <!-- 事业单位信息添加面板 start -->
+				                    <!-- 事业单位信息添加面板 end -->
+				                    
+				           	    </div>
+			           	    </div>
+						<!-- 按钮 -->
+						<div class="btn-jobPost">
+							<input type="button" id="nextStep1to2Add" onclick="storeAddClick()" value="保存" class="btn" />
+							<!-- <input type="button" id="nextStep1to2Add" onclick="nextStep1to2Add()" value="下一步，完善初级信息" class="btn" /> -->
+							<input type="button" id="updateRegister" onclick="storeUpdate()" value="完成" class="btn" />
+						</div>
+					</div>
+					<!-- 添加注册级信息 end -->
+					
+					<!-- 查看注册级信息 -->
+					<div class="panel-body" id="registerPanelBody" style="display:none;">
+						<!-- 职位信息 -->
+						<div class="infor-pos">
+				                <div class="row" >
+				               		<div class="col-md-12" id="enterpriseViewPanel">
+						                <form id="storeSettingForm">
+					                        <div class="form-group row">
+					                        	<div class="col-md-2">
+						                            <label>营业执照号：</label>
+						                        </div>
+						                        <div class="col-md-2">
+						                            <label id="license_noVE"/></label>
+						                        </div>
+						                        <div class="col-md-2" id="enterpriseRegisterFileUploadDIV">
+						                            <button id="enterpriseRegisterFileUpload" type="button" class="btn btn-danger" onclick="enterpriseRegisterFileUploadModel()" >上传营业执照</button>
+						                        </div>
+						                        <div class="col-md-2">
+						                            <label>单位名称：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                       		<input class="form-control" id="storeIdForRegisterFind" name="storeId" type="hidden" />
+						                            <label id="storeNameVE"/></label>
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                    	<div class="col-md-2">
+						                            <label>公司性质：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="propertiesVE"/></label>
+						                        </div>
+						                    
+						                        <div class="col-md-2">
+						                            <label>住所：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="registerRegionVE"/></label>
+						                        </div>
+						                    </div>
+						                     <div class="form-group row">
+						                        <div class="col-md-2">
+						                            <label>法定代表人：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="registerPersonVE"/></label>
+						                        </div>
+						                    
+						                        <div class="col-md-2">
+						                            <label>注册资本：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="registerFundVE" /></label>
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                        <div class="col-md-2">
+						                            <label>注册时间：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="registerTimeVE"/></label>
+						                        </div>
+						                    
+						                        <div class="col-md-2">
+						                            <label>经营范围：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="coreBusinessVE"/></label>
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                        <div class="col-md-2">
+						                            <label>公司在职人数：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="staffAmountVE"/></label>
+						                        </div>
+						                    
+						                        <div class="col-md-2">
+						                            <label>登记机关：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="reg_authVE"/></label>
+						                        </div>
+						                     </div>
+						                     
+						                     <div class="form-group row">
+						                        <div class="col-md-2">
+						                            <label>招聘联系人：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="contactsVE"/></label>
+						                        </div>
+						                     
+						                        <div class="col-md-2">
+						                            <label>电话：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="phoneVE"/></label>
+						                        </div>
+						                     </div>
+						                     
+						                     <div class="form-group row">
+						                     	<div class="col-md-2">
+						                            <label>Email：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="emailVE"/></label>
+						                        </div>
+						                        <div class="col-md-2">
+						                            <label>公司官网：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <a id="officialWebsiteVE" target="_blank"/></a>
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                     	<div class="col-md-2">
+						                            <label>信息状态：</label>
+						                        </div>
+						                        <div class="col-md-4" id="infoStateVE_div">
+						                            <label id="infoStateVE"/></label>
+						                            <details id="veReason" style="display:none">
+						                            	<summary id="veAuditState"></summary>
+						                            	<p style="margin-top:5px;">审核理由：</p>
+						                            	<p id="veAudit_reason"style="line-height:18px;margin-top:5px;color:red;"></p>
+						                            </details>
+						                        </div>
+						                        <div class="col-md-9" id="infoStateVEDetaile_div" style="display:none">
+						                            <!-- <label id="infoStateVEDetaile"/></label> -->
+						                            <details>
+						                            	<summary id="infoStateVESummary"></summary>
+						                            	<p style="margin-top:8px;">修改日期：<span id="oper_timeVE"></span><p>
+						                            	<p style="margin-top:5px;">修改内容：</p>
+						                            	<p id="infoStateVEDetaile"style="line-height:18px;margin-top:5px;"></p>
+						                            	<div id="audit_reasonVE_div" style="display:none">
+							                            	<p style="margin-top:5px;">审核理由：</p>
+							                            	<p id="audit_reasonVE"style="line-height:18px;margin-top:5px;color:red;"></p>
+						                            	</div>
+						                            </details>
+						                        </div>
+						                    </div>
+						                </form>
+				                    </div>
+				                    <div class="col-md-12" id="departmentViewPanel" style="display:none;">
+						                <form id="storeSettingDepartmentForm">
+					                        <div class="form-group row">
+					                        	<div class="col-md-2">
+						                            <label>营业执照号：</label>
+						                        </div>
+						                        <div class="col-md-2">
+						                            <label id="license_noVD"/></label>
+						                        </div>
+						                        <div class="col-md-2" id="departmentRegisterFileUploadDIV">
+						                            <button id="departmentRegisterFileUpload" type="button" class="btn btn-danger" onclick="departmentRegisterFileUploadModel()" >上传营业执照</button>
+						                        </div>
+						                        <div class="col-md-2">
+						                            <label>单位名称：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                       		<input class="form-control" id="storeIdVD" name="storeId" type="hidden" />
+						                            <label id="storeNameVD"/></label>
+						                        </div>
+						                    </div>
+						                    
+						                    <div class="form-group row">
+						                        <div class="col-md-2" >
+						                            <label>宗旨：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="aimVD"></label>
+						                        </div>
+						                        <div class="col-md-2" >
+						                            <label>业务范围：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="coreBusinessVD"></label>
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                    	<div class="col-md-2" >
+						                            <label>住所：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                           <label id="registerRegionVD"></label>
+						                        </div>
+						                        <div class="col-md-2">
+						                            <label>法定代表人：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="registerPersonVD"></label>
+						                        </div>
+						                    </div>
+						                    
+						                    <div class="form-group row">
+						                        <div class="col-md-2">
+						                            <label>经费来源：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="fund_srcVD"></label>
+						                        </div>
+						                        <div class="col-md-2">
+						                            <label>开办资金：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="registerFundVD"></label>
+						                        </div>
+						                    </div>
+						                    <div class="form-group row">
+						                        <div class="col-md-2" >
+						                            <label>举办单位：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="holderVD" ></label>
+						                        </div>
+						                    
+						                        <div class="col-md-2">
+						                            <label>登记机关：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="reg_authVD"/></label>
+						                        </div>
+						                     </div>
+						                     
+						                     <div class="form-group row">
+						                        <div class="col-md-2">
+						                            <label>招聘联系人：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="contactsVD"/></label>
+						                        </div>
+						                     
+						                        <div class="col-md-2">
+						                            <label>电话：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="phoneVD"/></label>
+						                        </div>
+						                     </div>
+						                     
+						                     <div class="form-group row">
+						                     	<div class="col-md-2">
+						                            <label>Email：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <label id="emailVD"/></label>
+						                        </div>
+						                        <div class="col-md-2">
+						                            <label>公司官网：</label>
+						                        </div>
+						                        <div class="col-md-4">
+						                            <a id="officialWebsiteVD" target="_blank"/></a>
+						                        </div>
+						                    </div>
+						                    
+						                    <div class="form-group row">
+						                     	<div class="col-md-2">
+						                            <label>信息状态：</label>
+						                        </div>
+						                        <div class="col-md-4" id="infoStateVD_div">
+						                            <label id="infoStateVD"/></label>
+						                            <details id="vdReason" style="display:none">
+							                           	<summary id="vdAuditState"></summary>
+							                           	<p style="margin-top:5px;">审核理由：</p>
+							                           	<p id="vdAudit_reason"style="line-height:18px;margin-top:5px;color:red;"></p>
+						                            </details>
+						                        </div>
+						                        <div class="col-md-4" id="infoStateVDDetail_div" style="display:none">
+						                            <!-- <label id="infoStateVDDetail"/></label> -->
+						                            <details>
+						                            	<summary id="infoStateVDSummary"></summary>
+						                            	<p style="margin-top:8px;">修改日期：<span id="oper_timeVD"></span></p>
+						                            	<p style="margin-top:5px;">修改内容：</p>
+						                            	<p id="infoStateVDDetaile"style="line-height:18px;margin-top:5px;"></p>
+						                            	<div id="audit_reasonVD_div" style="display:none">
+							                            	<p style="margin-top:5px;">审核理由：</p>
+							                            	<p id="audit_reasonVD"style="line-height:18px;margin-top:5px;color:red;"></p>
+						                            	</div>
+						                            </details>
+						                        </div>
+						                    </div>
+						                </form>
+				                    </div>
+				           	    </div>
+			           	    </div>
+						<!-- 按钮 -->
+						<div class="btn-jobPost">
+							<input type="button" class="btn" id="registerStoreUpdateButton" onclick="updateRegisterTab()" value="修改注册级信息">
+							<input type="button" id="nextStep1to2AddForFind" onclick="nextStep1to2Add2()" value="下一步，完善初级信息" class="btn" />
+							<input type="button" id="findForPrimary " onclick="nextStep1to2()" value="查看初级信息" class="btn" style="display:none;"/>
+						</div>
+					</div>
+					<!-- 查看注册级信息 end -->
+					
+					
+					
+					<!-- 查看初级信息 start -->
+					<div class="panel-body" id="primaryPanelBody" style="display:none;">
+						<!-- 职位信息 -->
+						<div class="infor-pos">
+				                <div class="row" >
+				                	<div class="row" id="addNewPrimaryInfoButton" style="display:none;">
+						                	<label style="width:45%;"></label>
+						                	<button type="button" class="btn btn-primary " onclick="addNewPrimaryInfoPage()" >添加年度初级信息</button>
+					                </div>
+					                <div class="row" id="primaryListInfoTable" style="margin-left:0px;width:100%">
+						                <div >
+						                <div  class="panel panel-primary " style="width:100%">
+						                <div class="panel-heading" style="text-align:center;font-size:14px;">初级信息列表</div>
+						                <div id="table1">
+										<table class="table table-hover" id="dataGrid_primary" > </table>
+						                <div id= "pager_primary"></div>
+						                </div>
+						                </div>
+						                <div class=row>
+						                	<label style="width:45%;"></label>
+						                	<button type="button" class="btn btn-primary " onclick="addNewPrimaryInfoPage()" >添加年度初级信息</button>
+						                </div>
+						               </div>
+							         </div>
+				           	    </div>
+			           	    </div>
+						<!-- 按钮 -->
+						<div class="btn-jobPost">
+							<input type="button" class="btn" id="prevStep2to1" onclick="prevStep2to1()" value="查看注册级信息">
+							<!-- <input type="button" id="primaryStoreUpdateButton" onclick="updatePrimaryTab()" value="修改初级信息" class="btn" /> -->
+							<input type="button" id="nextStep2to3" onclick="nextStep2to3()" value="下一步，查看高级信息" class="btn" />
+							<!-- <input type="button" id="nextStep2to3Add" onclick="nextStep2to3Add()" value="下一步，完善高级信息" class="btn" style="display:none;"/> -->
+						</div>
+					</div>
+					<!-- 查看初级信息 end -->
+					
+					
+					
+					<!-- 高级信息 start -->
+					<div class="panel-body" id="advancedPanelBody" style="display:none;">
+						<!-- 职位信息 -->
+						<div class="infor-pos">
+				                <div class="row" >
+				               		<div class="col-md-12" id="advancedInformation">
+				               		    <!-- by lgp -->
+						                        <!-- <h1 class="page-head-line">高级企业账号认证</h1>
+						                        <h1 class="page-subhead-line"> </h1> -->
+						                     <!-- <div id="addSuperInfo" style="text-align:center" >
+						                        <form id="enterpriseUpload"  enctype="multipart/form-data">
+						                        	<input class="form-control" id="AdvancedFileUpload_org_id" name="org_id" type="hidden" />
+						                        	<input class="form-control" id="AdvancedFileUpload_user_id" name="user_id" type="hidden" />
+						                        	<input class="form-control" id="AdvancedFileUpload_state_id" name="state_id" type="hidden" />
+	                  								<input class="form-control" id="uploadType" name="uploadType" type="hidden"/>
+						                        	<div id="certTypeDIVForAdvance">
+								                         <h5 class="my-enterprise-lable" >证件种类:</h5>
+								                         <select class="my-select" id="cert_type" name="cert_type" style="margin-left:55px !important;">
+															  <option value="荣誉证书">荣誉证书</option>
+															  <option value ="身份认证">身份认证</option>
+															  <option value ="资质认证">资质认证</option>
+															  <option value="其他">其他</option>
+														 </select>
+								                     </div>
+								                     <div style="margin-top:10px;display:none;" id="liscenceFileTypeRadio" >
+														 <label><input id="liscenceWay1" name="liscenceWay" style="margin-right:5px;margin-left:60px;inline;"type="radio" value="other" onclick="selectWay('other')" />其他</label>
+        												 <label><input id="liscenceWay2" name="liscenceWay" style="margin-right:5px;margin-left:50px;inline;" type="radio" value="businessLicense" onclick="selectWay('businessLicense')"/>营业执照 </label>
+        											 </div>
+        											 <div style="margin-top:10px;display:none;" id="stateFileTypeRadio" >
+														 <label><input id="stateWay1" name="stateWay" style="margin-right:5px;margin-left:90px;inline;"type="radio" value="other" onclick="selectStateWay('other')" />其他</label>
+        												 <label><input id="stateWay2" name="stateWay" style="margin-right:5px;margin-left:50px;inline;" type="radio" value="state" onclick="selectStateWay('state')"/>资质状况认证 </label>
+        											 </div>
+        											 <div id="selectForNoFileDIV" style="margin-top:10px;display:none;">
+								                         <h5 class="my-enterprise-lable" >年&nbsp; &nbsp; &nbsp; &nbsp;度:</h5>
+								                         <select class="my-select" id="selectForNoFile" name="state_id" style="margin-left:55px !important;">
+															  
+														 </select>
+								                     </div>
+						                             <div style="margin-top:10px">
+								                         <h5 class="my-enterprise-lable" >证件名称:</h5>
+								                         <input class="my-enterprise-input" id="cert_name" name="cert_name" style="margin-left:55px !important;"/>
+								                     </div>
+								                    <div style="margin-top:10px;" >
+								                         <h5 class="my-enterprise-lable" >证件编号:</h5>
+								                         <input class="my-enterprise-input" id="cert_id" name="cert_id" style="margin-left:55px !important;"/>
+								                     </div>
+								                     <div style="margin-top:10px">
+								                         <h5 class="my-enterprise-lable" >认证机构编号:</h5>
+								                         <input class="my-enterprise-input" id="auth_org" name="auth_org"/>
+								                     </div>
+								                      <div style="margin-top:10px">
+								                         <h5 class="my-enterprise-lable" >发证日期:</h5>
+								                         <input class="my-enterprise-input" id="cert_date" name="cert_date" placeholder="点击选择日期" style="margin-left:55px !important;cursor:default;BACKGROUND-COLOR: transparent;"readonly="readonly"/>
+								                     </div>
+								                     <div style="margin-top:10px">
+								                         <h5 class="my-enterprise-lable" >证件有效期:</h5>
+								                         <input class="my-enterprise-input" id="cert_expire" name="cert_expire" style="margin-left:35px !important;"/>
+								                     </div>
+								                      <div style="margin-top:10px">
+								                         <h5 class="my-enterprise-lable" >证件状态:</h5>
+								                         <select class="my-select" id="cert_status" name="cert_status" style="margin-left:55px !important;">
+															  <option value ="有效">有效</option>
+															  <option value ="申请中">申请中</option>
+															  <option value="无效">无效</option>
+														 </select>
+								                     </div>
+								                     <div style="margin-top:10px">
+								                         <h5 class="my-enterprise-lable">选择文件:</h5>
+								                         <input class="my-enterprise-input" id="cert_path" name="cert_path" style="margin-left:55px !important;display:inline-block;border:none;" onchange="fileChange(this);" type="file"/>
+								                     </div>
+								                     <div style="margin-top:5px;">
+								                         <h5 style="margin-left:140px;color:red;font-size:12px;">8M以内的jpg、png、txt、doc、xls、pdf、docx、xlsx</h5>
+								                     </div>
+								                     <div style="margin-top:10px;display:none" style="margin-top:10px">
+								                         <h5 class="my-enterprise-lable">营业执照号:</h5>
+								                         <input class="my-enterprise-input" id="cerLicense_no" name="cerLicense_no" style="display:inline-block" type="text"/>
+								                     </div>
+								                     
+								                     <div style="margin-top:10px">
+								                         <h5 class="my-enterprise-lable" >证件描述:</h5>
+								                         <textArea class="form-control" id="cert_desc" name="cert_desc" rows=5 style="margin-left:55px !important;width:250px;display: inline;"></textArea>
+								                     </div>
+						                        </form>
+						                        <div style="margin-top:20px;text-align:center" >
+							                        <button type="button" class="btn  btn-default" style="margin-left:310px">继续添加</button>
+													<button type="button" class="btn btn-danger my-btn"  onclick="enterpriseUpload()">确定上传</button>
+													<button type="button" class="btn  btn-default my-btn" onclick="goBack()">返回</button>
+												</div>
+						                         <h1 class="page-subhead-line"> </h1>
+						                         </div> -->
+					                         <div class="row" id="advancedPrompt" style="text-align:center;margin-bottom:30px;font-size:25px">
+								                	<h1>还没有上传任何文件哦</h1>
+								             </div>
+						                     <div class="row" id="suerInfoTable" style="display:none;margin-left:0px;width:100%">
+									                <div >
+									                <div  class="panel panel-primary " style="width:100%">
+									                <div class="panel-heading" style="text-align:center;font-size:14px;">高级信息列表</div>
+									                <div id="table2">
+													<table class="table table-hover" id="dataGrid" > </table>
+									                <div id= "pager"></div>
+									                </div>
+									                </div>
+									                <!-- <div class=row style="text-align:center;">
+									                	<label style="width:45%;"></label>
+									                	<button type="button" class="btn btn-primary " onclick="superStoreAddPage()" >上传文件</button>
+									                </div> -->
+									               </div>
+									         </div>
+						                  </div>
+						                <!-- by lgp -->
+				                    </div>
+				                    <div class="row">
+				                    	<h1></h1>
+				                    </div>
+				                    <div class="btn-jobPost">
+										<input type="button" class="btn" id="prevStep3to2" onclick="prevStep3to2()" value="查看初级信息">
+									</div>
+				           	    </div>
+			           	    </div>
+						<!-- 按钮 -->
+					</div>
+					<!-- 高级信息 end -->
+				</div>
+				
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    
+    
+    <!-- 查看企业状态信息详情 start --> 
+    <div class="modal fade" id="primaryDetailModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" >
+			<div class="modal-content"> 					
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<p class="modal-title" id="stateInfoDetailModelLabel"><h3><b>企业状态信息详情</b></h3></p>
+				</div>
+				<div class="modal_form_content">
+					<form id="">
+                        <div class="form-group row">
+	                        <!-- <div class="col-md-2">
+	                            <label>营业执照号：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                       		<input class="form-control" id="org_id" name="org_id" type="hidden" />
+	                            <label id="license_noFP"></label>
+	                        </div> -->
+	                    
+	                        <div class="col-md-2">
+	                            <label>年度：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="yearF"/></label>
+	                        </div>
+	                         <div class="col-md-2">
+	                            <label>员工数：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="employee_numF"/></label>
+	                        </div>
+	                    </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>技术人员数量：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="techstaff_numF"/></label>
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>营业额：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="revenueF"/></label>
+	                        </div>
+	                    </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>资产总额：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="total_assetsF" /></label>
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>负债总额：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="total_indebtF"/></label>
+	                        </div>
+	                    </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>净销售额：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="net_salesF"/></label>
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>流动资产：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="current_assetsF"/></label>
+	                        </div>
+	                     </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>流动负债：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="current_indebtF"/></label>
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>营业费用：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="operate_expenseF"></label>
+	                        </div>
+	                     </div>
+	                     
+	                      <div class="form-group row">
+	                     
+	                        <div class="col-md-2">
+	                            <label>利润：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="profitF"/></label>
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>贷款余额：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="loan_balanceF"/></label>
+	                        </div>
+	                    </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>纳税：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="taxationF"/></label>
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>研发经费金额：</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label id="rd_budgetF"/></label>
+	                        </div>
+	                     </div>
+	                      <div class="form-group row">
+	                     	<div class="col-md-2">
+	                            <label>信息状态：</label>
+	                        </div>
+	                        <div class="col-md-4" id="infoStateYEAR_div">
+	                            <label id="infoStateYEAR"/></label>
+	                            <details id="yearReason" style="display:none">
+	                            	<summary id="yearAuditState"></summary>
+	                            	<p style="margin-top:5px;">审核理由：</p>
+	                            	<p id="yearAudit_reason"style="line-height:18px;margin-top:5px;color:red;"></p>
+	                            </details>
+	                        </div>
+	                        <div class="col-md-9" id="infoStateDetaileYEAR_div" style="display:none">
+	                            <!-- <label id="infoStateVEDetaile"/></label> -->
+	                            <details>
+	                            	<summary id="infoStateSummaryYEAR"></summary>
+	                            	<p style="margin-top:8px;">修改日期：<span id="oper_timeYEAR"></span><p>
+	                            	<p style="margin-top:5px;">修改内容：</p>
+	                            	<p id="infoStateDetaileYEAR"style="line-height:18px;margin-top:5px;"></p>
+	                            	<div id="audit_reasonYEAR_div" style="display:none">
+		                            	<p style="margin-top:5px;">审核理由：</p>
+		                            	<p id="audit_reasonYEAR"style="line-height:18px;margin-top:5px;color:red;"></p>
+	                            	</div>
+	                            </details>
+	                        </div>
+	                    </div>
+	                </form>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-primary"  onclick="primaryUpdateModelShow()">修改</button>
+					<button type="button" class="btn  btn-default" data-dismiss="modal" >取  消</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+     <!-- 查看企业状态信息详情 end --> 
+     
+    <!-- 修改企业状态信息详情 start --> 
+    <div class="modal fade" id="primaryUpdateModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" >
+			<div class="modal-content"> 					
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<div id="myModalLabelUpdate">
+						<p class="modal-title" ><h3><b>企业状态信息修改</b></h3></p>
+					</div>
+				</div>
+				<div class="modal_form_content">
+					<form id="primaryStoreUpdateForm">
+                        <input class="form-control" id="id" name="id" type="hidden" />
+                        <input class="form-control" id="org_idForPrimaryUpdate" name="org_id" type="hidden" />
+                        <input class="form-control" placeholder="营业执照号" id="license_noP" name="license_no" type="hidden" />
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>年度<span class="text-danger">*</span></label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <select class="form-control" id="year" name="year" disabled="disabled"style="cursor:default"></select>
+	                        </div>
+	                         <div class="col-md-2">
+	                            <label>员工数<span class="text-danger">*</span></label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="员工数" id="employee_num" name="employee_num" type="text" />
+	                        </div>
+	                    </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>技术人员数量<span class="text-danger">*</span></label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="技术人员数量" id="techStaff_num" name="techStaff_num" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>营业额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="营业额" id="revenue" name="revenue" type="text" />
+	                        </div>
+	                    </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>资产总额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="资产总额" id="total_assets" name="total_assets" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>负债总额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="负债总额" id="total_indebt" name="total_indebt" type="text" />
+	                        </div>
+	                     </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>净销售额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="净销售额" id="net_sales" name="net_sales" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>流动资产</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="流动资产" id="current_assets" name="current_assets" type="text" />
+	                        </div>
+	                     </div>
+	                   
+	                      <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>流动负债</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="流动负债" id="current_indebt" name="current_indebt" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>营业费用</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="营业费用" id="operate_expense" name="operate_expense" type="text" />
+	                        </div>
+	                    </div>
+	                      <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>利润</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="利润" id="profit" name="profit" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>贷款余额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="贷款余额" id="loan_balance" name="loan_balance" type="text" />
+	                        </div>
+	                     </div>
+	                     
+	                      <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>纳税</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="纳税" id="taxation" name="taxation" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>研发经费金额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="研发经费金额" id="RD_budget" name="RD_budget" type="text" />
+	                        </div>
+	                     </div>
+	                </form>
+					<div class="modal-footer">
+					<button type="button" id="primaryStoreUpdateButton" class="btn btn-success"  onclick="primaryStoreUpdate()">完成</button>
+					<button type="button" class="btn  btn-default" data-dismiss="modal" >取  消</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+    <!-- 修改企业状态信息详情 end --> 
+    
+    <!-- 添加企业状态信息详情 start --> 
+    <div class="modal fade" id="primaryAddModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" >
+			<div class="modal-content"> 					
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<div id="myModalLabelAdd">
+						<p class="modal-title" ><h3><b>企业状态信息添加</b></h3></p>
+					</div>
+				</div>
+				<div class="modal_form_content">
+					<form id="primaryStoreAddForm">
+                        <input class="form-control" id="id" name="id" type="hidden" />
+                        <input class="form-control" id="org_idForPrimaryAdd" name="org_id" type="hidden" />
+                        <input class="form-control" placeholder="营业执照号" id="license_noPA" name="license_no" type="hidden" />
+	                    <div class="form-group row">
+	                        <div class="col-md-2" >
+	                            <label>年度<span class="text-danger">*</span></label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <select class="form-control" id="yearA" name="year" style="display:inline-block"></select>	                       
+	                        </div>
+	                         <div class="col-md-2">
+	                            <label>员工数<span class="text-danger">*</span></label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="员工数" id="employee_numA" name="employee_num" type="text" />
+	                        </div>
+	                    </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>技术人员数量<span class="text-danger">*</span></label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="技术人员数量" id="techStaff_numA" name="techStaff_num" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>营业额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="营业额" id="revenueA" name="revenue" type="text" />
+	                        </div>
+	                    </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>资产总额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="资产总额" id="total_assetsA" name="total_assets" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>负债总额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="负债总额" id="total_indebtA" name="total_indebt" type="text" />
+	                        </div>
+	                     </div>
+	                    <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>净销售额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="净销售额" id="net_salesA" name="net_sales" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>流动资产</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="流动资产" id="current_assetsA" name="current_assets" type="text" />
+	                        </div>
+	                     </div>
+	                   
+	                      <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>流动负债</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="流动负债" id="current_indebtA" name="current_indebt" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>营业费用</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="营业费用" id="operate_expenseA" name="operate_expense" type="text" />
+	                        </div>
+	                    </div>
+	                      <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>利润</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="利润" id="profitA" name="profit" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>贷款余额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="贷款余额" id="loan_balanceA" name="loan_balance" type="text" />
+	                        </div>
+	                     </div>
+	                     
+	                      <div class="form-group row">
+	                        <div class="col-md-2">
+	                            <label>纳税</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="纳税" id="taxationA" name="taxation" type="text" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label>研发经费金额</label>
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input class="form-control" placeholder="研发经费金额" id="RD_budgetA" name="RD_budget" type="text" />
+	                        </div>
+	                     </div>
+	                </form>
+					<div class="modal-footer">
+					<button type="button" id="primaryInfoAddButton" class="btn btn-success"  onclick="primaryInfoAdd()">完成</button>
+					<button type="button" class="btn  btn-default" data-dismiss="modal" >取  消</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+    <!-- 添加企业状态信息详情 end --> 
+    
+     <!-- 上传企业注册级文件 start --> 
+    <div class="modal fade" id="enterpriseRegisterFileUploadModel" style="width:80% !important;padding-left:18%;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" >
+			<div class="modal-content"> 					
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<div id="myModalLabelAdd">
+						<p class="modal-title" ><h3><b>营业执照上传</b></h3></p>
+					</div>
+				</div>
+				<div class="modal_form_content">
+					<form id="enterpriseRegisterFileUploadForm">
+                        <input class="form-control" id="enterpriseRegisterFileUpload_org_id" name="org_id" type="hidden" />
+                        <input class="form-control" id="enterpriseRegisterFileUpload_user_id" name="user_id" type="hidden" />
+	                    <input class="form-control" name="uploadType" type="hidden" value="orgInfo"/>
+	                     <div >
+	                         <h5 class="my-enterprise-lable" >证件种类:</h5>
+	                          <select class="my-select" name="cert_type" style="margin-left:55px !important;">
+								  <option value ="身份认证">身份认证</option>
+								  <option value ="资质认证">资质认证</option>
+								  <option value="荣誉证书">荣誉证书</option>
+								  <option value="其他">其他</option>
+							  </select>
+	                     </div>
+                         <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >证件名称:</h5>
+	                         <input class="my-enterprise-input"  id="enterpriseRegisterFileUpload_cert_name"name="cert_name" style="margin-left:55px !important;" value="营业执照" />
+	                     </div>
+	                     <div style="margin-top:10px;" >
+	                         <h5 class="my-enterprise-lable" >证件编号:</h5>
+	                         <input class="my-enterprise-input" id="enterpriseRegisterFileUpload_cert_id" name="cert_id" style="margin-left:55px !important;"/>
+	                     </div>
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >认证机构编号:</h5>
+	                         <input class="my-enterprise-input" id="enterpriseRegisterFileUpload_auth_org" name="auth_org"/>
+	                     </div>
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >发证日期:</h5>
+	                         <input class="my-enterprise-input" id="enterpriseRegisterFileUpload_cert_date" placeholder="点击选择日期"name="cert_date"  style="margin-left:55px !important;cursor:default;BACKGROUND-COLOR: transparent;"readonly="readonly"/>
+	                     </div>
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >证件有效期:</h5>
+	                         <input class="my-enterprise-input" id="enterpriseRegisterFileUpload_cert_expire" name="cert_expire" placeholder="如：3年"style="margin-left:35px !important;"/>
+	                     </div>
+	                      <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >证件状态:</h5>
+	                         <select class="my-select" id="enterpriseRegisterFileUpload_cert_status" name="cert_status" style="margin-left:55px !important;">
+								  <option value ="有效">有效</option>
+								  <option value ="申请中">申请中</option>
+								  <option value="无效">无效</option>
+							 </select>
+	                     </div>
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable">选择文件:</h5>
+	                         <input class="my-enterprise-input" id="enterpriseRegisterFileUpload_cert_path" name="cert_path" style="margin-left:55px !important;display:inline-block;border:none;" onchange="fileChange(this);" type="file"/>
+	                     </div>
+	                     <div style="margin-top:5px;">
+	                         <h5 style="margin-left:140px;color:red;font-size:12px;">8M以内的jpg、png、txt、doc、xls、pdf、docx、xlsx</h5>
+	                     </div>
+	                     <div style="margin-top:10px;display:none" style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable">营业执照号:</h5>
+	                         <input class="my-enterprise-input" id="enterpriseRegisterFileUpload_cerLicense_no" name="cerLicense_no" style="display:inline-block" type="text"/>
+	                     </div>
+	                     
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >证件描述:</h5>
+	                         <textArea class="form-control" id="enterpriseRegisterFileUpload_cert_desc" name="cert_desc" rows=5 style="margin-left:55px !important;width:250px;display: inline;"></textArea>
+	                     </div>
+	                </form>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger my-btn"  onclick="enterpriseRegisterFileUpload()">确定上传</button>
+						<button type="button" class="btn  btn-default my-btn" onclick="cancelForEnterpriseRegisterFileUpload()">返回</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+    <!-- 上传企业注册级文件 Modal end --> 
+    
+    <!-- 上传初级认证文件 Modal start --> 
+    <div class="modal fade" id="stateFileUploadModel" style="width:80% !important;padding-left:18%;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" >
+			<div class="modal-content"> 					
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<div id="myModalLabelAdd">
+						<p class="modal-title" ><h3><b>年度企业资质状况认证材料上传</b></h3></p>
+					</div>
+				</div>
+				<div class="modal_form_content">
+					<form id="stateFileUploadForm">
+                        <input class="form-control" id="stateFileUpload_state_id" name="state_id" type="hidden" />
+                        <input class="form-control" id="stateUser_id" name="user_id" type="hidden" />
+	                    <input class="form-control" name="uploadType" type="hidden" value="stateInfo"/>
+	                     <div >
+	                         <h5 class="my-enterprise-lable" >证件种类:</h5>
+	                          <select class="my-select" name="cert_type" style="margin-left:55px !important;">
+								  <option value ="资质认证">资质认证</option>
+								  <option value ="身份认证">身份认证</option>
+								  <option value="荣誉证书">荣誉证书</option>
+								  <option value="其他">其他</option>
+							  </select>
+	                     </div>
+                         <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >证件名称:</h5>
+	                         <input class="my-enterprise-input" id="stateFileUpload_cert_name" name="cert_name" style="margin-left:55px !important;" />
+	                     </div>
+	                     <div style="margin-top:10px;" >
+	                         <h5 class="my-enterprise-lable" >证件编号:</h5>
+	                         <input class="my-enterprise-input" id="stateFileUpload_cert_id" name="cert_id" style="margin-left:55px !important;"/>
+	                     </div>
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >认证机构编号:</h5>
+	                         <input class="my-enterprise-input" id="stateFileUpload_auth_org" name="auth_org"/>
+	                     </div>
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >发证日期:</h5>
+	                         <input class="my-enterprise-input" id="stateFileUpload_cert_date" name="cert_date" placeholder="点击选择日期"style="margin-left:55px !important;cursor:default;BACKGROUND-COLOR: transparent;"readonly="readonly"/>
+	                     </div>
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >证件有效期:</h5>
+	                         <input class="my-enterprise-input" id="stateFileUpload_cert_expire" placeholder="如：3年"name="cert_expire" style="margin-left:35px !important;"/>
+	                     </div>
+	                      <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >证件状态:</h5>
+	                         <select class="my-select" id="stateFileUpload_cert_status" name="cert_status" style="margin-left:55px !important;">
+								  <option value ="有效">有效</option>
+								  <option value ="申请中">申请中</option>
+								  <option value="无效">无效</option>
+							 </select>
+	                     </div>
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable">选择文件:</h5>
+	                         <input class="my-enterprise-input" id="stateFileUpload_cert_path" name="cert_path" style="margin-left:55px !important;display:inline-block;border:none;"  onchange="fileChange(this);"type="file"/>
+	                     </div>
+	                     <div style="margin-top:5px;">
+	                         <h5 style="margin-left:140px;color:red;font-size:12px;">8M以内的jpg、png、txt、doc、xls、pdf、docx、xlsx</h5>
+	                     </div>
+	                     <div style="margin-top:10px;display:none" style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable">营业执照号:</h5>
+	                         <input class="my-enterprise-input" id="stateFileUpload_cerLicense_no" name="cerLicense_no" style="display:inline-block" type="text"/>
+	                     </div>
+	                     
+	                     <div style="margin-top:10px">
+	                         <h5 class="my-enterprise-lable" >证件描述:</h5>
+	                         <textArea class="form-control" id="stateFileUpload_cert_desc" name="cert_desc" rows=5 style="margin-left:55px !important;width:250px;display: inline;"></textArea>
+	                     </div>
+	                </form>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger my-btn"  onclick="stateFileUpload()">确定上传</button>
+						<button type="button" class="btn  btn-default my-btn" onclick="cancelForstateFileUpload()">返回</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+    <!-- 上传初级认证文件 Modal end --> 
+    
+     
+    
+    <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+
+    <!-- BOOTSTRAP STYLES-->
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/ve1.js"></script>
+	 <script src="assets/js/veHelper.js"></script>
+	 <script src="assets/js/simpleUtil.js"></script>
+	 <script src="assets/js/myjs/myStoreListPage.js"></script>
+	 <script src="assets/js/myjs/addStorePage.js"></script>
+	 <script src="assets/js/myjs/updatePrimaryStorePage.js"></script>
+	 <script src="assets/js/myjs/SetYear.js"></script>
+	<!--  <script src="assets/js/myjs/addPrimaryStorePage.js"></script> -->
+	<!--  <script src="assets/js/city.js"></script> -->
+	 <script src="assets/js/grid.locale-cn.js"></script>
+    <script src="assets/js/jquery.jqGrid.min.js"></script>
+    <script src="assets/js/jedate/jedate.js"></script>
+	 <script>	    
+	    window.onload = function() {
+                jeDate({
+                    dateCell: "#registerTime", //isinitVal:true,
+                    format: "YYYY-MM-DD",
+                    isTime: false, //isClear:false,
+                    zIndex: 9999999,
+                   // isinitVal:false,
+                    //choose:function(val) {alert('选择后的回调函数')},
+                    maxDate: getNowFormat_Date()
+                });
+                /* jeDate({
+                    dateCell: "#cert_date", //isinitVal:true,
+                    format: "YYYY-MM-DD",
+                    isTime: false, //isClear:false,
+                    zIndex: 9999999,
+                  //  isinitVal:false,
+                    //choose:function(val) {alert('选择后的回调函数')},
+                    maxDate: getNowFormat_Date()
+                }); */
+                jeDate({
+                    dateCell: "#enterpriseRegisterFileUpload_cert_date", //isinitVal:true,
+                    format: "YYYY-MM-DD",
+                    isTime: false, //isClear:false,
+                   // isinitVal:false,
+                    //choose:function(val) {alert('选择后的回调函数')},
+                    zIndex: 9999999,
+                    maxDate: getNowFormat_Date()
+                });
+                 jeDate({
+                    dateCell: "#stateFileUpload_cert_date", //isinitVal:true,
+                    format: "YYYY-MM-DD",
+                    isTime: false, //isClear:false,
+                   // isinitVal:false,
+                    //choose:function(val) {alert('选择后的回调函数')},
+                    zIndex: 9999999,
+                    maxDate: getNowFormat_Date()
+                });
+         };
+        
+         
+         function setThisCss(){
+			var org_id = cVeUti.Cookie.getCookie("org_id");
+			var integrity = cVeUti.Cookie.getCookie("integrity");
+		    if(org_id=="")
+		    {
+		        alert("请完善您的店站信息");
+		        window.location.href="myStoreListPage.html";
+		    }else if(integrity==""||integrity<=0){
+		    	alert("您的店站信息正在审核当中，请耐心等候");
+		    }
+		    else
+			    {
+			    	$("#messageCounter").css("display","none");
+					document.getElementById("messageCounter").innerHTML = "";
+			        window.location.href="chat.html";
+			    }
+		}
+		function informationSettingPage(storeId){
+	//		alert(storeId);
+			window.location.href="informationSettingPage.html?storeId="+storeId;
+		}
+		
+		function jobListPage(){
+			window.location.href="jobListPage.html?storeId="+org_id;
+		}
+		
+		function del(storeId) { 
+			var msg = "您确定要删除吗？";
+			if (confirm(msg)==true){ 
+				deleteStore(storeId);
+				return true; 
+			}else{ 
+				return false; 
+			} 
+		} 
+//高级信息上传
+function goBack(){
+  /* var Request = new Object();
+  Request = GetRequest();
+  var storeId=Request["storeId"];
+  var license_no = Request["license_no"]; */
+  //window.location.href="myStoreListPage.jsp?storeId="+storeId+"&license_no="+license_no;
+  //getStoreDetail();
+  var primaryTableChildNum = document.getElementById("dataGrid").childElementCount;
+  if(primaryTableChildNum<=0)
+  {
+      $("#advancedPanelBody").hide(); 
+	  $("#primaryPanelBody").show();
+	  
+  }else
+  {
+  	  $("#addSuperInfo").hide();
+  	  $("#suerInfoTable").show();
+	  
+  }
+ }
+ 
+ function enterpriseUpload(){
+        var cert_name = document.getElementById("cert_name").value; 
+        //document.getElementById("auth_org").value = ""; 
+        var cert_expire = document.getElementById("cert_expire").value ; 
+        var cert_date = document.getElementById("cert_date").value; 
+        var cert_id = document.getElementById("cert_id").value ; 
+        var cert_path = document.getElementById("cert_path").value;
+        if(cert_name=="")
+        {
+            alert("证件名称不能为空！");
+            return;
+        }
+        if(cert_id=="")
+        {
+            alert("证件编号不能为空！");
+            return;
+        }
+        if(cert_date=="")
+        {
+            alert("发证日期不能为空！");
+            return;
+        }
+        var a = /^(\d{4})-(\d{2})-(\d{2})$/;
+		 if (!a.test(cert_date)) { 
+			 alert("发证日期格式不正确，请选择日期。");
+			 document.getElementById("cert_date").value = "";
+			 return false;
+		 } 
+        if(cert_expire=="")
+        {
+            alert("证件有效期不能为空！");
+            return;
+        }
+        
+        if(cert_path=="")
+        {
+            alert("请选择要上传的文件！");
+            return;
+        }
+        document.getElementById("cerLicense_no").value = cVeUti.Cookie.getCookie("org_id"); 
+		var formData = new FormData($( "#enterpriseUpload" )[0]); 		
+		$.ajax({  
+	          /* url: 'http://125.216.242.9:8080/ECPServer/job/OrgFileUpload',  */ 
+	          url: '/ECPServer/job/OrgFileUpload',
+	          type: 'POST',  
+	          dataType:'text',
+	          data: formData,  
+	          async: false,  
+	          cache: false,  
+	          contentType: false,  
+	          processData: false,  
+	          success: function (returndata) {  
+	              //alert(document.getElementById("cerLicense_no").value);
+	              alert("文件上传成功！");
+	              $("#cert_type").val("荣誉证书");
+				  $("#selectForNoFileDIV").hide();
+				  $("#liscenceFileTypeRadio").hide();
+				  $("#stateFileTypeRadio").hide();
+			      $("#liscenceWay1").removeAttr("checked");
+				  $("#liscenceWay2").removeAttr("checked");
+				  $("#stateWay1").removeAttr("checked");
+				  $("#stateWay2").removeAttr("checked");
+	              document.getElementById("cert_id").value = ""; 
+	              document.getElementById("cert_name").value = ""; 
+	              document.getElementById("auth_org").value = ""; 
+	              document.getElementById("cert_expire").value = ""; 
+	              document.getElementById("cert_date").value = ""; 
+	              //document.getElementById("cert_status").value = ""; 
+	              document.getElementById("cert_path").value = ""; 
+	              getStoreDetail();
+	          },  
+	          error: function (returndata) {  
+	              alert(returndata);  
+	          }  
+	     });  
+}
+       /*上传文件类型和大小限制*/
+	var isIE = /msie/i.test(navigator.userAgent) && !window.opera; 
+	function fileChange(target) { 
+		var fileSize = 0; 
+		var filetypes =[".jpg",".png",".txt",".doc",".xls",".pdf",".docx",".xlsx"]; 
+		var filepath = target.value; 
+		var filemaxsize = 1024*8;//8M 
+		if(filepath){ 
+			var isnext = false; 
+			var fileend = filepath.substring(filepath.indexOf(".")); 
+			if(filetypes && filetypes.length>0){ 
+				for(var i =0; i<filetypes.length;i++){ 
+					if(filetypes[i]==fileend){ 
+						isnext = true; 
+						break; 
+				} 
+			} 
+		} 
+		if(!isnext){ 
+			alert("不接受此文件类型！"); 
+			target.value =""; 
+			return false; 
+		} 
+		}else{ 
+				return false; 
+			} 
+		if (isIE && !target.files) { 
+			var filePath = target.value; 
+			var fileSystem = new ActiveXObject("Scripting.FileSystemObject"); 
+			if(!fileSystem.FileExists(filePath)){ 
+				alert("附件不存在，请重新输入！"); 
+				return false; 
+			} 
+			var file = fileSystem.GetFile (filePath); 
+			fileSize = file.Size; 
+			} else { 
+				fileSize = target.files[0].size; 
+			} 
+		
+		var size = fileSize / 1024; 
+		if(size>filemaxsize){ 
+				alert("附件大小不能大于"+filemaxsize/1024+"M！"); 
+				target.value =""; 
+				return false; 
+			} 
+		if(size<=0){ 
+			alert("附件大小不能为0M！"); 
+			target.value =""; 
+			return false; 
+		} 
+	} 
+	</script>
+</body>
+</html>
+
+
+	 

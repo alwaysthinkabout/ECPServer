@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>login.html</title>	
+    
+    <meta charset="UTF-8">    
+ 
+   <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="ve.js"></script> 
+<script src="js/user.js" type="text/javascript"></script>
+
+
+  </head>
+  
+  <body onload="cVe.startReqByMsgHandle(cVeName, 'MsgInit','MsgInitMsgMap','reqSysInit', 'resSysInit', 'csAsc.EIO.SysMsgHandle.CMsgInit.handleMsg')">
+    <form>
+	<table>
+	<caption><h3>用户登录</h3></caption>
+	<tr><td>用户名：<input  name="idUsername" class="text" id="username"/></td></tr>
+	<tr><td>密&nbsp;码：<input  name="idPassword" class="text" id="password"/></td></tr>
+	<tr align="center"><td colspan="2"><input type="button" name="submit" value="登录"	 onClick="cVe.startReqByMsgMap(cVeName,'MsgUserInfor','MsgLogin',cMsgConfigure)">
+						<input type="reset" value="重置"/></td></tr>
+	</table>
+	</form>
+  </body>
+</html>

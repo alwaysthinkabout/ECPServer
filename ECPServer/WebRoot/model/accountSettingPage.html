@@ -1,0 +1,706 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 	  <title>金英台招聘系统</title>
+	  <script src="assets/js/myjs/getPermission.js"></script>
+	    <!-- BOOTSTRAP STYLES-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+	    <!-- FONTAWESOME STYLES-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+	       <!--CUSTOM BASIC STYLES-->
+	    <link href="assets/css/basic.css" rel="stylesheet" />
+	    <!--CUSTOM MAIN STYLES-->
+	    <link href="assets/css/custom.css" rel="stylesheet" />
+
+	    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+	    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+	    <link href="assets/css/ui.jqgrid.css" rel="stylesheet" />
+	    <link href="assets/css/mycss.css" rel="stylesheet" />
+	    <link href="assets/img/title.png" rel="icon" type="image/x-icon" />
+	    <!-- GOOGLE FONTS-->
+	    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+	    <style>
+	    .modal-backdrop {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    background-color: #000;
+       }
+		.nav-counter {
+		  font-size:11px;
+		  background:red;
+		  position: absolute;
+		  top: 6px;
+		  /* right: 1px; */
+		  min-width: 8px;
+		  height: 20px;
+		  line-height: 20px;
+		  margin-top: -11px;
+		  padding: 0 5px;
+		  font-weight: normal;
+		  color: white;
+		  text-align: center;
+		  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+		  /* background: #e23442; */
+		  border: 1px solid #911f28;
+		  border-radius: 11px;
+		 /*  background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+		  background-image: linear-gradient(to bottom, #e8616c, #dd202f); */
+		  -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		  box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+		}
+		
+
+		.nav-counter-blue {
+		  background: #3b8de2;
+		  border: 1px solid #215a96;
+		  background-image: -webkit-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -moz-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: -o-linear-gradient(top, #67a7e9, #2580df);
+		  background-image: linear-gradient(to bottom, #67a7e9, #2580df);
+		}
+       </style>
+    <style>  
+		*{margin:0;padding:0;}   
+		.parentCls{width:200px;}  
+		.auto-tip li{width:100%;height:22px;line-height:22px;font-size:14px;list-style-type:none; background:#FFF}  
+		.auto-tip li.hoverBg{background:#ddd;cursor:pointer;}  
+		.red{color:black;}  /*下拉框补充*/
+		.hidden {display:none;}
+		.capslock {
+		    position: absolute;
+		    z-index: 4;
+		    display: inline;
+		    width: 116px;
+		    top: 32px;
+		    left: 32%;
+		    padding-left: 10px;
+		    height: 26px;
+		    line-height: 28px;
+		    overflow: hidden;
+		    background: #F9F900;
+		}
+		/* #pwdSpan{margin:0 0.5em;font-size:85.7%;} */
+		.topArrow{
+			width:0px;
+			height:0px;
+			border:solid 10px;
+			border-color:#ffffff  #ffffff #F9F900 #ffffff ;
+			display:inline-block;
+			position:absolute;
+			right: 43%;
+		    z-index: 4;
+		    top: 12px;
+		}   
+	</style> 
+</head>
+<body>
+   <div id="wrapper">
+   	  <div class="row">
+	    <div class="row">
+		    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0;background:white">
+		        <div style="width:100%;">
+			        <div style="height:130px;width:35%;float:left">
+			        	<a href="homePage.html"><img alt="picture" src="assets/img/titlePic2.png" height="130"></a>
+		        	</div>
+		             <div style="width:60%;height:90px;float:left;"></div> 
+  					 <div class="welcome_div"><label class="welcome_label">欢迎您：</label><label id="navUser_call" class="welcome_label"></label></div>
+  					 <div class="Integrity_div"><label for="progress"class="Integrity_label">资料完整度：<progress value="15" max="100" id="progress"></progress></label></div>
+  				</div>
+		     </nav>
+	    </div>
+     <div class="row">
+	     <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+	     	<div class="col-md-12" >
+		        <ul id="nav">
+		        	<li><a href="homePage.html">首页</a></li>
+		        	<li style="padding-left: 65%;"><a id="applyJsp"  onclick="toPage(0)">
+		       				<i class="fa fa-newspaper-o  fa-5x" style="margin-top: 6.4px;font-size: 1.4em;" title="求职申请提醒"></i>
+		       				<span class="nav-counter"id="applyCounter" style="background:red;display:none"></span>
+                		</a>
+                	</li>
+		        	
+		       		<li style="padding-left: 1.8%;"><a id="chatJsp"  onclick="setThisCss()">
+		       				<i class="fa fa-envelope fa-lg" title="消息提醒"></i>
+		       				<span class="nav-counter"id="messageCounter" style="display:none;"></span>
+                		</a>
+                	</li >
+                	<li style="padding-left: 3%;"><a href="login.jsp" onclick="logout()">退出</a></li>
+		        </ul>
+		     </div>
+	     </nav>
+     <!-- /. NAV TOP  -->
+      </div>
+    </div>
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 id="title" class="page-head-line">账户设置</h1>
+                        <!-- <h1 class="page-subhead-line"></h1> -->
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+               <div class="row">
+                <div class="col-md-12">
+                <form id="userRegisterForm" autoComplete="off">
+                	<div class="row"></div>
+                		<div class="row">               		    
+	                        <label><h1></h1></label>
+	                    </div>
+                	<div class="col-md-2"></div>
+                    <div class="panel panel-default col-md-6">
+                        <div class="panel-body">
+                            <div class="col-md-8" style="display:inline-block;width:66.7%;margin-top:10px;">
+	                            <label><input id="passwordRadio" name="updateRadio" style="margin-right:5px;margin-left:10px"type="radio" value="eamil"checked="checked" onclick="selectOperate('password')" />修改密码</label>
+	                        	<label><input id="emailRadio" name="updateRadio" style="margin-right:5px;margin-left:30px" type="radio" value="telephone" onclick="selectOperate('email')"/>修改邮箱 </label>
+	                        </div>
+                            <div class="form-group row">
+                            	<div class="row">
+			                        <label><h1></h1></label>
+			                        <hr />
+			                    </div>
+			                    <div class="col-md-12 row">
+			                        <h1><b></b></h1>
+			                    </div>
+		                    <div id="uid" style="display:none">
+		                        <div class="col-md-3" style="display:inline-block;width:20%;text-align:right;">
+		                            <label>账号</label>
+		                        </div>
+		                        <div class="col-md-8" style="display:inline-block;width:66.7%;padding-right:5px">
+		                            <input class="form-control"readonly="readonly" style="cursor:default"id="user_id" name="user_id" placeholder="账号" type="text" />
+		                        </div>
+	                        </div>
+		                    </div>
+		                    <div class="form-group row" id="password1">
+		                        <div class="col-md-3" style="display:inline-block;width:20%;text-align:right;">
+		                            <label>原密码</label>
+		                        </div>
+		                        <div class="col-md-8" style="display:inline-block;width:66.7%;padding-right:5px;position:relative">
+		                        		         
+		                        	<input class="form-control" id="password" name="password" onfocus="this.type='password'" autoComplete="off"/>
+		                        	<div id="pwdSpan" style="display:none;">
+			                           <div class="topArrow"></div>
+			                           <span  class="capslock">大写锁定已打开</span>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="form-group row"id="newPassword1">
+		                        <div class="col-md-3" style="display:inline-block;width:20%;text-align:right;">
+		                            <label>新密码</label>
+		                        </div>
+		                        <div class="col-md-8" style="display:inline-block;width:66.7%;padding-right:5px;position:relative">
+		                        	<input class="form-control" id="newPassword" name="newPassword" onfocus="this.type='password'" autoComplete="off"/>
+		                        	<div id="newPwdSpan" style="display:none;">
+			                           <div class="topArrow"></div>
+			                           <span  class="capslock">大写锁定已打开</span>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="form-group row" id="reNewPassword1">
+		                        <div class="col-md-3" style="display:inline-block;width:20%;text-align:right;">
+		                            <label>密码确认</label>
+		                        </div>
+		                        <div class="col-md-8" style="display:inline-block;width:66.7%;padding-right:5px;position:relative">
+		                        	<input class="form-control" id="reNewPassword" name="reNewPassword" onfocus="this.type='password'" />
+		                        	<div id="newPwdSpan1" style="display:none;">
+			                           <div class="topArrow"></div>
+			                           <span  class="capslock">大写锁定已打开</span>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="form-group row"id="email1"style="display:none;">
+		                        <div id="originalMail1">
+			                        <div class="col-md-3" style="display:inline-block;width:20%;text-align:right;">
+			                            <label>原邮箱</label>
+			                        </div>
+			                        <div class="col-md-8 parentCls" style="display:inline-block;width:66.7%;padding-left:0px;padding-right:5px">
+			                        	<input class="form-control inputElem" id="originalEmail" name="email" autocomplete="off"  type="text" />
+			                        </div>
+			                        <div style="display:inline-block;width:8%;">       
+			                        	<button type="button"  class="btn btn-default" onclick="verifyBeforeUpdateFirst()">验证</button>
+			                     	</div>
+		                        </div>
+		                        
+		                        <div id="newMail1" style="display:none">
+			                        <div class="col-md-3" style="display:inline-block;width:20%;text-align:right;">
+			                            <label>新邮箱</label>
+			                        </div>
+			                        <div class="col-md-8 parentCls" style="display:inline-block;width:66.7%;padding-left:0px;padding-right:5px">
+			                        	<input class="form-control inputElem" id="newEmail" name="newEmail" autocomplete="off" type="text" />
+			                        </div>
+			                        <div style="display:inline-block;width:8%;">       
+				                        <button type="button"  class="btn btn-default" onclick="verifyBeforeUpdateSecond()">验证</button>
+				                     </div>
+				                 </div>
+		                    </div>
+		                    <div class="form-group row" id="verify_code"style="display:none;">
+		                        <div class="col-md-3" style="display:inline-block;width:20%;text-align:right;">
+		                            <label>验证码</label>
+		                        </div>
+		                        <div class="col-md-8" style="display:inline-block;width:66.7%;padding-left:0px;padding-right:5px">
+		                        	<input class="form-control" style="display:inline-block" id="code" name="code" type="text" />
+		                        	<span class="flag_wrong" id="code_flag">x</span>
+		                        </div>		                        
+		                    </div>
+		                    <hr />
+		                    <div class="form-group row" style="text-align:center">
+						        <button type="button" id="confirmUpdate"class="btn btn-danger" onclick="updateAccount()">确 定</button>
+						        <button type="button" style="display:none" id="nextStep_btn"class="btn btn-primary" onclick="nextStep()">下一步</button>
+						        <button type="button" class="btn btn-info" onclick="goBack()">返 回</button>
+				            </div>
+		                    </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+
+   
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    	 <script src="assets/js/ve1.js"></script>
+	 <script src="assets/js/veHelper.js"></script>
+	 <script src="assets/js/simpleUtil.js"></script>
+	 <script src="assets/js/myjs/supplement.js"></script>
+	 <script>
+	 //alert(cVeUti.Cookie.getCookie("user_id"));
+		 $(function(){
+			var Request = new Object();
+	    	Request = GetRequest();
+			var operation =Request["operation"];
+			if(operation!="undefined"&&operation=="email")
+			{
+				/* selectOperate(operation);
+				$("input:radio[name='emailRadio']").eq(0).attr("checked",true); */
+				document.getElementById("emailRadio").click();
+			}
+		}); 
+	    document.getElementById("user_id").value = cVeUti.Cookie.getCookie("user_id");
+		function goBack(){
+			window.location.href="homePage.html";
+		}
+		function setThisCss(){
+			var org_id = cVeUti.Cookie.getCookie("org_id");
+			var integrity = cVeUti.Cookie.getCookie("integrity");
+		    if(org_id=="")
+		    {
+		        alert("请完善您的店站信息");
+		        window.location.href="myStoreListPage.html";
+		    }else if(integrity==""||integrity<=0){
+		    	alert("您的店站信息正在审核当中，请耐心等候");
+		    }
+		    else
+			    {
+			    	$("#messageCounter").css("display","none");
+					document.getElementById("messageCounter").innerHTML = "";
+			        window.location.href="chat.html";
+			    }
+		}
+		var operate = "password";
+		var verify_code = "";//验证码
+		function selectOperate(way)
+		{
+		    operate = way;
+		    if(operate=="password")
+		    {
+		        //window.location.reload();
+		        $("#password1").css("display","block");
+		        $("#newPassword1").css("display","block");
+		        $("#reNewPassword1").css("display","block");
+		        $("#email1").css("display","none");	 
+		        $("#verify_code").css("display","none");
+		        $("#confirmUpdate").css("display","inline-block");  
+		        $("#nextStep_btn").css("display","none");    
+		    }
+		    if(operate=="email")
+		    {
+		        $("#password1").css("display","none");
+		        $("#newPassword1").css("display","none");
+		        $("#reNewPassword1").css("display","none");
+		        $("#email1").css("display","block");
+		        $("#confirmUpdate").css("display","none");
+		        $("#nextStep_btn").css("display","inline-block");	 
+		        //$("#verify_code").css("display","block");       
+		    }
+		}
+		function verifyBeforeUpdateFirst(){	
+		     var temp =   document.getElementById("originalEmail");//对电子邮件的验证
+		     var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+		     if(temp.value==""){
+		             alert("请输入邮箱!");
+		         }else if(!myreg.test(temp.value))
+				 {
+			        alert("请输入有效的E_mail！");
+		            temp.focus();
+	             }else{
+			              cVe.startReqByMsgHandle(cVeName,'','','reqVerifyBeforeUpdateFirst','resVerifyBeforeUpdateFirst','ECP.handle.common.CCommonHandle.handleMsg');  
+			         } 	     
+	        
+		}
+		
+		function reqVerifyBeforeUpdateFirst(){
+		    var req = {};
+		    req["op"] = "email_verify";
+		    req["flag"] = "confirm";
+		    req["email"] = document.getElementById("originalEmail").value;
+		    req["user_id"] = cVeUti.Cookie.getCookie("user_id");
+		    cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+		}
+		
+		function resVerifyBeforeUpdateFirst(){
+			var retData =cVe.XHR.responseText;
+			var retDataObj=JSON.parse(retData);
+			var result=retDataObj[cVe.cEioVeDataId];
+			if(result.result=="success"){
+				verify_code = result.identify_check;
+				document.getElementById("code").value = "";
+		        $("#verify_code").css("display","block"); 
+		        document.getElementById("code").focus();
+		        alert("我们已将验证码发送至您的邮箱，请注意查看。");
+			}else if(result.result=="notExist"){
+				alert("该邮箱不是本账户的注册邮箱！请重新输入。");
+				 $("#verify_code").css("display","none");
+				 document.getElementById("originalEmail").focus();
+			}else{
+			    alert("邮箱验证失败，请检查邮箱是否输入正确。");
+			}
+		}
+		function verifyBeforeUpdateSecond(){	
+		     var temp =   document.getElementById("newEmail");//对电子邮件的验证
+		     var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+		     if(temp.value==""){
+		             alert("请输入邮箱!");
+		         }else if(!myreg.test(temp.value))
+				 {
+			        alert("请输入有效的E_mail！");
+		            temp.focus();
+	             }else{
+			              cVe.startReqByMsgHandle(cVeName,'','','reqVerifyBeforeUpdateSecond','resVerifyBeforeUpdateSecond','ECP.handle.common.CCommonHandle.handleMsg');  
+			         } 	     
+	        
+		}
+		
+		function reqVerifyBeforeUpdateSecond(){
+		    var req = {};
+		    req["op"] = "email_verify";
+		    req["email"] = document.getElementById("newEmail").value;
+		    cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+		}
+		
+		function resVerifyBeforeUpdateSecond(){
+			var retData =cVe.XHR.responseText;
+			var retDataObj=JSON.parse(retData);
+			var result=retDataObj[cVe.cEioVeDataId];
+			if(result.result=="success"){
+				verify_code = result.identify_check;
+				document.getElementById("code").value = "";
+		        $("#verify_code").css("display","block"); 
+		        document.getElementById("code").focus();
+		        alert("我们已将验证码发送至您的邮箱，请注意查看。");
+			}else{
+				alert("邮箱验证失败，请检查邮箱是否输入正确。");
+			}
+		}
+	    function updateAccount()
+	    {
+	        if(operate=="password")
+	        {
+	           var user_id =  document.getElementById("user_id").value;
+	           var password =  document.getElementById("password").value;
+	           var newPassword = document.getElementById("newPassword").value;
+	           var reNewPassword = document.getElementById("reNewPassword").value;
+	           if(user_id=="")
+	           {
+	               alert("账号不能为空！");
+	               return;
+	           }
+	           if(password=="")
+	           {
+	               alert("原密码不能为空！");
+	               return;
+	           }
+	           if(newPassword=="")
+	           {
+	               alert("新密码不能为空！");
+	               return;
+	           }
+	           if(newPassword==password)
+	           {
+	               alert("新密码不能和原密码相同！");
+	               return;
+	           }
+	           if(reNewPassword=="")
+	           {
+	               alert("请确认密码！");
+	               return;
+	           }
+	           if(newPassword!=reNewPassword)
+	           {
+	               alert("密码确认不一致!");
+	               return;
+	           }
+	           if(newPassword.length>20||newPassword.length<6)
+				{
+				   alert("新密码长度限于6至20之间！");
+				   return;
+				}
+				var flag_pwd = 0;
+				var chineseWord = 0;
+				var numReg = /^[0-9]+$/;
+				var charReg = /^[a-z]+$/;
+				var bCharReg = /^[A-Z]+$/;
+				var chineseReg  =/[^\u0000-\u00FF]/;
+				for (var i = 0; i < newPassword.length; i++) { 
+					if(chineseReg.test(newPassword.substr(i, 1))){
+						chineseWord +=1;
+						break;
+					}
+				} 
+				if(chineseWord==1){
+				    alert("新密码不能包含中文！");
+				    return;
+				}
+				var specialReg  =/[`~!@#$%^&*_+<>{}\/'[\]]/m;
+				for (var i = 0; i < newPassword.length; i++) { 
+					if(numReg.test(newPassword.substr(i, 1))){
+						flag_pwd +=1;
+						break;
+					}
+				} 
+				for (var i = 0; i < newPassword.length; i++) { 
+					if(charReg.test(newPassword.substr(i, 1))){
+						flag_pwd +=1;
+						break;
+					}
+				} 
+				
+				for (var i = 0; i < newPassword.length; i++) { 
+					if(bCharReg.test(newPassword.substr(i, 1))){
+						flag_pwd +=1;
+						break;
+					}
+				} 
+				
+				for (var i = 0; i < newPassword.length; i++) { 
+					if(specialReg.test(newPassword.substr(i, 1))){
+						flag_pwd +=1;
+						break;
+					}
+				} 
+				if(flag_pwd<2){
+					alert("新密码必须至少由大小写、数字和特殊字符中的2种组成");
+					return;
+				}
+	           
+	           cVe.startReqByMsgHandle(cVeName,'','','reqUpdateAccount','resUpdateAccount','ECP.handle.UserHandle.handleMsg');
+	        }else
+	        	{
+	        	    var user_id =  document.getElementById("user_id").value;
+	                var email =  document.getElementById("newEmail").value;
+	                var code =  document.getElementById("code").value;
+	                if(user_id=="")
+	                {
+	                    alert("请输入账号!");
+	                    return;
+	                }
+	                if(email=="")
+	                {
+	                    alert("请输入邮箱!");
+	                    return;
+	                }
+	                if(document.getElementById("verify_code").style.display=="none")
+	                {
+	                    alert("请完成验证!");
+	                    return;
+	                }
+	                if(code=="")
+	                {
+	                    alert("验证码不能为空");
+	                }
+	                if(code!=verify_code)
+	                {
+	                    alert("验证码不正确!");
+	                    return;
+	                }
+	                cVe.startReqByMsgHandle(cVeName,'','','reqUpdateAccount','resUpdateAccount','ECP.handle.UserHandle.handleMsg');
+	        	}
+	        				
+	    }
+	    
+	    function reqUpdateAccount()
+	    {
+	        var req = {};
+	        req["uid"] = document.getElementById("user_id").value;
+	        if(operate=="password")
+	        {
+	            req["password"] = document.getElementById("password").value;
+	            req["newPassword"] = document.getElementById("newPassword").value;
+	            req["op"] = "updatePass";		            
+	        }else
+		        {
+		            req["newEmail"] = document.getElementById("newEmail").value;
+		            req["op"] = "updateAccount";
+		        }
+	        cVe.setConn(cServerUri,"POST", true, JSON.stringify(req));
+	    }
+	    
+	    function resUpdateAccount()
+	    {
+	        var retData =cVe.XHR.responseText;
+			var retDataObj=JSON.parse(retData);
+			var retData=retDataObj[cVe.cEioVeDataId];
+			if(retData.result == "0")
+			{
+			    /* document.getElementById("password").value = "";
+			    document.getElementById("newPassword").value = "";
+			    document.getElementById("reNewPassword").value = "";
+			    document.getElementById("email").value = "";
+			    document.getElementById("code").value = "";
+			    $("#verify_code").css("display","none"); */
+			    //msgbox("提示",1,retData.msg);
+			    cVeUti.Cookie.delCookie("job_apply_id");	
+				cVeUti.Cookie.delCookie("page_id");
+				cVeUti.Cookie.delCookie("org_id");	
+				cVeUti.Cookie.delCookie("org_name");
+				cVeUti.Cookie.delCookie("nick_name");
+				cVeUti.Cookie.delCookie("msgCounters");
+				cVeUti.Cookie.delCookie("msgCounter");
+				cVeUti.Cookie.delCookie("user_id");
+			    alert("账户设置保存成功，请重新登录。");
+			    window.location.href="login.jsp";
+			}else
+			    {
+			       alert(retData.msg);
+			       $("#verify_code").css("display","none");
+			       document.getElementById("code").value = "";
+			       document.getElementById("newEmail").focus();
+			    }
+	    }
+        function nextStep()
+        {
+            var code = document.getElementById("code").value;
+	    	 var temp = document.getElementById("originalEmail");    //对电子邮件的验证
+	         var inputValue = temp.value;
+			 var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+			 if(inputValue==""){
+	             alert("请填入邮箱");
+	             temp.focus();
+	             return;
+	         }else if(!myreg.test(temp.value))
+			 {
+		        alert("请输入有效的E_mail！");
+		        temp.focus();
+	            return false;
+             }
+	    	if(document.getElementById("verify_code").style.display=="none")
+    		{
+	    		alert("请完成验证！");
+    		    return;
+    		}
+	    	if(code=="")
+    		{
+    		    alert("验证码不能为空！");
+    		    document.getElementById("code").focus();
+    		}else if(verify_code!=code)
+    			{
+    			   alert("验证码不正确！");
+    			   document.getElementById("code").focus();
+    			}else
+    				{
+    				 $("#nextStep_btn").css("display","none");
+    				 $("#confirmUpdate").css("display","inline-block");
+    				 $("#originalMail1").css("display","none");
+    				 $("#newMail1").css("display","block");
+    				 document.getElementById("code").value = "";
+    				 $("#verify_code").css("display","none");
+    				 new EmailAutoComplete({});
+    				}
+        }
+        document.onkeydown=function(event) { 
+			/*var pathName = window.location.pathname;
+			var len = pathName.split("/").length; */
+			var hasFocus = $("#password").is(':focus');//当前光标是否处于密码输入框内
+			var hasFocus1 = $("#newPassword").is(':focus');
+			var hasFocus2 = $("#reNewPassword").is(':focus');
+			if(event.keyCode==20&&hasFocus&&document.getElementById("pwdSpan").style.display=="inline")
+			{
+				document.getElementById("pwdSpan").style.display="none";
+			}else if(event.keyCode==20&&hasFocus1&&document.getElementById("newPwdSpan").style.display=="inline")
+			{
+				document.getElementById("newPwdSpan").style.display="none";
+			}else if(event.keyCode==20&&hasFocus2&&document.getElementById("newPwdSpan1").style.display=="inline")
+			{
+				document.getElementById("newPwdSpan1").style.display="none";
+			}
+		};
+		$("#password").blur(function()
+				{
+					document.getElementById("pwdSpan").style.display="none";
+				});
+		$("#newPassword").blur(function()
+				{
+					document.getElementById("newPwdSpan").style.display="none";
+				});
+		$("#reNewPassword").blur(function()
+				{
+					document.getElementById("newPwdSpan1").style.display="none";
+				});
+		function  detectCapsLock(event){
+		    var e = event||window.event;
+		    //var o = e.target||e.srcElement;
+		    var oTip = document.getElementById("pwdSpan");
+		    var oTip1 = document.getElementById("newPwdSpan");
+		    var oTip2 = document.getElementById("newPwdSpan1");
+		    var hasFocus = $("#password").is(':focus');//当前光标是否处于密码输入框内
+			var hasFocus1 = $("#newPassword").is(':focus');
+			var hasFocus2 = $("#reNewPassword").is(':focus');
+		    var keyCode  =  e.keyCode||e.which; // 按键的keyCode 
+		    var isShift  =  e.shiftKey ||(keyCode  ==   16 ) || false ; // shift键是否按住
+		     if (
+		     ((keyCode >=   65   &&  keyCode  <=   90 )  &&   !isShift) // Caps Lock 打开，且没有按住shift键 
+		     || ((keyCode >=   97   &&  keyCode  <=   122 )  &&  isShift)// Caps Lock 打开，且按住shift键
+		     ){
+		    	 if(hasFocus)
+		    		 {
+		    		 	oTip.style.display = 'inline';
+		    		 }else if(hasFocus1){
+		    			 oTip1.style.display = 'inline';
+		    		 }else if(hasFocus2){
+		    		     oTip2.style.display = 'inline';
+		    		 }
+		      }else{
+		    	  if(hasFocus)
+		    		 {
+		    		 	oTip.style.display = 'none';
+		    		 }else if(hasFocus1){
+		    			 oTip1.style.display = 'none';
+		    		 }else if(hasFocus2){
+		    		 	oTip2.style.display = 'none';
+		    		 }
+		    	  } 
+		}
+		document.getElementById('password').onkeypress = detectCapsLock;
+		document.getElementById('newPassword').onkeypress = detectCapsLock;
+		document.getElementById('reNewPassword').onkeypress = detectCapsLock;
+	</script>        
+</body>
+</html>
+
+
